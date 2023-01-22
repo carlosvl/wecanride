@@ -1,0 +1,25 @@
+minimum_cumulusci_version: '3.69.0'
+project:
+    name: wecanride
+    package:
+        name: wecanride
+        api_version: '55.0'
+    git:
+        default_branch: 'main'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/wecanride/tests
+            options:
+                outputdir: robot/wecanride/results
+
+    robot_testdoc:
+        options:
+            path: robot/wecanride/tests
+            output: robot/wecanride/doc/wecanride_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
