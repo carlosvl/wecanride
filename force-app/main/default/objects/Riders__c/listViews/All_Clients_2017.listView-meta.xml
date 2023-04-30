@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Clients_2017</fullName>
+    <columns>Last_Name__c</columns>
+    <columns>First_Name__c</columns>
+    <columns>NAME</columns>
+    <columns>Weight__c</columns>
+    <columns>Level__c</columns>
+    <columns>Diagnoses__c</columns>
+    <columns>Client_E_mail_Address__c</columns>
+    <columns>Client_s_Secondary_e_mail__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Client_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <label>All Clients</label>
+</ListView>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clients_with_Autism</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>Client_E_mail_Address__c</columns>
+    <columns>Client_s_Secondary_e_mail__c</columns>
+    <columns>Diagnoses__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Diagnoses__c</field>
+        <operation>includes</operation>
+        <value>Autism</value>
+    </filters>
+    <filters>
+        <field>Diagnoses__c</field>
+        <operation>includes</operation>
+        <value>Autism Spectrum Disorder</value>
+    </filters>
+    <label>Clients with Autism</label>
+</ListView>

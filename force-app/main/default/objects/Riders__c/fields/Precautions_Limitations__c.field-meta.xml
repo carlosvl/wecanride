@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Precautions_Limitations__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>List current physical, emotional, and cognitive struggles. Please include safety concerns or behaviors and how to mitigate them</inlineHelpText>
+    <label>Precautions/Limitations</label>
+    <length>32768</length>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

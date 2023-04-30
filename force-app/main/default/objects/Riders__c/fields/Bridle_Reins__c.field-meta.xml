@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Bridle_Reins__c</fullName>
+    <externalId>false</externalId>
+    <label>Bridle/Reins</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Reins on Halter</fullName>
+                <default>false</default>
+                <label>Reins on Halter</label>
+            </value>
+            <value>
+                <fullName>Reins on Bridle</fullName>
+                <default>false</default>
+                <label>Reins on Bridle</label>
+            </value>
+            <value>
+                <fullName>No Reins</fullName>
+                <default>false</default>
+                <label>No Reins</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

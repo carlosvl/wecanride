@@ -1,0 +1,1405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Diagnosis_3__c</fullName>
+    <description>Anxiety
+Autism</description>
+    <externalId>false</externalId>
+    <label>Additional Diagnosis 3</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Secondary Diagnosis</fullName>
+                <default>false</default>
+                <label>Secondary Diagnosis</label>
+            </value>
+            <value>
+                <fullName>ADHD</fullName>
+                <default>false</default>
+                <label>ADHD</label>
+            </value>
+            <value>
+                <fullName>Agenesis Corpus Callosum</fullName>
+                <default>false</default>
+                <label>Agenesis Corpus Callosum</label>
+            </value>
+            <value>
+                <fullName>Allergy</fullName>
+                <default>false</default>
+                <label>Allergy</label>
+            </value>
+            <value>
+                <fullName>Amputee</fullName>
+                <default>false</default>
+                <label>Amputee</label>
+            </value>
+            <value>
+                <fullName>Angelman Syndrome</fullName>
+                <default>false</default>
+                <label>Angelman Syndrome</label>
+            </value>
+            <value>
+                <fullName>Anxiety Disorder</fullName>
+                <default>false</default>
+                <label>Anxiety Disorder</label>
+            </value>
+            <value>
+                <fullName>Apert Syndrome</fullName>
+                <default>false</default>
+                <label>Apert Syndrome</label>
+            </value>
+            <value>
+                <fullName>Aphasia</fullName>
+                <default>false</default>
+                <label>Aphasia</label>
+            </value>
+            <value>
+                <fullName>Apraxia</fullName>
+                <default>false</default>
+                <label>Apraxia</label>
+            </value>
+            <value>
+                <fullName>Arthritis</fullName>
+                <default>false</default>
+                <label>Arthritis</label>
+            </value>
+            <value>
+                <fullName>Arthrogryposis</fullName>
+                <default>false</default>
+                <label>Arthrogryposis</label>
+            </value>
+            <value>
+                <fullName>Asperger&apos;s Syndrome</fullName>
+                <default>false</default>
+                <label>Asperger&apos;s Syndrome</label>
+            </value>
+            <value>
+                <fullName>Asthma</fullName>
+                <default>false</default>
+                <label>Asthma</label>
+            </value>
+            <value>
+                <fullName>Ataxia</fullName>
+                <default>false</default>
+                <label>Ataxia</label>
+            </value>
+            <value>
+                <fullName>Attention Deficit Disorder</fullName>
+                <default>false</default>
+                <label>Attention Deficit Disorder</label>
+            </value>
+            <value>
+                <fullName>Attention Deficit Hyperactivity Disorder</fullName>
+                <default>false</default>
+                <label>Attention Deficit Hyperactivity Disorder</label>
+            </value>
+            <value>
+                <fullName>Autism Spectrum Disorder</fullName>
+                <default>false</default>
+                <label>Autism Spectrum Disorder</label>
+            </value>
+            <value>
+                <fullName>Batten Disease</fullName>
+                <default>false</default>
+                <label>Batten Disease</label>
+            </value>
+            <value>
+                <fullName>Bipolar Disorder</fullName>
+                <default>false</default>
+                <label>Bipolar Disorder</label>
+            </value>
+            <value>
+                <fullName>Birth Defect</fullName>
+                <default>false</default>
+                <label>Birth Defect</label>
+            </value>
+            <value>
+                <fullName>Blind</fullName>
+                <default>false</default>
+                <label>Blind</label>
+            </value>
+            <value>
+                <fullName>Blindneses</fullName>
+                <default>false</default>
+                <label>Blindneses</label>
+            </value>
+            <value>
+                <fullName>Blindness</fullName>
+                <default>false</default>
+                <label>Blindness</label>
+            </value>
+            <value>
+                <fullName>Brain Injury</fullName>
+                <default>false</default>
+                <label>Brain Injury</label>
+            </value>
+            <value>
+                <fullName>Brain Injury - B40Acquired</fullName>
+                <default>false</default>
+                <label>Brain Injury - B40Acquired</label>
+            </value>
+            <value>
+                <fullName>Brain Injury - Traumatic</fullName>
+                <default>false</default>
+                <label>Brain Injury - Traumatic</label>
+            </value>
+            <value>
+                <fullName>Brain Tumor</fullName>
+                <default>false</default>
+                <label>Brain Tumor</label>
+            </value>
+            <value>
+                <fullName>Cerebellar Ataxia Moebius Syndrome</fullName>
+                <default>false</default>
+                <label>Cerebellar Ataxia Moebius Syndrome</label>
+            </value>
+            <value>
+                <fullName>Cerebellar Atrophy</fullName>
+                <default>false</default>
+                <label>Cerebellar Atrophy</label>
+            </value>
+            <value>
+                <fullName>Cerebral Palsy</fullName>
+                <default>false</default>
+                <label>Cerebral Palsy</label>
+            </value>
+            <value>
+                <fullName>Choreoathetoid Syndrome</fullName>
+                <default>false</default>
+                <label>Choreoathetoid Syndrome</label>
+            </value>
+            <value>
+                <fullName>Chromosomal Abnormality</fullName>
+                <default>false</default>
+                <label>Chromosomal Abnormality</label>
+            </value>
+            <value>
+                <fullName>Chromosomal Anomaly</fullName>
+                <default>false</default>
+                <label>Chromosomal Anomaly</label>
+            </value>
+            <value>
+                <fullName>Chromosomal Deletion</fullName>
+                <default>false</default>
+                <label>Chromosomal Deletion</label>
+            </value>
+            <value>
+                <fullName>Chromosome Deletion</fullName>
+                <default>false</default>
+                <label>Chromosome Deletion</label>
+            </value>
+            <value>
+                <fullName>Chronic Fatigue Syndrome</fullName>
+                <default>false</default>
+                <label>Chronic Fatigue Syndrome</label>
+            </value>
+            <value>
+                <fullName>Cognitive Delay</fullName>
+                <default>false</default>
+                <label>Cognitive Delay</label>
+            </value>
+            <value>
+                <fullName>Cognitive Impairment</fullName>
+                <default>false</default>
+                <label>Cognitive Impairment</label>
+            </value>
+            <value>
+                <fullName>Complex 1 Mitochondrial Disorder</fullName>
+                <default>false</default>
+                <label>Complex 1 Mitochondrial Disorder</label>
+            </value>
+            <value>
+                <fullName>Congenital Cervical Stenosis</fullName>
+                <default>false</default>
+                <label>Congenital Cervical Stenosis</label>
+            </value>
+            <value>
+                <fullName>Congenital Microcephaly</fullName>
+                <default>false</default>
+                <label>Congenital Microcephaly</label>
+            </value>
+            <value>
+                <fullName>Conradi-Hunnermann Disease</fullName>
+                <default>false</default>
+                <label>Conradi-Hunnermann Disease</label>
+            </value>
+            <value>
+                <fullName>Cri-du-Chat Syndrome</fullName>
+                <default>false</default>
+                <label>Cri-du-Chat Syndrome</label>
+            </value>
+            <value>
+                <fullName>Crohn&apos;s Disease</fullName>
+                <default>false</default>
+                <label>Crohn&apos;s Disease</label>
+            </value>
+            <value>
+                <fullName>Cyclothymic Disorder</fullName>
+                <default>false</default>
+                <label>Cyclothymic Disorder</label>
+            </value>
+            <value>
+                <fullName>Dandy Walker Syndrome</fullName>
+                <default>false</default>
+                <label>Dandy Walker Syndrome</label>
+            </value>
+            <value>
+                <fullName>Depression</fullName>
+                <default>false</default>
+                <label>Depression</label>
+            </value>
+            <value>
+                <fullName>Developmental Delay</fullName>
+                <default>false</default>
+                <label>Developmental Delay</label>
+            </value>
+            <value>
+                <fullName>Diabetes</fullName>
+                <default>false</default>
+                <label>Diabetes</label>
+            </value>
+            <value>
+                <fullName>Down Syndrome</fullName>
+                <default>false</default>
+                <label>Down Syndrome</label>
+            </value>
+            <value>
+                <fullName>Duchenne Muscular Dystrophy</fullName>
+                <default>false</default>
+                <label>Duchenne Muscular Dystrophy</label>
+            </value>
+            <value>
+                <fullName>Encephalopathy</fullName>
+                <default>false</default>
+                <label>Encephalopathy</label>
+            </value>
+            <value>
+                <fullName>Epilepsy</fullName>
+                <default>false</default>
+                <label>Epilepsy</label>
+            </value>
+            <value>
+                <fullName>Erbs Palsy</fullName>
+                <default>false</default>
+                <label>Erbs Palsy</label>
+            </value>
+            <value>
+                <fullName>Failure to Thrive</fullName>
+                <default>false</default>
+                <label>Failure to Thrive</label>
+            </value>
+            <value>
+                <fullName>Fetal Alcohol Syndrome</fullName>
+                <default>false</default>
+                <label>Fetal Alcohol Syndrome</label>
+            </value>
+            <value>
+                <fullName>Fibromyalgia</fullName>
+                <default>false</default>
+                <label>Fibromyalgia</label>
+            </value>
+            <value>
+                <fullName>Follicculitis</fullName>
+                <default>false</default>
+                <label>Follicculitis</label>
+            </value>
+            <value>
+                <fullName>Fragile X</fullName>
+                <default>false</default>
+                <label>Fragile X</label>
+            </value>
+            <value>
+                <fullName>Glioma</fullName>
+                <default>false</default>
+                <label>Glioma</label>
+            </value>
+            <value>
+                <fullName>Harrington Rods</fullName>
+                <default>false</default>
+                <label>Harrington Rods</label>
+            </value>
+            <value>
+                <fullName>Head Injury</fullName>
+                <default>false</default>
+                <label>Head Injury</label>
+            </value>
+            <value>
+                <fullName>Hearing Impaired</fullName>
+                <default>false</default>
+                <label>Hearing Impaired</label>
+            </value>
+            <value>
+                <fullName>Heart Defect</fullName>
+                <default>false</default>
+                <label>Heart Defect</label>
+            </value>
+            <value>
+                <fullName>Hemiparesis</fullName>
+                <default>false</default>
+                <label>Hemiparesis</label>
+            </value>
+            <value>
+                <fullName>Hemiplegia</fullName>
+                <default>false</default>
+                <label>Hemiplegia</label>
+            </value>
+            <value>
+                <fullName>Hemophilia</fullName>
+                <default>false</default>
+                <label>Hemophilia</label>
+            </value>
+            <value>
+                <fullName>Hip Subluxation/Dislocation</fullName>
+                <default>false</default>
+                <label>Hip Subluxation/Dislocation</label>
+            </value>
+            <value>
+                <fullName>Hirschsprung&apos;s Disease</fullName>
+                <default>false</default>
+                <label>Hirschsprung&apos;s Disease</label>
+            </value>
+            <value>
+                <fullName>Holoprosencephaly</fullName>
+                <default>false</default>
+                <label>Holoprosencephaly</label>
+            </value>
+            <value>
+                <fullName>Hydrocephalus</fullName>
+                <default>false</default>
+                <label>Hydrocephalus</label>
+            </value>
+            <value>
+                <fullName>Hyperactive</fullName>
+                <default>false</default>
+                <label>Hyperactive</label>
+            </value>
+            <value>
+                <fullName>Hypertension</fullName>
+                <default>false</default>
+                <label>Hypertension</label>
+            </value>
+            <value>
+                <fullName>Hypothyroidism</fullName>
+                <default>false</default>
+                <label>Hypothyroidism</label>
+            </value>
+            <value>
+                <fullName>Hypotonia</fullName>
+                <default>false</default>
+                <label>Hypotonia</label>
+            </value>
+            <value>
+                <fullName>Immune Dysfunction Syndrome</fullName>
+                <default>false</default>
+                <label>Immune Dysfunction Syndrome</label>
+            </value>
+            <value>
+                <fullName>Joubert Syndrome</fullName>
+                <default>false</default>
+                <label>Joubert Syndrome</label>
+            </value>
+            <value>
+                <fullName>Rheumatoid Arthritis-Juvenile</fullName>
+                <default>false</default>
+                <label>Rheumatoid Arthritis-Juvenile</label>
+            </value>
+            <value>
+                <fullName>Kabuki Syndrome</fullName>
+                <default>false</default>
+                <label>Kabuki Syndrome</label>
+            </value>
+            <value>
+                <fullName>Kinsbourne Syndrome</fullName>
+                <default>false</default>
+                <label>Kinsbourne Syndrome</label>
+            </value>
+            <value>
+                <fullName>Klippel-Feil Syndrome</fullName>
+                <default>false</default>
+                <label>Klippel-Feil Syndrome</label>
+            </value>
+            <value>
+                <fullName>Krabbe Disease</fullName>
+                <default>false</default>
+                <label>Krabbe Disease</label>
+            </value>
+            <value>
+                <fullName>Language Processing Disorder</fullName>
+                <default>false</default>
+                <label>Language Processing Disorder</label>
+            </value>
+            <value>
+                <fullName>Learning Disabilities</fullName>
+                <default>false</default>
+                <label>Learning Disabilities</label>
+            </value>
+            <value>
+                <fullName>Lennox Gastaut</fullName>
+                <default>false</default>
+                <label>Lennox Gastaut</label>
+            </value>
+            <value>
+                <fullName>Lung Disorder</fullName>
+                <default>false</default>
+                <label>Lung Disorder</label>
+            </value>
+            <value>
+                <fullName>Medically Fragile</fullName>
+                <default>false</default>
+                <label>Medically Fragile</label>
+            </value>
+            <value>
+                <fullName>Mental Retardation</fullName>
+                <default>false</default>
+                <label>Mental Retardation</label>
+            </value>
+            <value>
+                <fullName>Metabolic Disorder</fullName>
+                <default>false</default>
+                <label>Metabolic Disorder</label>
+            </value>
+            <value>
+                <fullName>Metabolic Myopathy</fullName>
+                <default>false</default>
+                <label>Metabolic Myopathy</label>
+            </value>
+            <value>
+                <fullName>Microcephaly</fullName>
+                <default>false</default>
+                <label>Microcephaly</label>
+            </value>
+            <value>
+                <fullName>Moebius Syndrome</fullName>
+                <default>false</default>
+                <label>Moebius Syndrome</label>
+            </value>
+            <value>
+                <fullName>Motor Planning Issues</fullName>
+                <default>false</default>
+                <label>Motor Planning Issues</label>
+            </value>
+            <value>
+                <fullName>Multiple Sclerosis</fullName>
+                <default>false</default>
+                <label>Multiple Sclerosis</label>
+            </value>
+            <value>
+                <fullName>Muscular Atrophy</fullName>
+                <default>false</default>
+                <label>Muscular Atrophy</label>
+            </value>
+            <value>
+                <fullName>Muscular Dystrophy</fullName>
+                <default>false</default>
+                <label>Muscular Dystrophy</label>
+            </value>
+            <value>
+                <fullName>Myelin Deficiency</fullName>
+                <default>false</default>
+                <label>Myelin Deficiency</label>
+            </value>
+            <value>
+                <fullName>Myelopathy</fullName>
+                <default>false</default>
+                <label>Myelopathy</label>
+            </value>
+            <value>
+                <fullName>Neurogenic Bladder</fullName>
+                <default>false</default>
+                <label>Neurogenic Bladder</label>
+            </value>
+            <value>
+                <fullName>Nonketotic Hyperglycinemia</fullName>
+                <default>false</default>
+                <label>Nonketotic Hyperglycinemia</label>
+            </value>
+            <value>
+                <fullName>Obesity</fullName>
+                <default>false</default>
+                <label>Obesity</label>
+            </value>
+            <value>
+                <fullName>Obsessive Compulsive Disorder</fullName>
+                <default>false</default>
+                <label>Obsessive Compulsive Disorder</label>
+            </value>
+            <value>
+                <fullName>Opitz Syndrome</fullName>
+                <default>false</default>
+                <label>Opitz Syndrome</label>
+            </value>
+            <value>
+                <fullName>Optic Nerve Hypoplasia</fullName>
+                <default>false</default>
+                <label>Optic Nerve Hypoplasia</label>
+            </value>
+            <value>
+                <fullName>Osteoporosis</fullName>
+                <default>false</default>
+                <label>Osteoporosis</label>
+            </value>
+            <value>
+                <fullName>Osteosarcoma</fullName>
+                <default>false</default>
+                <label>Osteosarcoma</label>
+            </value>
+            <value>
+                <fullName>Panic Disorder</fullName>
+                <default>false</default>
+                <label>Panic Disorder</label>
+            </value>
+            <value>
+                <fullName>Paralysis</fullName>
+                <default>false</default>
+                <label>Paralysis</label>
+            </value>
+            <value>
+                <fullName>Paranoia</fullName>
+                <default>false</default>
+                <label>Paranoia</label>
+            </value>
+            <value>
+                <fullName>Paraplegia</fullName>
+                <default>false</default>
+                <label>Paraplegia</label>
+            </value>
+            <value>
+                <fullName>Parkinson&apos;s Disease</fullName>
+                <default>false</default>
+                <label>Parkinson&apos;s Disease</label>
+            </value>
+            <value>
+                <fullName>Pervasive Developmental Delay</fullName>
+                <default>false</default>
+                <label>Pervasive Developmental Delay</label>
+            </value>
+            <value>
+                <fullName>Polymicrogyria</fullName>
+                <default>false</default>
+                <label>Polymicrogyria</label>
+            </value>
+            <value>
+                <fullName>Porencephaly</fullName>
+                <default>false</default>
+                <label>Porencephaly</label>
+            </value>
+            <value>
+                <fullName>Post Traumatic Stress Disorder</fullName>
+                <default>false</default>
+                <label>Post Traumatic Stress Disorder</label>
+            </value>
+            <value>
+                <fullName>Prader-Willi Syndrome</fullName>
+                <default>false</default>
+                <label>Prader-Willi Syndrome</label>
+            </value>
+            <value>
+                <fullName>Prosthetic</fullName>
+                <default>false</default>
+                <label>Prosthetic</label>
+            </value>
+            <value>
+                <fullName>Quadriparesis</fullName>
+                <default>false</default>
+                <label>Quadriparesis</label>
+            </value>
+            <value>
+                <fullName>Quadriplegia</fullName>
+                <default>false</default>
+                <label>Quadriplegia</label>
+            </value>
+            <value>
+                <fullName>Raynaud&apos;s Disease</fullName>
+                <default>false</default>
+                <label>Raynaud&apos;s Disease</label>
+            </value>
+            <value>
+                <fullName>Rett Syndrome</fullName>
+                <default>false</default>
+                <label>Rett Syndrome</label>
+            </value>
+            <value>
+                <fullName>Reubenstein Taybi Syndrome</fullName>
+                <default>false</default>
+                <label>Reubenstein Taybi Syndrome</label>
+            </value>
+            <value>
+                <fullName>Ring 22 Chromosome</fullName>
+                <default>false</default>
+                <label>Ring 22 Chromosome</label>
+            </value>
+            <value>
+                <fullName>Russell-Silver Syndrome</fullName>
+                <default>false</default>
+                <label>Russell-Silver Syndrome</label>
+            </value>
+            <value>
+                <fullName>Schizencephaly</fullName>
+                <default>false</default>
+                <label>Schizencephaly</label>
+            </value>
+            <value>
+                <fullName>Schizo-Affective Disorder</fullName>
+                <default>false</default>
+                <label>Schizo-Affective Disorder</label>
+            </value>
+            <value>
+                <fullName>Schmid-Fracarro Syndrome</fullName>
+                <default>false</default>
+                <label>Schmid-Fracarro Syndrome</label>
+            </value>
+            <value>
+                <fullName>Scoliosis</fullName>
+                <default>false</default>
+                <label>Scoliosis</label>
+            </value>
+            <value>
+                <fullName>Seizure Disorder</fullName>
+                <default>false</default>
+                <label>Seizure Disorder</label>
+            </value>
+            <value>
+                <fullName>Sensory Integration Issues</fullName>
+                <default>false</default>
+                <label>Sensory Integration Issues</label>
+            </value>
+            <value>
+                <fullName>Skin Issues</fullName>
+                <default>false</default>
+                <label>Skin Issues</label>
+            </value>
+            <value>
+                <fullName>Smith-Magenis Syndrome</fullName>
+                <default>false</default>
+                <label>Smith-Magenis Syndrome</label>
+            </value>
+            <value>
+                <fullName>Speech Issues</fullName>
+                <default>false</default>
+                <label>Speech Issues</label>
+            </value>
+            <value>
+                <fullName>Spina Bifida</fullName>
+                <default>false</default>
+                <label>Spina Bifida</label>
+            </value>
+            <value>
+                <fullName>Spinal Fusion</fullName>
+                <default>false</default>
+                <label>Spinal Fusion</label>
+            </value>
+            <value>
+                <fullName>Sprengel&apos;s Deformity</fullName>
+                <default>false</default>
+                <label>Sprengel&apos;s Deformity</label>
+            </value>
+            <value>
+                <fullName>Stroke</fullName>
+                <default>false</default>
+                <label>Stroke</label>
+            </value>
+            <value>
+                <fullName>Subacute Sclorosing Panencephalitis</fullName>
+                <default>false</default>
+                <label>Subacute Sclorosing Panencephalitis</label>
+            </value>
+            <value>
+                <fullName>Systemic Sclerosis</fullName>
+                <default>false</default>
+                <label>Systemic Sclerosis</label>
+            </value>
+            <value>
+                <fullName>T-Cell Supression</fullName>
+                <default>false</default>
+                <label>T-Cell Supression</label>
+            </value>
+            <value>
+                <fullName>Todd&apos;s Paralysis</fullName>
+                <default>false</default>
+                <label>Todd&apos;s Paralysis</label>
+            </value>
+            <value>
+                <fullName>Tourette Syndrome</fullName>
+                <default>false</default>
+                <label>Tourette Syndrome</label>
+            </value>
+            <value>
+                <fullName>Transparent Stem Cell</fullName>
+                <default>false</default>
+                <label>Transparent Stem Cell</label>
+            </value>
+            <value>
+                <fullName>Triplegia</fullName>
+                <default>false</default>
+                <label>Triplegia</label>
+            </value>
+            <value>
+                <fullName>Trisomy 15</fullName>
+                <default>false</default>
+                <label>Trisomy 15</label>
+            </value>
+            <value>
+                <fullName>Tuberous Sclerosis</fullName>
+                <default>false</default>
+                <label>Tuberous Sclerosis</label>
+            </value>
+            <value>
+                <fullName>Velo Cardial Facial Syndrome</fullName>
+                <default>false</default>
+                <label>Velo Cardial Facial Syndrome</label>
+            </value>
+            <value>
+                <fullName>Vision Impaired</fullName>
+                <default>false</default>
+                <label>Vision Impaired</label>
+            </value>
+            <value>
+                <fullName>Williams Syndrome</fullName>
+                <default>false</default>
+                <label>Williams Syndrome</label>
+            </value>
+            <value>
+                <fullName>DiGeorge Syndrome</fullName>
+                <default>false</default>
+                <label>DiGeorge Syndrome</label>
+            </value>
+            <value>
+                <fullName>In Utero Drug Exposure</fullName>
+                <default>false</default>
+                <label>In Utero Drug Exposure</label>
+            </value>
+            <value>
+                <fullName>Pierre Robin</fullName>
+                <default>false</default>
+                <label>Pierre Robin</label>
+            </value>
+            <value>
+                <fullName>Sleep Apnea</fullName>
+                <default>false</default>
+                <label>Sleep Apnea</label>
+            </value>
+            <value>
+                <fullName>Recurrent Pressure Palsy</fullName>
+                <default>false</default>
+                <label>Recurrent Pressure Palsy</label>
+            </value>
+            <value>
+                <fullName>Chromosome 18</fullName>
+                <default>false</default>
+                <label>Chromosome 18</label>
+            </value>
+            <value>
+                <fullName>Larsen Syndrome</fullName>
+                <default>false</default>
+                <label>Larsen Syndrome</label>
+            </value>
+            <value>
+                <fullName>Bilateral Knee Contractures</fullName>
+                <default>false</default>
+                <label>Bilateral Knee Contractures</label>
+            </value>
+            <value>
+                <fullName>Growth Hormone Deficiency</fullName>
+                <default>false</default>
+                <label>Growth Hormone Deficiency</label>
+            </value>
+            <value>
+                <fullName>Chronic Lung Hydrocephalus</fullName>
+                <default>false</default>
+                <label>Chronic Lung Hydrocephalus</label>
+            </value>
+            <value>
+                <fullName>Lumbo Pelvic Instability</fullName>
+                <default>false</default>
+                <label>Lumbo Pelvic Instability</label>
+            </value>
+            <value>
+                <fullName>10926.2 Deletion</fullName>
+                <default>false</default>
+                <label>10926.2 Deletion</label>
+            </value>
+            <value>
+                <fullName>Reactive Attachment Disorder</fullName>
+                <default>false</default>
+                <label>Reactive Attachment Disorder</label>
+            </value>
+            <value>
+                <fullName>Neuro Eye Disorder</fullName>
+                <default>false</default>
+                <label>Neuro Eye Disorder</label>
+            </value>
+            <value>
+                <fullName>Rheumatoid Arthritis</fullName>
+                <default>false</default>
+                <label>Rheumatoid Arthritis</label>
+            </value>
+            <value>
+                <fullName>Sjogren&apos;s Syndrome</fullName>
+                <default>false</default>
+                <label>Sjogren&apos;s Syndrome</label>
+            </value>
+            <value>
+                <fullName>Mood Disorder</fullName>
+                <default>false</default>
+                <label>Mood Disorder</label>
+            </value>
+            <value>
+                <fullName>Psycho-Sexual Disorder</fullName>
+                <default>false</default>
+                <label>Psycho-Sexual Disorder</label>
+            </value>
+            <value>
+                <fullName>Kyphosis</fullName>
+                <default>false</default>
+                <label>Kyphosis</label>
+            </value>
+            <value>
+                <fullName>Spinal Rods</fullName>
+                <default>false</default>
+                <label>Spinal Rods</label>
+            </value>
+            <value>
+                <fullName>Spinal Cord Injury</fullName>
+                <default>false</default>
+                <label>Spinal Cord Injury</label>
+            </value>
+            <value>
+                <fullName>Bone Density Caution</fullName>
+                <default>false</default>
+                <label>Bone Density Caution</label>
+            </value>
+            <value>
+                <fullName>Neuromuscular Disorder</fullName>
+                <default>false</default>
+                <label>Neuromuscular Disorder</label>
+            </value>
+            <value>
+                <fullName>Hip Contractures</fullName>
+                <default>false</default>
+                <label>Hip Contractures</label>
+            </value>
+            <value>
+                <fullName>Cranial Deficits</fullName>
+                <default>false</default>
+                <label>Cranial Deficits</label>
+            </value>
+            <value>
+                <fullName>Cornelia de Lange Syndrome</fullName>
+                <default>false</default>
+                <label>Cornelia de Lange Syndrome</label>
+            </value>
+            <value>
+                <fullName>Behavior Disorder</fullName>
+                <default>false</default>
+                <label>Behavior Disorder</label>
+            </value>
+            <value>
+                <fullName>Mitochondrial Cytopathy</fullName>
+                <default>false</default>
+                <label>Mitochondrial Cytopathy</label>
+            </value>
+            <value>
+                <fullName>Behavior Problems</fullName>
+                <default>false</default>
+                <label>Behavior Problems</label>
+            </value>
+            <value>
+                <fullName>Feeding Tube</fullName>
+                <default>false</default>
+                <label>Feeding Tube</label>
+            </value>
+            <value>
+                <fullName>Fatigue</fullName>
+                <default>false</default>
+                <label>Fatigue</label>
+            </value>
+            <value>
+                <fullName>Spasticity</fullName>
+                <default>false</default>
+                <label>Spasticity</label>
+            </value>
+            <value>
+                <fullName>Myoclonal Jerking</fullName>
+                <default>false</default>
+                <label>Myoclonal Jerking</label>
+            </value>
+            <value>
+                <fullName>Pain</fullName>
+                <default>false</default>
+                <label>Pain</label>
+            </value>
+            <value>
+                <fullName>Shunt</fullName>
+                <default>false</default>
+                <label>Shunt</label>
+            </value>
+            <value>
+                <fullName>Eye Strabismus</fullName>
+                <default>false</default>
+                <label>Eye Strabismus</label>
+            </value>
+            <value>
+                <fullName>Celiac Disease</fullName>
+                <default>false</default>
+                <label>Celiac Disease</label>
+            </value>
+            <value>
+                <fullName>Static Enciphalopathy</fullName>
+                <default>false</default>
+                <label>Static Enciphalopathy</label>
+            </value>
+            <value>
+                <fullName>Spastic Parapalegia</fullName>
+                <default>false</default>
+                <label>Spastic Parapalegia</label>
+            </value>
+            <value>
+                <fullName>Global Developmental Delay</fullName>
+                <default>false</default>
+                <label>Global Developmental Delay</label>
+            </value>
+            <value>
+                <fullName>Verbal Apraxia</fullName>
+                <default>false</default>
+                <label>Verbal Apraxia</label>
+            </value>
+            <value>
+                <fullName>Herniations - Lower Back</fullName>
+                <default>false</default>
+                <label>Herniations - Lower Back</label>
+            </value>
+            <value>
+                <fullName>Prune Belly Syndrome</fullName>
+                <default>false</default>
+                <label>Prune Belly Syndrome</label>
+            </value>
+            <value>
+                <fullName>Kidney Failure</fullName>
+                <default>false</default>
+                <label>Kidney Failure</label>
+            </value>
+            <value>
+                <fullName>Dypraxia</fullName>
+                <default>false</default>
+                <label>Dypraxia</label>
+            </value>
+            <value>
+                <fullName>Dwaynes Syndrome</fullName>
+                <default>false</default>
+                <label>Dwaynes Syndrome</label>
+            </value>
+            <value>
+                <fullName>Psychogenic Seizures</fullName>
+                <default>false</default>
+                <label>Psychogenic Seizures</label>
+            </value>
+            <value>
+                <fullName>Hemolytic-Uremic Syndrome</fullName>
+                <default>false</default>
+                <label>Hemolytic-Uremic Syndrome</label>
+            </value>
+            <value>
+                <fullName>Hurler&apos;s Syndrome</fullName>
+                <default>false</default>
+                <label>Hurler&apos;s Syndrome</label>
+            </value>
+            <value>
+                <fullName>Potassium Channel Mutation</fullName>
+                <default>false</default>
+                <label>Potassium Channel Mutation</label>
+            </value>
+            <value>
+                <fullName>Chromosome 6P Deletion Syndrome</fullName>
+                <default>false</default>
+                <label>Chromosome 6P Deletion Syndrome</label>
+            </value>
+            <value>
+                <fullName>PANDAS</fullName>
+                <default>false</default>
+                <label>PANDAS</label>
+            </value>
+            <value>
+                <fullName>Gait Disturbance</fullName>
+                <default>false</default>
+                <label>Gait Disturbance</label>
+            </value>
+            <value>
+                <fullName>Conversion Disorder</fullName>
+                <default>false</default>
+                <label>Conversion Disorder</label>
+            </value>
+            <value>
+                <fullName>Achondroplasia (Dwarfism)</fullName>
+                <default>false</default>
+                <label>Achondroplasia (Dwarfism)</label>
+            </value>
+            <value>
+                <fullName>Alzheimers</fullName>
+                <default>false</default>
+                <label>Alzheimers</label>
+            </value>
+            <value>
+                <fullName>22q Deletion Syndrome</fullName>
+                <default>false</default>
+                <label>22q Deletion Syndrome</label>
+            </value>
+            <value>
+                <fullName>Dysgraphia</fullName>
+                <default>false</default>
+                <label>Dysgraphia</label>
+            </value>
+            <value>
+                <fullName>Lissencephaly</fullName>
+                <default>false</default>
+                <label>Lissencephaly</label>
+            </value>
+            <value>
+                <fullName>Selective Mutism</fullName>
+                <default>false</default>
+                <label>Selective Mutism</label>
+            </value>
+            <value>
+                <fullName>Dyslexia</fullName>
+                <default>false</default>
+                <label>Dyslexia</label>
+            </value>
+            <value>
+                <fullName>Genetic Metabolic Disorder</fullName>
+                <default>false</default>
+                <label>Genetic Metabolic Disorder</label>
+            </value>
+            <value>
+                <fullName>Craniosynostosis</fullName>
+                <default>false</default>
+                <label>Craniosynostosis</label>
+            </value>
+            <value>
+                <fullName>Anoxic Brain Injury</fullName>
+                <default>false</default>
+                <label>Anoxic Brain Injury</label>
+            </value>
+            <value>
+                <fullName>Guillain Barre Syndrome</fullName>
+                <default>false</default>
+                <label>Guillain Barre Syndrome</label>
+            </value>
+            <value>
+                <fullName>Dravet Syndrome</fullName>
+                <default>false</default>
+                <label>Dravet Syndrome</label>
+            </value>
+            <value>
+                <fullName>Tay-Sachs</fullName>
+                <default>false</default>
+                <label>Tay-Sachs</label>
+            </value>
+            <value>
+                <fullName>Methylmalonic Acidemia</fullName>
+                <default>false</default>
+                <label>Methylmalonic Acidemia</label>
+            </value>
+            <value>
+                <fullName>Homocystinuria</fullName>
+                <default>false</default>
+                <label>Homocystinuria</label>
+            </value>
+            <value>
+                <fullName>Open Lip Schizencephaly</fullName>
+                <default>false</default>
+                <label>Open Lip Schizencephaly</label>
+            </value>
+            <value>
+                <fullName>Spastic Quadriparesis</fullName>
+                <default>false</default>
+                <label>Spastic Quadriparesis</label>
+            </value>
+            <value>
+                <fullName>Adjustment Disorder</fullName>
+                <default>false</default>
+                <label>Adjustment Disorder</label>
+            </value>
+            <value>
+                <fullName>Sleep Disorder</fullName>
+                <default>false</default>
+                <label>Sleep Disorder</label>
+            </value>
+            <value>
+                <fullName>Fainting</fullName>
+                <default>false</default>
+                <label>Fainting</label>
+            </value>
+            <value>
+                <fullName>Atrial Septal Defect</fullName>
+                <default>false</default>
+                <label>Atrial Septal Defect</label>
+            </value>
+            <value>
+                <fullName>Charcot Marie Tooth</fullName>
+                <default>false</default>
+                <label>Charcot Marie Tooth</label>
+            </value>
+            <value>
+                <fullName>Gerd</fullName>
+                <default>false</default>
+                <label>Gerd</label>
+            </value>
+            <value>
+                <fullName>Dysgensis of Corpus Collasum</fullName>
+                <default>false</default>
+                <label>Dysgensis of Corpus Collasum</label>
+            </value>
+            <value>
+                <fullName>Developmental Coordination Disorder</fullName>
+                <default>false</default>
+                <label>Developmental Coordination Disorder</label>
+            </value>
+            <value>
+                <fullName>Pica</fullName>
+                <default>false</default>
+                <label>Pica</label>
+            </value>
+            <value>
+                <fullName>Graves Disease</fullName>
+                <default>false</default>
+                <label>Graves Disease</label>
+            </value>
+            <value>
+                <fullName>Connective Tissue Disorder</fullName>
+                <default>false</default>
+                <label>Connective Tissue Disorder</label>
+            </value>
+            <value>
+                <fullName>Bells Palsy</fullName>
+                <default>false</default>
+                <label>Bells Palsy</label>
+            </value>
+            <value>
+                <fullName>Reactive Airway</fullName>
+                <default>false</default>
+                <label>Reactive Airway</label>
+            </value>
+            <value>
+                <fullName>Cerebral Vascular Disease</fullName>
+                <default>false</default>
+                <label>Cerebral Vascular Disease</label>
+            </value>
+            <value>
+                <fullName>Urinary Incontinence</fullName>
+                <default>false</default>
+                <label>Urinary Incontinence</label>
+            </value>
+            <value>
+                <fullName>Urethral Structure</fullName>
+                <default>false</default>
+                <label>Urethral Structure</label>
+            </value>
+            <value>
+                <fullName>Benign Prostatic Hyperplasia</fullName>
+                <default>false</default>
+                <label>Benign Prostatic Hyperplasia</label>
+            </value>
+            <value>
+                <fullName>Oppositional Defiance Disorder</fullName>
+                <default>false</default>
+                <label>Oppositional Defiance Disorder</label>
+            </value>
+            <value>
+                <fullName>West Nile</fullName>
+                <default>false</default>
+                <label>West Nile</label>
+            </value>
+            <value>
+                <fullName>Hereditary Axonal Motor Neuropathy</fullName>
+                <default>false</default>
+                <label>Hereditary Axonal Motor Neuropathy</label>
+            </value>
+            <value>
+                <fullName>Glaucoma</fullName>
+                <default>false</default>
+                <label>Glaucoma</label>
+            </value>
+            <value>
+                <fullName>Cataract</fullName>
+                <default>false</default>
+                <label>Cataract</label>
+            </value>
+            <value>
+                <fullName>Chronic Ischemic Heart Disease</fullName>
+                <default>false</default>
+                <label>Chronic Ischemic Heart Disease</label>
+            </value>
+            <value>
+                <fullName>Malignant Neoplasm of Bone &amp; Bone Marrow</fullName>
+                <default>false</default>
+                <label>Malignant Neoplasm of Bone &amp; Bone Marrow</label>
+            </value>
+            <value>
+                <fullName>Dementia</fullName>
+                <default>false</default>
+                <label>Dementia</label>
+            </value>
+            <value>
+                <fullName>Bone Cancer</fullName>
+                <default>false</default>
+                <label>Bone Cancer</label>
+            </value>
+            <value>
+                <fullName>Nephritis</fullName>
+                <default>false</default>
+                <label>Nephritis</label>
+            </value>
+            <value>
+                <fullName>Alchol Dependence</fullName>
+                <default>false</default>
+                <label>Alchol Dependence</label>
+            </value>
+            <value>
+                <fullName>Proteinuria</fullName>
+                <default>false</default>
+                <label>Proteinuria</label>
+            </value>
+            <value>
+                <fullName>Edema</fullName>
+                <default>false</default>
+                <label>Edema</label>
+            </value>
+            <value>
+                <fullName>Anemia</fullName>
+                <default>false</default>
+                <label>Anemia</label>
+            </value>
+            <value>
+                <fullName>Kidney Disease</fullName>
+                <default>false</default>
+                <label>Kidney Disease</label>
+            </value>
+            <value>
+                <fullName>Eosinophilia</fullName>
+                <default>false</default>
+                <label>Eosinophilia</label>
+            </value>
+            <value>
+                <fullName>Urinary Retention</fullName>
+                <default>false</default>
+                <label>Urinary Retention</label>
+            </value>
+            <value>
+                <fullName>Telangiectasia</fullName>
+                <default>false</default>
+                <label>Telangiectasia</label>
+            </value>
+            <value>
+                <fullName>Cleft Palate</fullName>
+                <default>false</default>
+                <label>Cleft Palate</label>
+            </value>
+            <value>
+                <fullName>Social Issues</fullName>
+                <default>false</default>
+                <label>Social Issues</label>
+            </value>
+            <value>
+                <fullName>Traumatic Brain Injury</fullName>
+                <default>false</default>
+                <label>Traumatic Brain Injury</label>
+            </value>
+            <value>
+                <fullName>Schizoaffective Disorder</fullName>
+                <default>false</default>
+                <label>Schizoaffective Disorder</label>
+            </value>
+            <value>
+                <fullName>Dysphasia</fullName>
+                <default>false</default>
+                <label>Dysphasia</label>
+            </value>
+            <value>
+                <fullName>Seizure Plan</fullName>
+                <default>false</default>
+                <label>Seizure Plan</label>
+            </value>
+            <value>
+                <fullName>Participation Plan</fullName>
+                <default>false</default>
+                <label>Participation Plan</label>
+            </value>
+            <value>
+                <fullName>Congenital Adrenal Hyperplasia</fullName>
+                <default>false</default>
+                <label>Congenital Adrenal Hyperplasia</label>
+            </value>
+            <value>
+                <fullName>Behavior Plan</fullName>
+                <default>false</default>
+                <label>Behavior Plan</label>
+            </value>
+            <value>
+                <fullName>Hippotherapy Canc. Policy</fullName>
+                <default>false</default>
+                <label>Hippotherapy Canc. Policy</label>
+            </value>
+            <value>
+                <fullName>Pitt-Hopkins Syndrome</fullName>
+                <default>false</default>
+                <label>Pitt-Hopkins Syndrome</label>
+            </value>
+            <value>
+                <fullName>Trisomy 20Q</fullName>
+                <default>false</default>
+                <label>Trisomy 20Q</label>
+            </value>
+            <value>
+                <fullName>Congenital Disorder of Glycosylation 1a</fullName>
+                <default>false</default>
+                <label>Congenital Disorder of Glycosylation 1a</label>
+            </value>
+            <value>
+                <fullName>Non-Verbal Learning Disorder</fullName>
+                <default>false</default>
+                <label>Non-Verbal Learning Disorder</label>
+            </value>
+            <value>
+                <fullName>Trichotillomania</fullName>
+                <default>false</default>
+                <label>Trichotillomania</label>
+            </value>
+            <value>
+                <fullName>DDX3X Gene Mutation</fullName>
+                <default>false</default>
+                <label>DDX3X Gene Mutation</label>
+            </value>
+            <value>
+                <fullName>ZMYM3 Gene Mutation</fullName>
+                <default>false</default>
+                <label>ZMYM3 Gene Mutation</label>
+            </value>
+            <value>
+                <fullName>Pelizaeus-Merzbacher Disease</fullName>
+                <default>false</default>
+                <label>Pelizaeus-Merzbacher Disease</label>
+            </value>
+            <value>
+                <fullName>Pierpont Syndrome</fullName>
+                <default>false</default>
+                <label>Pierpont Syndrome</label>
+            </value>
+            <value>
+                <fullName>Lennox Gastuat Syndrome</fullName>
+                <default>false</default>
+                <label>Lennox Gastuat Syndrome</label>
+            </value>
+            <value>
+                <fullName>Charge Syndrome</fullName>
+                <default>false</default>
+                <label>Charge Syndrome</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

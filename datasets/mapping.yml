@@ -1,45 +1,711 @@
-Insert Accounts:
-    sf_object: Account
-    table: Account
-    fields:
-        Name: Name
-        Description: Description
-        BillingStreet: BillingStreet
-        BillingCity: BillingCity
-        BillingState: BillingState
-        BillingPostalCode: BillingPostalCode
-        BillingCountry: BillingCountry
-        ShippingStreet: ShippingStreet
-        ShippingCity: ShippingCity
-        ShippingState: ShippingState
-        ShippingPostalCode: ShippingPostalCode
-        ShippingCountry: ShippingCountry
-        Phone: Phone
-        Fax: Fax
-        Website: Website
-        NumberOfEmployees: NumberOfEmployees
-        AccountNumber: AccountNumber
-        Site: Site
-        Type: Type
-Insert Contacts:
-    sf_object: Contact
-    table: Contact
-    fields:
-        Salutation: Salutation
-        FirstName: FirstName
-        LastName: LastName
-        Email: Email
-        Phone: Phone
-        MobilePhone: MobilePhone
-        OtherPhone: OtherPhone
-        HomePhone: HomePhone
-        Title: Title
-        Birthdate: Birthdate
-        MailingStreet: MailingStreet
-        MailingCity: MailingCity
-        MailingState: MailingState
-        MailingPostalCode: MailingPostalCode
-        MailingCountry: MailingCountry
-    lookups:
-        AccountId:
-            table: Account
+Insert waiver__c:
+  sf_object: waiver__c
+  fields:
+  - Description__c
+  - Name
+  - Year__c
+Insert Account:
+  sf_object: Account
+  fields:
+  - Email__c
+  - Legacy_Household_ID__c
+  - Name
+  - RecordTypeId
+  - Status__c
+  - dupcheck__dc3DisableDuplicateCheck__c
+  - dupcheck__dc3Index__c
+  - npe01__SYSTEMIsIndividual__c
+  - npe01__SYSTEM_AccountType__c
+  - npo02__AverageAmount__c
+  - npo02__Best_Gift_Year_Total__c
+  - npo02__Best_Gift_Year__c
+  - npo02__FirstCloseDate__c
+  - npo02__Formal_Greeting__c
+  - npo02__HouseholdPhone__c
+  - npo02__Informal_Greeting__c
+  - npo02__LargestAmount__c
+  - npo02__LastCloseDate__c
+  - npo02__LastMembershipAmount__c
+  - npo02__LastMembershipDate__c
+  - npo02__LastMembershipLevel__c
+  - npo02__LastMembershipOrigin__c
+  - npo02__LastOppAmount__c
+  - npo02__MembershipEndDate__c
+  - npo02__MembershipJoinDate__c
+  - npo02__NumberOfClosedOpps__c
+  - npo02__NumberOfMembershipOpps__c
+  - npo02__OppAmount2YearsAgo__c
+  - npo02__OppAmountLastNDays__c
+  - npo02__OppAmountLastYear__c
+  - npo02__OppAmountThisYear__c
+  - npo02__OppsClosed2YearsAgo__c
+  - npo02__OppsClosedLastNDays__c
+  - npo02__OppsClosedLastYear__c
+  - npo02__OppsClosedThisYear__c
+  - npo02__SYSTEM_CUSTOM_NAMING__c
+  - npo02__SmallestAmount__c
+  - npo02__TotalMembershipOppAmount__c
+  - npo02__TotalOppAmount__c
+  - npsp__Funding_Focus__c
+  - npsp__Grantmaker__c
+  - npsp__Number_of_Household_Members__c
+  - onemergefree__AccountNameUpdateDate__c
+  - onemergefree__BillingAddressUpdateDate__c
+  - onemergefree__IsMergeMasterRecord__c
+  - onemergefree__LastMergedDate__c
+  - onemergefree__MasterRecordPriority__c
+  - onemergefree__MergeRulesetIdentifier__c
+  - onemergefree__PhoneUpdateDate__c
+  - onemergefree__ShippingAddressUpdateDate__c
+  lookups:
+    ParentId:
+      table: Account
+      after: Insert Account
+    dupcheck__dc3UltimateParent__c:
+      table: Account
+      after: Insert Account
+    npe01__One2OneContact__c:
+      table: Contact
+      after: Insert Contact
+    npsp__Batch__c:
+      table: npsp__Batch__c
+Insert npsp__Address__c:
+  sf_object: npsp__Address__c
+  fields:
+  - npsp__API_Response__c
+  - npsp__Address_Type__c
+  - npsp__Administrative_Area__c
+  - npsp__Ambiguous__c
+  - npsp__Congressional_District__c
+  - npsp__County_Name__c
+  - npsp__Default_Address__c
+  - npsp__Latest_End_Date__c
+  - npsp__Latest_Start_Date__c
+  - npsp__MailingCity__c
+  - npsp__MailingCountry__c
+  - npsp__MailingPostalCode__c
+  - npsp__MailingState__c
+  - npsp__MailingStreet2__c
+  - npsp__MailingStreet__c
+  - npsp__Pre_Verification_Address__c
+  - npsp__Seasonal_End_Day__c
+  - npsp__Seasonal_End_Month__c
+  - npsp__Seasonal_Start_Day__c
+  - npsp__Seasonal_Start_Month__c
+  - npsp__State_Lower_District__c
+  - npsp__State_Upper_District__c
+  - npsp__Verification_Status__c
+  - npsp__Verified__c
+  lookups:
+    npsp__Household_Account__c:
+      table: Account
+Insert Contact:
+  sf_object: Contact
+  fields:
+  - Association_to_client__c
+  - Business__c
+  - CPR_and_First_Aid_Expiration__c
+  - Client__c
+  - Comments__c
+  - Contact_Type__c
+  - Contact_Types__c
+  - Contact__c
+  - Cultivation_Stage__c
+  - Deceased__c
+  - DoNotCall
+  - Donation_Capacity__c
+  - Employee_Giving_Program__c
+  - Employer_Address__c
+  - Employer_Phone__c
+  - Events__c
+  - Father_s_Name__c
+  - Fax_Number__c
+  - FirstName
+  - GW_Volunteers__Volunteer_Auto_Reminder_Email_Opt_Out__c
+  - GW_Volunteers__Volunteer_Availability__c
+  - GW_Volunteers__Volunteer_Last_Web_Signup_Date__c
+  - GW_Volunteers__Volunteer_Manager_Notes__c
+  - GW_Volunteers__Volunteer_Notes__c
+  - GW_Volunteers__Volunteer_Organization__c
+  - GW_Volunteers__Volunteer_Skills__c
+  - GW_Volunteers__Volunteer_Status__c
+  - Gender__c
+  - Group_Home_Email_Group__c
+  - HasOptedOutOfEmail
+  - HasOptedOutOfFax
+  - Height__c
+  - Hire_Date__c
+  - LastName
+  - Legacy_Account_ID__c
+  - Liability_Expiration__c
+  - Licence_Expiration__c
+  - Mail_Opt_Out__c
+  - Member_Email_Group__c
+  - NPI_Number__c
+  - PATH_Expiration_Date__c
+  - PATH_Expire_Date__c
+  - PATH__c
+  - Parent_Email_Group__c
+  - Preferred_Contact_Method__c
+  - Professional_Expertise__c
+  - SMS_Ok__c
+  - Status__c
+  - Termination_Resignation_Date__c
+  - Therapist_Liability_Ins_Expiration__c
+  - VIP_Email_Group__c
+  - Volunteer_Email_Group__c
+  - Volunteer_Position__c
+  - Volunteer_Role__c
+  - Volunteer__c
+  - Weight__c
+  - WillingDonate__c
+  - dupcheck__dc3DisableDuplicateCheck__c
+  - dupcheck__dc3Index__c
+  - npe01__AlternateEmail__c
+  - npe01__HomeEmail__c
+  - npe01__PreferredPhone__c
+  - npe01__Preferred_Email__c
+  - npe01__Primary_Address_Type__c
+  - npe01__Private__c
+  - npe01__Secondary_Address_Type__c
+  - npe01__SystemAccountProcessor__c
+  - npe01__SystemIsIndividual__c
+  - npe01__WorkEmail__c
+  - npe01__WorkPhone__c
+  - npo02__AverageAmount__c
+  - npo02__Best_Gift_Year_Total__c
+  - npo02__Best_Gift_Year__c
+  - npo02__FirstCloseDate__c
+  - npo02__Household_Naming_Order__c
+  - npo02__LargestAmount__c
+  - npo02__LastCloseDate__c
+  - npo02__LastMembershipAmount__c
+  - npo02__LastMembershipDate__c
+  - npo02__LastMembershipLevel__c
+  - npo02__LastMembershipOrigin__c
+  - npo02__LastOppAmount__c
+  - npo02__MembershipEndDate__c
+  - npo02__MembershipJoinDate__c
+  - npo02__Naming_Exclusions__c
+  - npo02__NumberOfClosedOpps__c
+  - npo02__NumberOfMembershipOpps__c
+  - npo02__OppAmount2YearsAgo__c
+  - npo02__OppAmountLastNDays__c
+  - npo02__OppAmountLastYear__c
+  - npo02__OppAmountThisYear__c
+  - npo02__OppsClosed2YearsAgo__c
+  - npo02__OppsClosedLastNDays__c
+  - npo02__OppsClosedLastYear__c
+  - npo02__OppsClosedThisYear__c
+  - npo02__SmallestAmount__c
+  - npo02__Soft_Credit_Last_Year__c
+  - npo02__Soft_Credit_This_Year__c
+  - npo02__Soft_Credit_Total__c
+  - npo02__Soft_Credit_Two_Years_Ago__c
+  - npo02__SystemHouseholdProcessor__c
+  - npo02__TotalMembershipOppAmount__c
+  - npo02__TotalOppAmount__c
+  - npsp__Deceased__c
+  - npsp__Do_Not_Contact__c
+  - npsp__Exclude_from_Household_Formal_Greeting__c
+  - npsp__Exclude_from_Household_Informal_Greeting__c
+  - npsp__Exclude_from_Household_Name__c
+  - npsp__Soft_Credit_Last_N_Days__c
+  - npsp__is_Address_Override__c
+  - onemergefree__EmailUpdateDate__c
+  - onemergefree__IsMergeMasterRecord__c
+  - onemergefree__LastMergedDate__c
+  - onemergefree__MailingAddressUpdateDate__c
+  - onemergefree__MasterRecordPriority__c
+  - onemergefree__MergeRulesetIdentifier__c
+  - onemergefree__MobileUpdateDate__c
+  - onemergefree__NameUpdateDate__c
+  - onemergefree__OtherAddressUpdateDate__c
+  - onemergefree__PhoneUpdateDate__c
+  lookups:
+    AccountId:
+      table: Account
+    ReportsToId:
+      table: Contact
+      after: Insert Contact
+    npo02__Household__c:
+      table: npo02__Household__c
+    npsp__Batch__c:
+      table: npsp__Batch__c
+    npsp__Current_Address__c:
+      table: npsp__Address__c
+    npsp__Primary_Affiliation__c:
+      table: Account
+Insert Class__c:
+  sf_object: Class__c
+  fields:
+  - Attendance_Records_Created__c
+  - Class_Day__c
+  - Class_Duration_min__c
+  - Class_Level__c
+  - Class_Start__c
+  - Class_Time__c
+  - Class_Times_Created__c
+  - Class_Type__c
+  - Description__c
+  - Duration__c
+  - Location__c
+  - Max_Riders__c
+  - Name
+  - Session__c
+  - Status__c
+  - Time__c
+  - Vol_Attendance_Records_Created__c
+  lookups:
+    Instructor__c:
+      table: Contact
+    Therapist__c:
+      table: Contact
+Insert Volunteer_Info__c:
+  sf_object: Volunteer_Info__c
+  fields:
+  - Allergies__c
+  - Areas_of_Interest__c
+  - Available_Times2__c
+  - Available_Times__c
+  - Barn_Aid_Training_Date__c
+  - Barn_Aid_Training__c
+  - Barn_Aid__c
+  - Barn_Maintenance__c
+  - Birth_Date__c
+  - College_School__c
+  - Comments__c
+  - Confidentiality_Release_Date__c
+  - Confidentiality_Release_Form__c
+  - ConsentSIgnatureRelationship__c
+  - Consent_to_Medical_Signature__c
+  - Consent_to_Medical_Treatment_Date__c
+  - Consent_to_Medical_Treatment__c
+  - Copy_Parent_Guardian_on_Email__c
+  - Dates_of_Internship__c
+  - Day_s_Available__c
+  - EAL_Orientation_Date__c
+  - EAL_Orientation__c
+  - EFP_Release_Date__c
+  - EFP_Release_Form__c
+  - EFP_Release__c
+  - EFP_Training_Date__c
+  - EFP_Training__c
+  - Emergencey_Contact_Alt_Phone__c
+  - Emergency_Contact_2_Number__c
+  - Emergency_Contact_2__c
+  - Emergency_Contact_Number__c
+  - Emergency_Contact_Relationship_2__c
+  - Emergency_Contact_Relationship__c
+  - Emergency_Contact__c
+  - Emergency_Medical_Release_Date__c
+  - Emergency_Release__c
+  - Feeder_Training_Date__c
+  - Feeder_Training__c
+  - Feeder__c
+  - Goals__c
+  - Groomer__c
+  - Health_Insucance_Co__c
+  - Help_at_Events__c
+  - Help_in_Office__c
+  - Help_on_Event_Committees__c
+  - Hippotherapy_Training_Date__c
+  - Hippotherapy_Training__c
+  - Horse_Experience__c
+  - Horse_Leader__c
+  - Hospital_Preference__c
+  - Hours_Needed__c
+  - How_did_you_hear_about_us__c
+  - Internship_Comments__c
+  - Internship_Completed_Successfully__c
+  - Internship_Schedule__c
+  - Internship_Type__c
+  - Leader_Training_Date__c
+  - Leader_Training__c
+  - Liability_Release_Form__c
+  - Liability_Signature__c
+  - Liablility_Release_Date__c
+  - Location__c
+  - Medications__c
+  - Name
+  - New_Volunteer_Training_Date__c
+  - New_Volunteer_Training__c
+  - Non_Consent__c
+  - Other_Languages__c
+  - Parent_Guardian_CC_email__c
+  - Parent_Guardian_Email__c
+  - Parent_Guardian_Name__c
+  - Parent_Guardian_Phone__c
+  - Parent_Guardian_Relation__c
+  - Photo_Release_Date__c
+  - Photo_Release_Form__c
+  - Photo_Release__c
+  - Physical_Limitations__c
+  - Physical_Requirements__c
+  - Physician_Number__c
+  - Physician__c
+  - Policy__c
+  - Previous_Experience_with_Special_Needs__c
+  - Previous_Horse_Experience__c
+  - Session_s_Available__c
+  - Sidewalker_Training__c
+  - Sidewalker__c
+  - Spotter__c
+  - Status__c
+  - Teaching_Assistant_Training_Date__c
+  - Teaching_Assistant_Training__c
+  - Training_Comments__c
+  - Training_Date2__c
+  - Training_Date3__c
+  - Training_Date4__c
+  - Training_Date__c
+  - Volunteer_Position__c
+  - Volunteer_Training_Comments2__c
+  - Volunteer_Training_Comments3__c
+  - Volunteer_Training_Comments4__c
+  - Waiver_Acceptance_of_Risks__c
+  - Waiver_Date__c
+  - Waiver_Full_Name__c
+  - Waiver_Indemnification_by_Paren__c
+  - Waiver_Limitations_of_Liability__c
+  - Waiver_Loss_or_Theft__c
+  - Waiver__c
+  - WalkWeight__c
+  lookups:
+    Volunteer_Name__c:
+      table: Contact
+Insert Class_Time__c:
+  sf_object: Class_Time__c
+  fields:
+  - Class_Start__c
+  - Duration__c
+  - Location__c
+  lookups:
+    Class__c:
+      table: Class__c
+Insert Riders__c:
+  sf_object: Riders__c
+  fields:
+  - Ability_to_pick_up_new_skills__c
+  - Adaptive_Equipment_Required__c
+  - Additional_Diagnoses__c
+  - Additional_Diagnosis_2__c
+  - Additional_Diagnosis_3__c
+  - Additional_Diagnosis_4__c
+  - Additional_Diagnosis__c
+  - Allergies__c
+  - Allergies_to_medications__c
+  - Ambulatory_Status__c
+  - Appropriate_for__c
+  - Auth_for_Emerg_Med_Treatment__c
+  - Auth_for_Emerg_Treatment_Date__c
+  - Auth_for_Emerg_Treatment_Name__c
+  - Behavior__c
+  - Behavioral_Status__c
+  - Bench_sit_for_2_minutes__c
+  - Birthdate__c
+  - Bridle_Reins__c
+  - C__c
+  - Caregiver_Phone__c
+  - Class_Deposit__c
+  - Client_Address__c
+  - Client_City__c
+  - Client_E_mail_Address__c
+  - Client_Phone_Number__c
+  - Client_State__c
+  - Client_Status__c
+  - Client_Waiver__c
+  - Client_Zip_Code__c
+  - Client_s_Secondary_Phone_Number__c
+  - Client_s_Secondary_e_mail__c
+  - Comments__c
+  - Communication_Skills__c
+  - CompletedForms__c
+  - Contact__c
+  - County__c
+  - Current_medications__c
+  - Date_Received__c
+  - Deposit_Amount_Received__c
+  - Deposit_Received__c
+  - Diagnoses__c
+  - Direction_Following_Ability__c
+  - Dislikes__c
+  - Dismount__c
+  - Down_Syndrome_Form__c
+  - Down_Syndrome__c
+  - EMT_Form__c
+  - Ethnicity__c
+  - Excessive_risks_that_compromise_safety__c
+  - Forms_Needed__c
+  - Gender__c
+  - Goals__c
+  - Grasp_Strength__c
+  - Group_Home_Address__c
+  - Group_Home_Contact_Info_Same_as_Client__c
+  - Group_Home_Contact_Person__c
+  - Group_Home_E_mail_Address__c
+  - Group_Home_Name__c
+  - Group_Home_Phone_Number__c
+  - HIPPA_Form_PL__c
+  - HIPPA_Form__c
+  - Head_movement_limitations__c
+  - Health_Insurance_Co__c
+  - Height__c
+  - Helmet_Size__c
+  - Hippotherapy_Cancellation_PolicyPL__c
+  - Hippotherapy_Cancellation_Policy__c
+  - Horse_Input__c
+  - Horse_Size__c
+  - How_rider_holds_reins__c
+  - Insurance_Policy__c
+  - Interests__c
+  - Left_arm_strength__c
+  - Left_leg_strength__c
+  - Lesson_Type__c
+  - Level__c
+  - Liability_Release__c
+  - Life_Goals__c
+  - Likes__c
+  - Lives_in_Group_Home__c
+  - Location__c
+  - Loss_of_balance_to_sudden_movement__c
+  - Medical_Form__c
+  - Medical_History_Form_PL__c
+  - Membership_Paid__c
+  - Membership_Received__c
+  - Mobility__c
+  - Mount__c
+  - Movement_interferes_with_daily_routine__c
+  - Name
+  - Name__c
+  - New_Client_Step__c
+  - Number_of_steps_followed_at_a_time__c
+  - Overall_Emotional_Affect__c
+  - Paperwork_Complete__c
+  - Paperwork_In_Process__c
+  - Participation_Plan__c
+  - Photo_Release_Date__c
+  - Photo_Release_Name__c
+  - Photo_Release__c
+  - Picture__c
+  - Postural_adjustments_with_weight_bearing__c
+  - Precautions_Limitations__c
+  - Precautions__c
+  - Preferred_Medical_Facility__c
+  - Previous_Riding_Experience__c
+  - Primary_Diagnosis__c
+  - Private_Pay__c
+  - Program_Participation__c
+  - Recommended_type_of_horse__c
+  - Registration_Form__c
+  - Registration_Received__c
+  - Ridden_Before__c
+  - Rider_Dislikes__c
+  - Riding_Goals__c
+  - Riding_Position_posture__c
+  - Right_arm_strength__c
+  - Right_leg_strength__c
+  - Saddle__c
+  - Scholarship_Amount_Awarded__c
+  - Scholarship_Level__c
+  - School__c
+  - Scoliosis_Form_PL__c
+  - Scoliosis_Form__c
+  - Screening_Date_Time__c
+  - Screening_Done_By__c
+  - Screening_payment__c
+  - Seizure_Form_PL__c
+  - Seizure_Form__c
+  - Seizure_Information__c
+  - Seizure_Plan__c
+  - Sensory_Needs__c
+  - Session_III_Horse_Comments__c
+  - Session_III_Horse__c
+  - Session_II_Horse_Comments__c
+  - Session_II_Horse__c
+  - Session_IV_Horse_Comments__c
+  - Session_IV_Horse__c
+  - Session_I_Horse_Comments__c
+  - Session_I_Horse__c
+  - Siezure_Plan__c
+  - Signature__c
+  - Specialty_Form_Needed__c
+  - Spina_Bifida_Form__c
+  - Status__c
+  - Strong_Emotional_Oubursts_Desc__c
+  - Strong_Emotional_Oubursts__c
+  - Surgical_History__c
+  - Tack__c
+  - Therapeutic_Riding_Level__c
+  - Third_Party_Address__c
+  - Third_Party_Contact_Name__c
+  - Third_Party_E_mail_Address__c
+  - Third_Party_Payor_Comments__c
+  - Third_Party_Payor_Name__c
+  - Third_Party_Payor__c
+  - Third_Party_Phone__c
+  - Trunk_Strength__c
+  - Type_Description_of_Seizures__c
+  - Vision_Hearing__c
+  - Weight__c
+  - Weight_bear_on_one_foot_w_assist__c
+  lookups:
+    ClientContact__c:
+      table: Contact
+    Current_Session_Horse__c:
+      table: Horses__c
+    Current_Session_Secondary_Horses__c:
+      table: Horses__c
+    Emergency_Contact_Second__c:
+      table: Contact
+    Emergency_Contact__c:
+      table: Contact
+    Father_Name__c:
+      table: Contact
+    Group_Home__c:
+      table: Account
+    Guardian_Care_Giver__c:
+      table: Contact
+    Household__c:
+      table: npo02__Household__c
+    Mother_Name__c:
+      table: Contact
+    New_Household__c:
+      table: Account
+
+  sf_object: Volunteer_Schedule__c
+  fields:
+  - Absent__c
+  - Comments__c
+  - Confirmed__c
+  - Day__c
+  - Scheduled_As__c
+  - Session__c
+  lookups:
+    Volunteer_Info__c:
+      table: Volunteer_Info__c
+    Volunteer__c:
+      table: Volunteer_Info__c
+Insert Client_Assessment__c:
+  sf_object: Client_Assessment__c
+  fields:
+  - Adaptive_Equipment_Required__c
+  - Ambulatory_Status__c
+  - Behavioral_Status__c
+  - Bridle_Reins__c
+  - Description_Narrative__c
+  - Direction_Following_Ability__c
+  - Future_Saddle_tack_ideas__c
+  - Goal__c
+  - Horse_suggestion_s__c
+  - How_Rider_holds_reins__c
+  - Instructor__c
+  - Learning_Style__c
+  - Level__c
+  - Likes__c
+  - Met2__c
+  - Met3__c
+  - Mounting_Dismount_type__c
+  - Name
+  - Objective_1__c
+  - Objective_2__c
+  - Objective_3__c
+  - Objective_Met_Not_Met__c
+  - Participant_Name__c
+  - Precautions__c
+  - RecordTypeId
+  - Riding_Position_Posture__c
+  - Saddle_Tack__c
+  - Session__c
+  - Volunteer_Suggestion_SW1__c
+  - Volunteer_Suggestion_SW2__c
+  - Volunteer_Suggestion_s__c
+  - Volunteer_Type__c
+  - Volunteer_assistance_during__c
+  - Year__c
+  lookups:
+    Client_Last_Nam__c:
+      table: Riders__c
+    Horse_Name__c:
+      table: Horses__c
+Insert Client_Class__c:
+  sf_object: Client_Class__c
+  lookups:
+    Class__c:
+      table: Class__c
+    Riders__c:
+      table: Riders__c
+Insert VolunteerWaiver__c:
+  sf_object: VolunteerWaiver__c
+  fields:
+  - Allergies_to_medications__c
+  - Application_Submitted__c
+  - Auth_for_Emerg_Med_Treatment__c
+  - Auth_for_Emerg_Treatment_Date__c
+  - Auth_for_Emerg_Treatment_Name__c
+  - Barn_Aide__c
+  - Barn_Maintenance__c
+  - Client_Waiver_Date__c
+  - Client_Waiver__c
+  - Confidentiality_HIPPA_Date__c
+  - Confidentiality_HIPPA_Name__c
+  - Confidentiality_HIPPA__c
+  - Current_medications__c
+  - Down_Syndrome_Date__c
+  - Down_Syndrome__c
+  - Feeder__c
+  - Forms_Completed__c
+  - Handbook_Acknowledgement_Date__c
+  - Handbook_Acknowledgement__c
+  - Health_Insurance_Co__c
+  - Help_at_Events__c
+  - Help_in_Office__c
+  - Help_on_Event_Committees__c
+  - Hippotherapy_Cancellation_Policy_Date__c
+  - Hippotherapy_Cancellation_Policy__c
+  - Horse_Experience__c
+  - Insurance_Policy__c
+  - Leader__c
+  - Liability_Waiver__c
+  - Medical_History_Form_PL__c
+  - Medical_History_Form__c
+  - Medical_Release__c
+  - Payer_Address__c
+  - Payer_Info__c
+  - Payer_Phone__c
+  - Payer__c
+  - Payer_email__c
+  - Payment_Signature_Name__c
+  - Photo_Release_Date__c
+  - Photo_Release_Name__c
+  - Photo_Release__c
+  - Preferred_Medical_Facility__c
+  - RecordTypeId
+  - Riding_Goals__c
+  - Riding_skills__c
+  - Schedule_Completed_PL__c
+  - Schedule_Completed__c
+  - ScoliosisForm__c
+  - Scoliosis_Form__c
+  - Seizure_Form_Date__c
+  - Seizure_Form__c
+  - Seizure_Information__c
+  - Sidewalker__c
+  - Signed_Dated__c
+  - Signed_Name__c
+  - Teaching_Assistant__c
+  - Third_Party_Address__c
+  - Third_Party_Contact__c
+  - Third_Party_Payer_Waiver_Name__c
+  - Third_Party_email__c
+  - Times_that_will_not_work__c
+  - Volunteer_Riding_Completed__c
+  - Volunteer_Riding_Date__c
+  - Year__c
+  lookups:
+    Client__c:
+      table: Riders__c
+    Volunteer__c:
+      table: Volunteer_Info__c
+    waiver__c:
+      table: waiver__c

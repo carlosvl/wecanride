@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Program_Participation__c</fullName>
+    <description>Down Syndrome</description>
+    <externalId>false</externalId>
+    <label>Program Participation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Therapeutic Riding</fullName>
+                <default>false</default>
+                <label>Therapeutic Riding</label>
+            </value>
+            <value>
+                <fullName>Therapeutic Riding Private</fullName>
+                <default>false</default>
+                <label>Therapeutic Riding Private</label>
+            </value>
+            <value>
+                <fullName>Therapeutic Riding Semi-Private</fullName>
+                <default>false</default>
+                <label>Therapeutic Riding Semi-Private</label>
+            </value>
+            <value>
+                <fullName>Hippotherapy</fullName>
+                <default>false</default>
+                <label>Hippotherapy</label>
+            </value>
+            <value>
+                <fullName>Volunteer Lesson</fullName>
+                <default>false</default>
+                <label>Volunteer Lesson</label>
+            </value>
+            <value>
+                <fullName>Community Lesson</fullName>
+                <default>false</default>
+                <label>Community Lesson</label>
+            </value>
+            <value>
+                <fullName>Ground Lesson</fullName>
+                <default>false</default>
+                <label>Ground Lesson</label>
+            </value>
+            <value>
+                <fullName>Equine Connections Ground</fullName>
+                <default>false</default>
+                <label>Equine Connections Ground</label>
+            </value>
+            <value>
+                <fullName>Equine Connections Riding</fullName>
+                <default>false</default>
+                <label>Equine Connections Riding</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

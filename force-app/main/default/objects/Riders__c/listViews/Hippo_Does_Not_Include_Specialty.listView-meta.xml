@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Hippo_Does_Not_Include_Specialty</fullName>
+    <columns>NAME</columns>
+    <columns>Level__c</columns>
+    <columns>Client_E_mail_Address__c</columns>
+    <columns>Client_s_Secondary_e_mail__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Diagnoses__c</field>
+        <operation>excludes</operation>
+        <value>Down Syndrome</value>
+    </filters>
+    <filters>
+        <field>Diagnoses__c</field>
+        <operation>excludes</operation>
+        <value>Scoliosis</value>
+    </filters>
+    <filters>
+        <field>Diagnoses__c</field>
+        <operation>excludes</operation>
+        <value>Seizure Disorder</value>
+    </filters>
+    <filters>
+        <field>Level__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <filters>
+        <field>Client_Status__c</field>
+        <operation>equals</operation>
+        <value>Active</value>
+    </filters>
+    <label>Hippo - Does Not Include Specialty</label>
+</ListView>
