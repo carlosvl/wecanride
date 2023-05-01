@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Appropriate_for__c</fullName>
+    <externalId>false</externalId>
+    <label>Appropriate for</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Therapeutic Riding</fullName>
+                <default>false</default>
+                <label>Therapeutic Riding</label>
+            </value>
+            <value>
+                <fullName>Private</fullName>
+                <default>false</default>
+                <label>Private</label>
+            </value>
+            <value>
+                <fullName>Semi-Private</fullName>
+                <default>false</default>
+                <label>Semi-Private</label>
+            </value>
+            <value>
+                <fullName>Hippotherapy</fullName>
+                <default>false</default>
+                <label>Hippotherapy</label>
+            </value>
+            <value>
+                <fullName>Groundwork</fullName>
+                <default>false</default>
+                <label>Groundwork</label>
+            </value>
+            <value>
+                <fullName>No programming at this time</fullName>
+                <default>false</default>
+                <label>No programming at this time</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

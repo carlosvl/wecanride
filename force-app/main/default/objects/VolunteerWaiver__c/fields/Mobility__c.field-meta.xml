@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Mobility__c</fullName>
+    <externalId>false</externalId>
+    <label>Mobility</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Cane</fullName>
+                <default>false</default>
+                <label>Cane</label>
+            </value>
+            <value>
+                <fullName>Independent</fullName>
+                <default>false</default>
+                <label>Independent</label>
+            </value>
+            <value>
+                <fullName>One hand assist</fullName>
+                <default>false</default>
+                <label>One hand assist</label>
+            </value>
+            <value>
+                <fullName>Walker</fullName>
+                <default>false</default>
+                <label>Walker</label>
+            </value>
+            <value>
+                <fullName>Wheelchair</fullName>
+                <default>false</default>
+                <label>Wheelchair</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Left_arm_strength__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>If client strength is that of a person typical to their age, please choose strong</inlineHelpText>
+    <label>Left arm strength</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Weak</fullName>
+                <default>false</default>
+                <label>Weak</label>
+            </value>
+            <value>
+                <fullName>Adequate</fullName>
+                <default>false</default>
+                <label>Adequate</label>
+            </value>
+            <value>
+                <fullName>Strong</fullName>
+                <default>false</default>
+                <label>Strong</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
