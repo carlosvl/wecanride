@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Uses_Legs_to_Walk_On__c</fullName>
+    <externalId>false</externalId>
+    <label>*Uses Legs to Walk On</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No - Emotional</fullName>
+                <default>false</default>
+                <label>No - Emotional</label>
+            </value>
+            <value>
+                <fullName>No - Physical</fullName>
+                <default>false</default>
+                <label>No - Physical</label>
+            </value>
+            <value>
+                <fullName>No - Cognitive</fullName>
+                <default>false</default>
+                <label>No - Cognitive</label>
+            </value>
+            <value>
+                <fullName>---None---</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>---None---</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

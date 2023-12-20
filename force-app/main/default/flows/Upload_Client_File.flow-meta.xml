@@ -3,8 +3,8 @@
     <actionCalls>
         <name>create_Client_Record_Link</name>
         <label>create Client Record Link</label>
-        <locationX>684</locationX>
-        <locationY>360</locationY>
+        <locationX>446</locationX>
+        <locationY>350</locationY>
         <actionName>FileUploadImprovedHelper</actionName>
         <actionType>apex</actionType>
         <connector>
@@ -27,12 +27,12 @@
     <actionCalls>
         <name>CreateLinkContact</name>
         <label>CreateLinkContact</label>
-        <locationX>432</locationX>
-        <locationY>655</locationY>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
         <actionName>FileUploadImprovedHelper</actionName>
         <actionType>apex</actionType>
         <connector>
-            <targetReference>Completed</targetReference>
+            <targetReference>Send_notice_to_client</targetReference>
         </connector>
         <flowTransactionModel>Automatic</flowTransactionModel>
         <inputParameters>
@@ -54,25 +54,77 @@
             </value>
         </inputParameters>
     </actionCalls>
+    <actionCalls>
+        <name>Send_notice_to_client</name>
+        <label>Send notice to client</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>GetClientRecord.ClientContact__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>You have a new communication from us</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>useLineBreaks</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>recipientId</name>
+            <value>
+                <elementReference>GetClientRecord.ClientContact__r.Id</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>logEmailOnSend</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
     <apiVersion>57.0</apiVersion>
     <assignments>
         <name>reset</name>
         <label>reset</label>
-        <locationX>881</locationX>
-        <locationY>422</locationY>
+        <locationX>842</locationX>
+        <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>FileUpload.contentDocumentIds</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
         <connector>
+            <isGoTo>true</isGoTo>
             <targetReference>GetClientRecord</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>Share_With_Client_Dec</name>
         <label>Share With Client</label>
-        <locationX>677</locationX>
-        <locationY>569</locationY>
+        <locationX>446</locationX>
+        <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Completed</targetReference>
         </defaultConnector>
@@ -106,7 +158,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -119,8 +171,8 @@
     <recordLookups>
         <name>GetClientRecord</name>
         <label>GetClientRecord</label>
-        <locationX>874</locationX>
-        <locationY>214</locationY>
+        <locationX>446</locationX>
+        <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>File_Upload</targetReference>
@@ -140,8 +192,8 @@
     <screens>
         <name>Completed</name>
         <label>Completed</label>
-        <locationX>878</locationX>
-        <locationY>656</locationY>
+        <locationX>842</locationX>
+        <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -159,8 +211,8 @@
     <screens>
         <name>File_Upload</name>
         <label>File Upload</label>
-        <locationX>683</locationX>
-        <locationY>214</locationY>
+        <locationX>446</locationX>
+        <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -244,13 +296,18 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>747</locationX>
-        <locationY>59</locationY>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>GetClientRecord</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;p&gt;We have uploaded a file for your review.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Please login into the portal to review &lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;https://wecanride.my.site.com/client/s/login/&lt;/p&gt;</text>
+    </textTemplates>
     <variables>
         <name>varClientRecord</name>
         <dataType>String</dataType>

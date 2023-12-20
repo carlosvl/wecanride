@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Horse_Ridden__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>Select horse the Client rode during this Class Time</inlineHelpText>
+    <label>Horse Ridden</label>
+    <referenceTo>Horses__c</referenceTo>
+    <relationshipLabel>New Attendances</relationshipLabel>
+    <relationshipName>New_Attendances</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

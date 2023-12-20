@@ -27,11 +27,19 @@
         <valueSettings>
             <controllingFieldValue>3</controllingFieldValue>
             <controllingFieldValue>4</controllingFieldValue>
+            <controllingFieldValue>5</controllingFieldValue>
+            <controllingFieldValue>6</controllingFieldValue>
+            <controllingFieldValue>7</controllingFieldValue>
+            <controllingFieldValue>0</controllingFieldValue>
             <valueName>Combo</valueName>
         </valueSettings>
         <valueSettings>
             <controllingFieldValue>3</controllingFieldValue>
             <controllingFieldValue>4</controllingFieldValue>
+            <controllingFieldValue>5</controllingFieldValue>
+            <controllingFieldValue>6</controllingFieldValue>
+            <controllingFieldValue>7</controllingFieldValue>
+            <controllingFieldValue>0</controllingFieldValue>
             <valueName>Regular</valueName>
         </valueSettings>
     </valueSet>

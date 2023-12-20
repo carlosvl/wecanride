@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Execute_a_2_Point_at_Walk__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Down the long-side and around a corner</inlineHelpText>
+    <label>*Execute a 2 Point at Walk</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>YesNo</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

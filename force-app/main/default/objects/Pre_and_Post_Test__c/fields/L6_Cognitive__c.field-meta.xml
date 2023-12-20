@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L6_Cognitive__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(Safe_handling_horse_in_stall__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Demonstrate_how_to_safely_clean_hooves__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Safe_effective_way_of_saddle_placement__c,&apos;No&apos;),1,0)+
+if(INCLUDES(adjust_own_stirrups_to_correct_length__c,&apos;No&apos;),1,0)+
+if(INCLUDES(ID_15_horse_body_parts__c,&apos;No&apos;),1,0)+
+if(INCLUDES(ID_if_horse_is_off_lame__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Can_bend_horse_around_corners__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Leg_yield_from_line_to_wall_both_way__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Haunches_in_both_directions__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Turn_on_the_haunches__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Correctly_changes_diagonal_trot_fig_8__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Demonstrates_spiral_in__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Demonstrates_extended_trot__c,&apos;No&apos;),1,0)+
+if(INCLUDES(canter_one_lap_each_direction__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Shoulder_in_both_directions__c,&apos;No&apos;),1,0)+
+if(INCLUDES(turn_on_the_forehand__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Can_change_speed_within_gait__c,&apos;No&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L6 - Cognitive</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

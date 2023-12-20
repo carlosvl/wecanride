@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Supportive_lower_leg_gaits_transitions__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>all gaits and transitions</inlineHelpText>
+    <label>Supportive lower leg-gaits/transitions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>YesNo</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volunteer_Duties__c</fullName>
+    <externalId>false</externalId>
+    <label>Volunteer Duty(s)</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sidewalker</fullName>
+                <default>false</default>
+                <label>Sidewalker</label>
+            </value>
+            <value>
+                <fullName>Leader</fullName>
+                <default>false</default>
+                <label>Leader</label>
+            </value>
+            <value>
+                <fullName>Barn Aid</fullName>
+                <default>false</default>
+                <label>Barn Aid</label>
+            </value>
+            <value>
+                <fullName>Teaching Assistant</fullName>
+                <default>false</default>
+                <label>Teaching Assistant</label>
+            </value>
+            <value>
+                <fullName>Feeder</fullName>
+                <default>false</default>
+                <label>Feeder</label>
+            </value>
+            <value>
+                <fullName>Office</fullName>
+                <default>false</default>
+                <label>Office</label>
+            </value>
+            <value>
+                <fullName>Event</fullName>
+                <default>false</default>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>Maintenance</fullName>
+                <default>false</default>
+                <label>Maintenance</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

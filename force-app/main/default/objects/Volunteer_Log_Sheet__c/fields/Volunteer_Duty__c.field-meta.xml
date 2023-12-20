@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volunteer_Duty__c</fullName>
+    <description>Horse Leader
+Barn Aid
+Sidewalker
+TA
+Feeder
+Office
+Event
+Training/Workshop
+Maintenance
+Horse Care</description>
+    <externalId>false</externalId>
+    <label>Volunteer Duty</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Team Leader</fullName>
+                <default>false</default>
+                <label>Team Leader</label>
+            </value>
+            <value>
+                <fullName>Horse Leader</fullName>
+                <default>false</default>
+                <label>Horse Leader</label>
+            </value>
+            <value>
+                <fullName>Side Walker</fullName>
+                <default>false</default>
+                <label>Side Walker</label>
+            </value>
+            <value>
+                <fullName>Grounds/Facility</fullName>
+                <default>false</default>
+                <label>Grounds/Facility</label>
+            </value>
+            <value>
+                <fullName>Jr Volunteer</fullName>
+                <default>false</default>
+                <label>Jr Volunteer</label>
+            </value>
+            <value>
+                <fullName>Clerical</fullName>
+                <default>false</default>
+                <label>Clerical</label>
+            </value>
+            <value>
+                <fullName>Organizational</fullName>
+                <default>false</default>
+                <label>Organizational</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

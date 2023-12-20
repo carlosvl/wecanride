@@ -44,10 +44,10 @@
     <decisions>
         <name>Add_Contact</name>
         <label>Add Contact</label>
-        <locationX>1388</locationX>
-        <locationY>963</locationY>
+        <locationX>1557</locationX>
+        <locationY>967</locationY>
         <defaultConnector>
-            <targetReference>UpdateClient_Remove_Contact_0</targetReference>
+            <targetReference>Type_Of_Contact_0</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
@@ -69,11 +69,8 @@
     <decisions>
         <name>Finish_Flow</name>
         <label>Finish Flow</label>
-        <locationX>456</locationX>
-        <locationY>1437</locationY>
-        <defaultConnector>
-            <targetReference>GroupHomeRecordType</targetReference>
-        </defaultConnector>
+        <locationX>708</locationX>
+        <locationY>1566</locationY>
         <defaultConnectorLabel>No</defaultConnectorLabel>
         <rules>
             <name>Yes_Finish</name>
@@ -85,13 +82,16 @@
                     <booleanValue>true</booleanValue>
                 </rightValue>
             </conditions>
+            <connector>
+                <targetReference>GetContact</targetReference>
+            </connector>
             <label>Yes</label>
         </rules>
     </decisions>
     <decisions>
         <name>New_Contact</name>
         <label>New Contact?</label>
-        <locationX>1033</locationX>
+        <locationX>1274</locationX>
         <locationY>859</locationY>
         <defaultConnector>
             <targetReference>Edit_Emergency_Info</targetReference>
@@ -123,9 +123,84 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>UpdateClient_Remove_Contact</targetReference>
+                <targetReference>Type_Of_Contact</targetReference>
             </connector>
             <label>Remove</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Type_Of_Contact</name>
+        <label>Type Of Contact</label>
+        <locationX>1037</locationX>
+        <locationY>858</locationY>
+        <defaultConnector>
+            <targetReference>UpdateClient_Remove_Contact</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Client</defaultConnectorLabel>
+        <rules>
+            <name>Volunteer</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetContact.Volunteer__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateVolInfo_Remove_Contact</targetReference>
+            </connector>
+            <label>Volunteer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Type_Of_Contact_0</name>
+        <label>Type Of Contact</label>
+        <locationX>1558</locationX>
+        <locationY>1142</locationY>
+        <defaultConnector>
+            <targetReference>UpdateClient_Remove_Contact_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Client</defaultConnectorLabel>
+        <rules>
+            <name>Volunteer_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetContact.Volunteer__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateEmergencyContact</targetReference>
+            </connector>
+            <label>Volunteer</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Type_Of_Contact_0_0</name>
+        <label>Type Of Contact</label>
+        <locationX>1856</locationX>
+        <locationY>1356</locationY>
+        <defaultConnector>
+            <targetReference>UpdateClient</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Client</defaultConnectorLabel>
+        <rules>
+            <name>Volunteer_0_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetContact.Volunteer__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateVolInfo</targetReference>
+            </connector>
+            <label>Volunteer</label>
         </rules>
     </decisions>
     <description>existing contact changes</description>
@@ -185,14 +260,11 @@
     <recordCreates>
         <name>CreateEmergencyContact</name>
         <label>CreateEmergencyContact</label>
-        <locationX>1624</locationX>
+        <locationX>1865</locationX>
         <locationY>1166</locationY>
         <connector>
-            <targetReference>UpdateClient</targetReference>
+            <targetReference>Type_Of_Contact_0_0</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <inputAssignments>
             <field>AccountId</field>
             <value>
@@ -227,17 +299,35 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
+        <name>Get_Vol_Info</name>
+        <label>Get Vol Info</label>
+        <locationX>857</locationX>
+        <locationY>446</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetClientRecord</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Volunteer_Name__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetContact.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Volunteer_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>GetClientRecord</name>
         <label>GetClientRecord</label>
-        <locationX>1048</locationX>
-        <locationY>446</locationY>
+        <locationX>1061</locationX>
+        <locationY>448</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>GetEmergencyContact</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>ClientContact__c</field>
@@ -253,15 +343,12 @@
     <recordLookups>
         <name>GetContact</name>
         <label>GetContact</label>
-        <locationX>1048</locationX>
-        <locationY>326</locationY>
+        <locationX>699</locationX>
+        <locationY>446</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>GetClientRecord</targetReference>
+            <targetReference>Get_Vol_Info</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -277,16 +364,13 @@
     <recordLookups>
         <name>GetEmergencyContact</name>
         <label>GetEmergencyContact</label>
-        <locationX>1048</locationX>
-        <locationY>566</locationY>
+        <locationX>1282</locationX>
+        <locationY>449</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Existing_Contact</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>or</filterLogic>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -294,45 +378,25 @@
                 <elementReference>GetClientRecord.Emergency_Contact__c</elementReference>
             </value>
         </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>Contact</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
-        <name>GroupHomeRecordType</name>
-        <label>GroupHomeRecordType</label>
-        <locationX>467</locationX>
-        <locationY>868</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>GetContact</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
         <filters>
-            <field>DeveloperName</field>
+            <field>Id</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Group_Home</stringValue>
+                <elementReference>Get_Vol_Info.Emergency_Contact_LU__c</elementReference>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>RecordType</object>
+        <object>Contact</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordUpdates>
         <name>UpdateClient</name>
         <label>UpdateClient</label>
-        <locationX>1624</locationX>
-        <locationY>1647</locationY>
+        <locationX>1776</locationX>
+        <locationY>1573</locationY>
         <connector>
             <targetReference>Finish_Flow</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -352,14 +416,11 @@
     <recordUpdates>
         <name>UpdateClient_Remove_Contact</name>
         <label>UpdateClient Remove Contact</label>
-        <locationX>904</locationX>
-        <locationY>1045</locationY>
+        <locationX>857</locationX>
+        <locationY>1079</locationY>
         <connector>
             <targetReference>Finish_Flow</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -379,14 +440,11 @@
     <recordUpdates>
         <name>UpdateClient_Remove_Contact_0</name>
         <label>UpdateClient Remove Contact</label>
-        <locationX>1391</locationX>
-        <locationY>1439</locationY>
+        <locationX>1483</locationX>
+        <locationY>1438</locationY>
         <connector>
             <targetReference>Finish_Flow</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>UpdateClient_Remove_Contact</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -406,14 +464,11 @@
     <recordUpdates>
         <name>UpdateEmergency</name>
         <label>UpdateEmergency</label>
-        <locationX>1037</locationX>
-        <locationY>1350</locationY>
+        <locationX>1282</locationX>
+        <locationY>1308</locationY>
         <connector>
             <targetReference>Finish_Flow</targetReference>
         </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>Id</field>
@@ -448,12 +503,84 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>UpdateEmergencyContact</name>
+        <label>UpdateEmergencyContact</label>
+        <locationX>1644</locationX>
+        <locationY>1436</locationY>
+        <connector>
+            <targetReference>Finish_Flow</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Vol_Info.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Emergency_Contact_LU__c</field>
+            <value>
+                <elementReference>Select_Contact</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Volunteer_Info__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateVolInfo</name>
+        <label>UpdateVolInfo</label>
+        <locationX>1951</locationX>
+        <locationY>1573</locationY>
+        <connector>
+            <targetReference>Finish_Flow</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Vol_Info.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Emergency_Contact_LU__c</field>
+            <value>
+                <elementReference>CreateEmergencyContact</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Volunteer_Info__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateVolInfo_Remove_Contact</name>
+        <label>UpdateVolInfo Remove Contact</label>
+        <locationX>984</locationX>
+        <locationY>1079</locationY>
+        <connector>
+            <targetReference>Finish_Flow</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Get_Vol_Info.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Emergency_Contact_LU__c</field>
+            <value>
+                <stringValue></stringValue>
+            </value>
+        </inputAssignments>
+        <object>Volunteer_Info__c</object>
+    </recordUpdates>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
         <name>Edit_Emergency_Info</name>
         <label>Edit Emergency Info</label>
-        <locationX>1029</locationX>
-        <locationY>1166</locationY>
+        <locationX>1282</locationX>
+        <locationY>1079</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -513,6 +640,12 @@
                             <elementReference>GetEmergencyContact.MobilePhone</elementReference>
                         </value>
                     </inputParameters>
+                    <inputParameters>
+                        <name>pattern</name>
+                        <value>
+                            <stringValue>^[\d]{10,15}</stringValue>
+                        </value>
+                    </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -541,56 +674,15 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithoutHeader</regionContainerType>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>GetClientRecord.Id</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
-        </fields>
-        <fields>
-            <name>DispMsg</name>
-            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;This info is only needed for Clients&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>GetClientRecord.Id</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>true</booleanValue>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
         </fields>
         <nextOrFinishButtonLabel>Save</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>Error</name>
-        <label>Error</label>
-        <locationX>1151</locationX>
-        <locationY>1165</locationY>
-        <allowBack>false</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <fields>
-            <name>DispError</name>
-            <fieldText>&lt;p&gt;Sorry, something went wrong.&lt;/p&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>false</showHeader>
-    </screens>
-    <screens>
         <name>Existing_Contact</name>
         <label>Existing Contact</label>
-        <locationX>1041</locationX>
+        <locationX>1282</locationX>
         <locationY>715</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -745,7 +837,7 @@
     <screens>
         <name>New_Emergency_Info</name>
         <label>New Emergency Info</label>
-        <locationX>1624</locationX>
+        <locationX>1866</locationX>
         <locationY>1048</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -799,6 +891,12 @@
                             <booleanValue>true</booleanValue>
                         </value>
                     </inputParameters>
+                    <inputParameters>
+                        <name>pattern</name>
+                        <value>
+                            <stringValue>^[\d]{10,15}</stringValue>
+                        </value>
+                    </inputParameters>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
                     <storeOutputAutomatically>true</storeOutputAutomatically>
@@ -821,16 +919,6 @@
             </fields>
             <isRequired>false</isRequired>
             <regionContainerType>SectionWithoutHeader</regionContainerType>
-            <visibilityRule>
-                <conditionLogic>and</conditionLogic>
-                <conditions>
-                    <leftValueReference>GetClientRecord.Id</leftValueReference>
-                    <operator>IsNull</operator>
-                    <rightValue>
-                        <booleanValue>false</booleanValue>
-                    </rightValue>
-                </conditions>
-            </visibilityRule>
         </fields>
         <nextOrFinishButtonLabel>Save</nextOrFinishButtonLabel>
         <showFooter>true</showFooter>
@@ -839,7 +927,7 @@
     <screens>
         <name>Show_Contacts</name>
         <label>Show Contacts</label>
-        <locationX>1625</locationX>
+        <locationX>1866</locationX>
         <locationY>862</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -899,13 +987,13 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>71</locationX>
-        <locationY>852</locationY>
+        <locationX>50</locationX>
+        <locationY>430</locationY>
         <connector>
-            <targetReference>GroupHomeRecordType</targetReference>
+            <targetReference>GetContact</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <variables>
         <name>VarContactID</name>
         <dataType>String</dataType>

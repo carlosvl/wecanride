@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Spring_Monday</fullName>
+    <columns>Scheduled_As__c</columns>
+    <columns>Volunteer__c</columns>
+    <columns>Comments__c</columns>
+    <columns>Confirmed__c</columns>
+    <columns>Absent__c</columns>
+    <columns>Sidewalker__c</columns>
+    <columns>Horse_Leader__c</columns>
+    <columns>Barn_Leader__c</columns>
+    <columns>Groomer__c</columns>
+    <columns>Spotter__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Session__c</field>
+        <operation>equals</operation>
+        <value>Spring</value>
+    </filters>
+    <filters>
+        <field>Day__c</field>
+        <operation>equals</operation>
+        <value>Monday</value>
+    </filters>
+    <label>Spring Monday 3:00 to 6:00</label>
+</ListView>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <description>Updates Lead last update timestamps.</description>
+    <label>OneMerge Lead Before Save</label>
+    <processMetadataValues>
+        <name>AssociatedRecord</name>
+        <value/>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+</Flow>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L4_Totals__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(ID_grooming_tools_use_properly__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(ID_grooming_tools_use_properly__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_grooming_tools_use_properly__c , &apos;No&apos;),1,0)+
+if(INCLUDES(ID_s_all_tack_for_their_discipline__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(ID_s_all_tack_for_their_discipline__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_s_all_tack_for_their_discipline__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Independently_tacks_untacks__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Independently_tacks_untacks__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Independently_tacks_untacks__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Correctly_attaches_and_detaches_reins__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Correctly_attaches_and_detaches_reins__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Correctly_attaches_and_detaches_reins__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Mounts_and_dismounts_independently__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Mounts_and_dismounts_independently__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Mounts_and_dismounts_independently__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Lead_their_horse_with_volunteer_supervi__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Lead_their_horse_with_volunteer_supervi__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Lead_their_horse_with_volunteer_supervi__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Shows_balance_proper_riding_position__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Shows_balance_proper_riding_position__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_balance_proper_riding_position__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Maintains_secure_seat_at_sitting_trot__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Maintains_secure_seat_at_sitting_trot__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Maintains_secure_seat_at_sitting_trot__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Maintains_safe_distance_in_class__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Maintains_safe_distance_in_class__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Maintains_safe_distance_in_class__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Controls_horse_at_the_halt_walk_trot__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Controls_horse_at_the_halt_walk_trot__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Controls_horse_at_the_halt_walk_trot__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Shows_how_to__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Shows_how_to__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_how_to__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Can_do_figure_8_pattern_off_lead_at_the__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Can_do_figure_8_pattern_off_lead_at_the__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_do_figure_8_pattern_off_lead_at_the__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Steers_in_2_point_at_walk__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Steers_in_2_point_at_walk__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Steers_in_2_point_at_walk__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Executes_2_point_position_at_trot__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Executes_2_point_position_at_trot__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Executes_2_point_position_at_trot__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Uses_reins_to_change_to_walk_after__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Uses_reins_to_change_to_walk_after__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_reins_to_change_to_walk_after__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Shows_proper_rein_length_shortening__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Shows_proper_rein_length_shortening__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_proper_rein_length_shortening__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Shows_transferring_reins_to_one_hand__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Shows_transferring_reins_to_one_hand__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_transferring_reins_to_one_hand__c , &apos;No&apos;),1,0)+
+if(INCLUDES(Shows_emergency_stop_riding_procedures__c , &apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Shows_emergency_stop_riding_procedures__c , &apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_emergency_stop_riding_procedures__c , &apos;No&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L4 - Totals</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

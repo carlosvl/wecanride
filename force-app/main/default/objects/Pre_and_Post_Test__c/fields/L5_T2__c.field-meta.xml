@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L5_T2__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(Can_ID_10_horse_parts__c,&apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Can_ID_10_horse_parts__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_ID_10_horse_parts__c,&apos;No&apos;),1,0)+
+
+if(INCLUDES(Recognizes_emergency_situations__c,&apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Recognizes_emergency_situations__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Recognizes_emergency_situations__c,&apos;No&apos;),1,0)+
+
+if(INCLUDES(Performs_half_halts__c,&apos;No - Emotional&apos;),1,0)+
+if(INCLUDES(Performs_half_halts__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Performs_half_halts__c,&apos;No&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L5 - T2</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

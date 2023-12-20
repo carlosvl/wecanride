@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cues_with_Legs_for_Trotting__c</fullName>
+    <externalId>false</externalId>
+    <label>*Cues with Legs for Trotting</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>YesNo</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L3_L4_GW_Physical__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(ID_grooming_tools_use_properly__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Demonstrate_how_to_safely_clean_hooves__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_halter_lead_rope__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_tie_a_quick_release_knot__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Tack_untack_horse_properly_with_assist__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_ID_10_horse_parts__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_s_5_different_horse_breeds__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_ID_horse_s_blind_spots__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Explaina_senses_Ears_Eyes_Nose__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_5_forages_horses_eat__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Leads_horse_independently__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Independently_controls_speed_walk_trot__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Leads_in_simple_patterns_independently__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_how_to_wrap_a_horse_s_leg__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_confidence_in_handling_emergencies__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_how_to_take_horse_s_vitals__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_how_to_measure_a_horse_in_hands__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Practices_safety_in_stall__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_how_to_properly_clean_stall__c,&apos;No - Physical&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L3-L4 GW Physical</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

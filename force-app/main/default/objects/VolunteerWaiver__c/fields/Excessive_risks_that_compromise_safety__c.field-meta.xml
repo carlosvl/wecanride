@@ -5,7 +5,6 @@
     <inlineHelpText>Mark yes if the client would walk into the street without looking</inlineHelpText>
     <label>Risks that compromise safety</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

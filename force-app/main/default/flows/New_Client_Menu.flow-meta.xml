@@ -1423,7 +1423,7 @@
             <targetReference>GetPolicy</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Authorization_for_Emergency_Medical_Treatment</name>
         <label>Authorization for Emergency Medical Treatment</label>

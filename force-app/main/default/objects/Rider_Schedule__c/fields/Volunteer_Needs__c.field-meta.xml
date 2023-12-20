@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volunteer_Needs__c</fullName>
+    <externalId>false</externalId>
+    <label>Volunteer Needs</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Leader</fullName>
+                <default>false</default>
+                <label>Leader</label>
+            </value>
+            <value>
+                <fullName>Leader &amp; 1 Side Walker</fullName>
+                <default>false</default>
+                <label>Leader &amp; 1 Side Walker</label>
+            </value>
+            <value>
+                <fullName>Leader &amp; 2 Side Walkers</fullName>
+                <default>false</default>
+                <label>Leader &amp; 2 Side Walkers</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

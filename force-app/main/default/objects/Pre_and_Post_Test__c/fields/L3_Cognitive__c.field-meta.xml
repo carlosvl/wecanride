@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L3_Cognitive__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(ID_s_Basic_Tack__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Uses_Legs_to_Walk_On__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Mount_Dismount_Minimal_Assist__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Correct_Hand_Position_at_Walk__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Demonstrate_Shortening_Reins__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Turns_Both_Directions_Walk_incl_Cir__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Execute_a_2_Point_at_Walk__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Uses_Reins_for_Whoa__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Demonstrate_Safe_Spacing__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Keeps_Balance_Walk_Halt_Transitions__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Upright_Quiet_Position_at_Trot__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Cues_with_Legs_for_Trotting__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Supportive_Lower_Leg__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Uses_Voice_Sign_to_go_to_Walk_from_Trot__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Back_Horse_3_Steps_Moderate_Assist__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Stops_Horse_at_Selected_Spot__c,&apos;No&apos;),1,0)+
+if(INCLUDES(Figure_8_at_Walk__c,&apos;No&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L3 - Cognitive</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

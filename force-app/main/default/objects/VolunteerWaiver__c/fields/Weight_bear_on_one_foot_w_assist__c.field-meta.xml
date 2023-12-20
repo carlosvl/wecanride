@@ -5,7 +5,6 @@
     <inlineHelpText>Clients are required to be able to bear weight and be able to take steps backward, with assistance</inlineHelpText>
     <label>Weight bear on one foot w/ assist</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Picklist</type>

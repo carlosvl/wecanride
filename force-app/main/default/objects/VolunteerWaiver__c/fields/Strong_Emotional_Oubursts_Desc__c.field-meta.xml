@@ -5,7 +5,6 @@
     <inlineHelpText>If yes, please describe the circumstances and how to mitigate</inlineHelpText>
     <label>Strong Emotional Oubursts Description</label>
     <length>131072</length>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

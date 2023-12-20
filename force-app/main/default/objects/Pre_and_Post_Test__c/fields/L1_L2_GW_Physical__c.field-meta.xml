@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L1_L2_GW_Physical__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(Recognizes_Horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Approach_Pets_Horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Use_grooming_tools_appropriately__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_all_used_grooming_tools__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(ID_halter_lead_rope__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_identify_basic_parts_of_the_horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Follows_safety_rules__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_appropriate_safety_rules_while_cha__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Keeps_helmet_on_during_all_activities__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Holds_lead_rope_with_appropriate_hand_p__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Leads_with_assistance_of_inst__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_words_sign_physical_cue_to__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_words_sign_physical_cue_to_walk__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Stops_Horse_at_Selected_Spot__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Turns_both_directions__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Participates_in_activities_during_class__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Follows_1_2_step_directions__c,&apos;No - Physical&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L1-L2 GW Physical</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

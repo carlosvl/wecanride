@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Events__c</fullName>
+    <externalId>false</externalId>
+    <label>Events</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Buy A Bale</fullName>
+                <default>false</default>
+                <label>Buy A Bale</label>
+            </value>
+            <value>
+                <fullName>Chefs</fullName>
+                <default>false</default>
+                <label>Chefs</label>
+            </value>
+            <value>
+                <fullName>End of the Year Appeal</fullName>
+                <default>false</default>
+                <label>End of the Year Appeal</label>
+            </value>
+            <value>
+                <fullName>Give to the Max</fullName>
+                <default>false</default>
+                <label>Give to the Max</label>
+            </value>
+            <value>
+                <fullName>Harvest Horse Show</fullName>
+                <default>false</default>
+                <label>Harvest Horse Show</label>
+            </value>
+            <value>
+                <fullName>Make the Impact</fullName>
+                <default>false</default>
+                <label>Make the Impact</label>
+            </value>
+            <value>
+                <fullName>Saddle Up Sampler</fullName>
+                <default>false</default>
+                <label>Saddle Up Sampler</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

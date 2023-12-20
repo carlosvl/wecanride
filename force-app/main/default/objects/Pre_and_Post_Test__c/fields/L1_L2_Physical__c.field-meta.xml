@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L1_L2_Physical__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(Recognizes_Horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Approach_Pets_Horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Mount_dismount_willingly_moderate_assist__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Balanced_riding_position_at_halt_walk__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Self_corrects_to_midline__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_words_sign_to_execute_walk_on__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Uses_words_sign_to_execute_a_whoa__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(warm_up_activities_and_stretches_with_ve__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Does_warm_ups_stretches_w_verbal_cues__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Participates_in_activities_during_class__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Follows_1_2_step_directions__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Keeps_helmet_on_during_all_activities__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Follow_appropriate_safety_rules__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Stays_mounted_during_all_activities__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Looks_in_the_direction_they_are_turning__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_tolerate_trot_w_moderate_assist__c,&apos;No - Physical&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L1-L2 Physical</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

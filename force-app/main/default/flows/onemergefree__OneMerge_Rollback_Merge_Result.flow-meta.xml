@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>56.0</apiVersion>
+    <description>Screen Flow to rollback the merge event which generated the Merge Result. Master Record fields will be restored to the pre-merge values and established relationships to Source Records will be removed (Custom Merge).</description>
+    <environments>Default</environments>
+    <label>Rollback Merge Result</label>
+    <processMetadataValues>
+        <name>AssociatedRecord</name>
+        <value/>
+    </processMetadataValues>
+    <processType>Flow</processType>
+</Flow>

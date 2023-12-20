@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volunteer_Position__c</fullName>
+    <description>Position volunteers are trained for.</description>
+    <externalId>false</externalId>
+    <label>Volunteer Position</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Barn Aide</fullName>
+                <default>false</default>
+                <label>Barn Aide</label>
+            </value>
+            <value>
+                <fullName>Caregiver Sidewalker</fullName>
+                <default>false</default>
+                <label>Caregiver Sidewalker</label>
+            </value>
+            <value>
+                <fullName>Events/Office</fullName>
+                <default>false</default>
+                <label>Events/Office</label>
+            </value>
+            <value>
+                <fullName>Feeder</fullName>
+                <default>false</default>
+                <label>Feeder</label>
+            </value>
+            <value>
+                <fullName>Leader</fullName>
+                <default>false</default>
+                <label>Leader</label>
+            </value>
+            <value>
+                <fullName>Schooling Team</fullName>
+                <default>false</default>
+                <label>Schooling Team</label>
+            </value>
+            <value>
+                <fullName>Sidewalker</fullName>
+                <default>false</default>
+                <label>Sidewalker</label>
+            </value>
+            <value>
+                <fullName>Teaching Assistant</fullName>
+                <default>false</default>
+                <label>Teaching Assistant</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

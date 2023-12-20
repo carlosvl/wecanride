@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Consent_to_Medical_Treatment__c</fullName>
+    <externalId>false</externalId>
+    <label>Consent to Medical Treatment</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Consent</fullName>
+                <default>false</default>
+                <label>Consent</label>
+            </value>
+            <value>
+                <fullName>Non Consent</fullName>
+                <default>false</default>
+                <label>Non Consent</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

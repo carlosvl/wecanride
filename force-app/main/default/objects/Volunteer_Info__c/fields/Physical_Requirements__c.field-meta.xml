@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Physical_Requirements__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Volunteer agrees or doesn&apos;t that can do class requirements</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Can you walk for 60 minutes without fatiguing; jog for a short distance; &amp; hold your arm above shoulder height?</inlineHelpText>
+    <label>Physical Requirements Met</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

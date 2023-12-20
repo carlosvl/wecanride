@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session_II_Monday</fullName>
+    <columns>NAME</columns>
+    <columns>Time__c</columns>
+    <columns>Client__c</columns>
+    <columns>Type_of_Client__c</columns>
+    <columns>Horse__c</columns>
+    <columns>Instructor__c</columns>
+    <columns>Date__c</columns>
+    <columns>Confirmed__c</columns>
+    <columns>Comments__c</columns>
+    <columns>Absent__c</columns>
+    <columns>Volunteer_Needs__c</columns>
+    <columns>Mother_s_Mobile__c</columns>
+    <columns>Father_s_Mobile__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>Day__c</field>
+        <operation>equals</operation>
+        <value>Monday</value>
+    </filters>
+    <filters>
+        <field>Session__c</field>
+        <operation>equals</operation>
+        <value>Session II</value>
+    </filters>
+    <label>Session II Monday PM</label>
+</ListView>

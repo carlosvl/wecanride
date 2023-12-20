@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Cultivation_Stage__c</fullName>
+    <externalId>false</externalId>
+    <label>Cultivation Stage</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Identified</fullName>
+                <default>false</default>
+                <label>Identified</label>
+            </value>
+            <value>
+                <fullName>Researched</fullName>
+                <default>false</default>
+                <label>Researched</label>
+            </value>
+            <value>
+                <fullName>Cultivated</fullName>
+                <default>false</default>
+                <label>Cultivated</label>
+            </value>
+            <value>
+                <fullName>Solicited</fullName>
+                <default>false</default>
+                <label>Solicited</label>
+            </value>
+            <value>
+                <fullName>Recognized</fullName>
+                <default>false</default>
+                <label>Recognized</label>
+            </value>
+            <value>
+                <fullName>Renewal</fullName>
+                <default>false</default>
+                <label>Renewal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

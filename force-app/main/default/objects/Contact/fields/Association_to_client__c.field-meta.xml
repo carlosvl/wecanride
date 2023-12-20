@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Association_to_client__c</fullName>
+    <externalId>false</externalId>
+    <label>Association to client</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Guardian</fullName>
+                <default>false</default>
+                <label>Guardian</label>
+            </value>
+            <value>
+                <fullName>Sister</fullName>
+                <default>false</default>
+                <label>Sister</label>
+            </value>
+            <value>
+                <fullName>Brother</fullName>
+                <default>false</default>
+                <label>Brother</label>
+            </value>
+            <value>
+                <fullName>Son</fullName>
+                <default>false</default>
+                <label>Son</label>
+            </value>
+            <value>
+                <fullName>Daughter</fullName>
+                <default>false</default>
+                <label>Daughter</label>
+            </value>
+            <value>
+                <fullName>Foster Care Provider</fullName>
+                <default>false</default>
+                <label>Foster Care Provider</label>
+            </value>
+            <value>
+                <fullName>Grandmother</fullName>
+                <default>false</default>
+                <label>Grandmother</label>
+            </value>
+            <value>
+                <fullName>Grandfather</fullName>
+                <default>false</default>
+                <label>Grandfather</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

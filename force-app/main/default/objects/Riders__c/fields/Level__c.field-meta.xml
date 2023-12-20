@@ -28,19 +28,9 @@
                 <label>3</label>
             </value>
             <value>
-                <fullName>Level 3 - Combo</fullName>
-                <default>false</default>
-                <label>Level 3 - Combo</label>
-            </value>
-            <value>
                 <fullName>4</fullName>
                 <default>false</default>
                 <label>4</label>
-            </value>
-            <value>
-                <fullName>Level 4 - Combo</fullName>
-                <default>false</default>
-                <label>Level 4 - Combo</label>
             </value>
             <value>
                 <fullName>5</fullName>
@@ -61,6 +51,18 @@
                 <fullName>0</fullName>
                 <default>false</default>
                 <label>0</label>
+            </value>
+            <value>
+                <fullName>Level 3 - Combo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Level 3 - Combo</label>
+            </value>
+            <value>
+                <fullName>Level 4 - Combo</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Level 4 - Combo</label>
             </value>
         </valueSetDefinition>
     </valueSet>

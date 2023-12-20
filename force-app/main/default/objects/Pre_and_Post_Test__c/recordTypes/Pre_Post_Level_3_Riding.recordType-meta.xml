@@ -1,0 +1,2325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pre_Post_Level_3_Riding</fullName>
+    <active>true</active>
+    <compactLayoutAssignment>Pre_Post</compactLayoutAssignment>
+    <label>Pre-Post Level 3 Riding</label>
+    <picklistValues>
+        <picklist>Able_to_Keep_Arms_from_Bouncing_at_Trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Approach_Pets_Horse__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Attempts_to_Run_Stirrups_Up__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Back_Horse_3_Steps_Moderate_Assist__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Balanced_riding_position_W_H_T__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Balanced_riding_position_at_halt_walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_ID_10_horse_parts__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_ID_horse_s_blind_spots__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_bend_horse_around_corners__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_change_speed_within_gait__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_do_figure_8_pattern_off_lead_at_the__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_identify_basic_parts_of_the_horse__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_safely_clean_a_horse_s_front_hooves__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_tie_a_quick_release_knot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Can_tolerate_trot_w_moderate_assist__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Controlled_trot_around_the_entire_arena__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Controls_horse_at_the_halt_walk_trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Correct_Hand_Position_at_Walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Correctly_attaches_and_detaches_reins__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Correctly_changes_diagonal_trot_fig_8__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Cues_with_Legs_for_Trotting__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Decision__c</picklist>
+        <values>
+            <fullName>---None---</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Pass</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stay at Same Level</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrate_Safe_Spacing__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrate_Shortening_Reins__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrate_how_to_safely_clean_hooves__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrates_Picking_up_Stirrups_at_Walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrates_extended_trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Demonstrates_spiral_in__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Does_warm_ups_stretches_w_verbal_cues__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Execute_a_2_Point_at_Walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Executes_2_point_position_at_trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Explaina_senses_Ears_Eyes_Nose__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Figure_8_at_Walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Follow_appropriate_safety_rules__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Follows_1_2_step_directions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Follows_safety_rules__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Haunches_in_both_directions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Holds_lead_rope_with_appropriate_hand_p__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_15_horse_body_parts__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_5_forages_horses_eat__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_all_used_grooming_tools__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_grooming_tools_use_properly__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_halter_lead_rope__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_if_horse_is_off_lame__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_s_5_different_horse_breeds__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_s_Basic_Tack__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>ID_s_all_tack_for_their_discipline__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Independently_controls_speed_walk_trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Independently_leads_horse_in_warmup__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Independently_maintain_a_2_point__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Independently_tacks_untacks__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Instructor__c</picklist>
+        <values>
+            <fullName>Abbi Flanery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kristy Abbott</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Liz Firehammer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Michelle Haury</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Natalie Cerchio</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tabea Brockman</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wanda Sayuk</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Keeps_Balance_Walk_Halt_Transitions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Keeps_helmet_on_during_all_activities__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Knows_posting_diagonals_how_to_change__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Lead_their_horse_with_volunteer_supervi__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Leads_Horse_with_Moderate_Assist__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Leads_horse_independently__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Leads_in_simple_patterns_independently__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Leads_with_assistance_of_inst__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Leg_yield_from_line_to_wall_both_way__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Looks_in_the_direction_they_are_turning__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Maintains_proper_rein_contact__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Maintains_safe_distance_in_class__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Maintains_secure_seat_at_sitting_trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mount_Dismount_Minimal_Assist__c</picklist>
+        <values>
+            <fullName>No - Cognitive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mount_dismount_willingly_moderate_assist__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Mounts_and_dismounts_independently__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Participates_in_activities_during_class__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Performs_half_halts__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Performs_simple_patterns__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Practices_safety_in_stall__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Recognizes_Horse__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Recognizes_emergency_situations__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Rides_off_lead_for_the_entire_class__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Safe_effective_way_of_bridling_horse__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Safe_effective_way_of_saddle_placement__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Safe_handling_horse_in_stall__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Self_corrects_to_midline__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Session__c</picklist>
+        <values>
+            <fullName>Fall</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Summer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Winter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shoulder_in_both_directions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_balance_proper_riding_position__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_confidence_in_handling_emergencies__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_emergency_stop_riding_procedures__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_how_to__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_how_to_measure_a_horse_in_hands__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_how_to_properly_clean_stall__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_how_to_take_horse_s_vitals__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_how_to_wrap_a_horse_s_leg__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_proper_rein_length_shortening__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_safe_effective_method__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_transferring_reins_to_one_hand__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_use_of_leg_to_cue_for_direction__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Shows_using_seat_for_W_H_W_transitions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sitting_trot_independently_one_lap__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stays_mounted_during_all_activities__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Steer_Thru_Circles_and_Weave_Cones__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Steers_in_2_point_at_walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Stops_Horse_at_Selected_Spot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Supportive_Lower_Leg__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Supportive_lower_leg_gaits_transitions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Tack_untack_horse_properly_with_assist__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Test_Type__c</picklist>
+        <values>
+            <fullName>Post</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Turn_on_the_haunches__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Turns_Both_Directions_Walk_incl_Cir__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Turns_both_directions__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Upright_Quiet_Position_at_Trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Use_grooming_tools_appropriately__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_Legs_to_Walk_On__c</picklist>
+        <values>
+            <fullName>No - Cognitive</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_Reins_for_Whoa__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_Voice_Sign_to_go_to_Walk_from_Trot__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_appropriate_safety_rules_while_cha__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_reins_to_change_to_walk_after__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_words_sign_physical_cue_to__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_words_sign_physical_cue_to_walk__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_words_sign_to_execute_a_whoa__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Uses_words_sign_to_execute_walk_on__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Verbalizes_Horse_s_Name__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>adjust_own_stirrups_to_correct_length__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>canter_one_lap_each_direction__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>turn_on_the_forehand__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>warm_up_activities_and_stretches_with_ve__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Emotional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No - Physical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

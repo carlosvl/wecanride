@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Decision__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Astericks - Mandatory to move onto next level - 14 &quot;yes&quot; needed to proceed to next level</inlineHelpText>
+    <label>Decision</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>---None---</fullName>
+                <default>true</default>
+                <label>---None---</label>
+            </value>
+            <value>
+                <fullName>Pass</fullName>
+                <default>false</default>
+                <label>Pass</label>
+            </value>
+            <value>
+                <fullName>Stay at Same Level</fullName>
+                <default>false</default>
+                <label>Stay at Same Level</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Session__c</columns>
+    <columns>Attendance_Code__c</columns>
+    <columns>Client__c</columns>
+    <columns>Notestg1__c</columns>
+    <columns>NoteLTG__c</columns>
+    <columns>Noteex2__c</columns>
+    <columns>Noteex3__c</columns>
+    <columns>Noteex4__c</columns>
+    <columns>Noteex5__c</columns>
+    <columns>Noteex6__c</columns>
+    <columns>Noteex7__c</columns>
+    <columns>Noteex8__c</columns>
+    <columns>Notestg2__c</columns>
+    <columns>Notestg3__c</columns>
+    <columns>Notestg4__c</columns>
+    <filterScope>Everything</filterScope>
+    <label>All</label>
+</ListView>

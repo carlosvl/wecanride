@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>L5_Physical__c</fullName>
+    <externalId>false</externalId>
+    <formula>if(INCLUDES(Can_tie_a_quick_release_knot__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_safely_clean_a_horse_s_front_hooves__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Safe_effective_way_of_bridling_horse__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Safe_effective_way_of_saddle_placement__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_safe_effective_method__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Mounts_and_dismounts_independently__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Independently_leads_horse_in_warmup__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Balanced_riding_position_W_H_T__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_using_seat_for_W_H_W_transitions__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Supportive_lower_leg_gaits_transitions__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Shows_use_of_leg_to_cue_for_direction__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Controlled_trot_around_the_entire_arena__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Rides_off_lead_for_the_entire_class__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Independently_maintain_a_2_point__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Sitting_trot_independently_one_lap__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Knows_posting_diagonals_how_to_change__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Maintains_proper_rein_contact__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Performs_simple_patterns__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Can_ID_10_horse_parts__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Recognizes_emergency_situations__c,&apos;No - Physical&apos;),1,0)+
+if(INCLUDES(Performs_half_halts__c,&apos;No - Physical&apos;),1,0)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>L5 - Physical</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>
