@@ -5,7 +5,6 @@
     <inlineHelpText>Please describe</inlineHelpText>
     <label>Riding Position/posture</label>
     <length>32000</length>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

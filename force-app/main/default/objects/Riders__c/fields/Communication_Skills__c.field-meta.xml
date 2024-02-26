@@ -5,7 +5,6 @@
     <inlineHelpText>List how client communicates, if they will ask for help and/or use a communication device</inlineHelpText>
     <label>Communication Skills</label>
     <length>32768</length>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

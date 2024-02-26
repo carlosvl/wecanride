@@ -4,13 +4,17 @@
     <externalId>false</externalId>
     <label>Diagnoses</label>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>MultiselectPicklist</type>
     <valueSet>
         <valueSetDefinition>
             <sorted>false</sorted>
+            <value>
+                <fullName>NOT LISTED</fullName>
+                <default>false</default>
+                <label>NOT LISTED</label>
+            </value>
             <value>
                 <fullName>10926.2 Deletion</fullName>
                 <default>false</default>
@@ -245,11 +249,6 @@
                 <fullName>Bone Density Caution</fullName>
                 <default>false</default>
                 <label>Bone Density Caution</label>
-            </value>
-            <value>
-                <fullName>Borderline Personality Disorder</fullName>
-                <default>false</default>
-                <label>Borderline Personality Disorder</label>
             </value>
             <value>
                 <fullName>BPAN</fullName>
@@ -1065,11 +1064,6 @@
                 <fullName>Non-Verbal Learning Disorder</fullName>
                 <default>false</default>
                 <label>Non-Verbal Learning Disorder</label>
-            </value>
-            <value>
-                <fullName>NOT LISTED</fullName>
-                <default>false</default>
-                <label>NOT LISTED</label>
             </value>
             <value>
                 <fullName>Obesity</fullName>

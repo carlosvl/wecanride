@@ -5,7 +5,6 @@
     <inlineHelpText>list areas you’d like to see improved from equine-assisted activities</inlineHelpText>
     <label>Goals</label>
     <length>32768</length>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>LongTextArea</type>

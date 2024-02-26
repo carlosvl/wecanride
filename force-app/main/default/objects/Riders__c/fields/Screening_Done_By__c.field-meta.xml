@@ -5,7 +5,6 @@
     <label>Screening Done By:</label>
     <length>60</length>
     <required>false</required>
-    <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
     <type>Text</type>
