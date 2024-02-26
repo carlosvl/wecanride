@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlexiPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>allowChanges</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>linkedToDesignKit</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginBottom</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginLeft</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginRight</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>marginTop</name>
+                    <value>0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>richTextValue</name>
+                    <value>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;img alt=&quot;we can ride logo&quot; src=&quot;https://www.wecanride.org/wp-content/uploads/2020/11/wcr-trans-lg.png&quot; style=&quot;max-width: 100%; width: 219px; height: 136px;&quot; title=&quot;we can ride logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Release and Waiver of Liability&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;The undersigned Participant (the &amp;ldquo;Participant&amp;rdquo; or &amp;ldquo;I&amp;rdquo;) desires to participate in the activities with We Can Ride, Inc., a Minnesota nonprofit corporation, including without limitation, being on property owned or used by We Can Ride, Inc. and engaging with or being near horses (the &amp;ldquo;Activities&amp;rdquo;).&amp;nbsp;In consideration for being allowed to participate in the Activities, Participant hereby agrees, on behalf of Participant, and Participant&amp;rsquo;s personal representatives, assigns, heirs, next of kin and any other successors-in-interest who are bound by the terms of this Release, as follows:&lt;/p&gt;
+&lt;strong&gt;ACCEPTANCE OF RISK.&lt;/strong&gt;&amp;nbsp;&lt;strong&gt;I UNDERSTAND THAT EQUINE ACTIVITIES, INCLUDING WITHOUT LIMITATION, RIDING, HANDLING AND BEING NEAR HORSES, AND BEING ON THE PROPERTY OF WE CAN RIDE, INC. HAVE MANY DANGERS AND RISKS AND CAN RESULT IN PERSONAL INJURY, DEATH AND/OR PROPERTY DAMAGE.&amp;nbsp;&lt;/strong&gt;I desire to be a part of the Activities and understand and accept that participating in the Activities may entail risks to myself, to others and to property, and that my participation in the Activities is at my own risk.&amp;nbsp;
+
+&lt;p&gt;Under Minnesota law, We Can Ride, Inc. is not liable for personal injury, death or property damage resulting from the inherent risks of equine activities.&amp;nbsp;Pursuant to Minn. Stat. &amp;sect; 604.055, nothing in this Release purports or intends to waive liability for damage, injuries, or death resulting from conduct that constitutes greater than ordinary negligence.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;RELEASE AND INDEMNITY.&amp;nbsp;&lt;/strong&gt;I agree to release, hold harmless and indemnify We Can Ride, Inc. and each of its owners, agents, employees, officers, directors, representatives, therapists, volunteers, assigns, members, owners of premises and trails, affiliated organizations, insurers and other acting on its behalf (&amp;ldquo;Representatives&amp;rdquo;) from any and all present or future claims, losses, liabilities, costs and expenses of whatever kind of nature, including attorneys&amp;rsquo; fees (&amp;ldquo;Liability&amp;rdquo;), whether in law or in equity, arising from the Activities, including without limitation We Can Ride, Inc.&amp;rsquo;s alleged failure to comply with applicable laws and regulations or any Liability for personal injury, communicable diseases, death or property damage which results from the ordinary negligence of We Can Ride, Inc. or its Representatives.&amp;nbsp;&lt;strong&gt;IN NO EVENT SHALL WE CAN RIDE, INC. HAVE ANY LIABILITY FOR ANY CONSEQUENTIAL, INDIRECT, SPECIAL OR PUNITIVE DAMAGES, WHETHER BASED ON TORT OR CONTRACT, OR WHETHER WE CAN RIDE, INC. KNEW OR SHOULD HAVE KNOWN THE LIKELIHOOD OF SUCH DAMAGES.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;OTHER.&lt;/strong&gt;&amp;nbsp;We Can Ride, Inc. does not assume any responsibility to provide Participant with financial or other assistance, including but not limited to medical insurance, health insurance, or disability benefits (other than as may be specified in a written employment agreement).&amp;nbsp;We Can Ride, Inc. shall not be liable for the loss of, theft of, or damages to any personal property of Participant.&amp;nbsp;This Release shall be governed by and construed in accordance with the laws of the State of Minnesota and is intended to be as broad and inclusive as permitted by law. If any provision of this Release is held invalid, illegal or unenforceable, the validity, legality or enforceability of the remaining provisions shall not be affected.&amp;nbsp;&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;﻿I acknowledge and consent that We Can Ride, Inc. can take reasonable steps to seek medical care and transportation for me if necessary.&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BY SIGNING THIS RELEASE, I EXPRESSLY STATE THAT I HAVE READ AND UNDERSTAND ITS TERMS AND THAT I HAVE GIVEN UP SUBSTANTIAL RIGHTS AND I INDICATE MY INTENT TO ENTER INTO THIS RELEASE KNOWINGLY AND VOLUNTARILY.&amp;nbsp;&lt;/strong&gt;&lt;br /&gt;
+&amp;nbsp;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;BY SIGNING THIS RELEASE, I CERTIFY THAT I AM THE PARENT OR LEGAL GUARDIAN OF THE PARTICIPANT, THAT I HAVE LEGAL AUTHORITY OVER PARTICIPANT, THAT I HAVE READ AND UNDERSTAND THE TERMS OF THIS RELEASE, AND THAT I FREELY SIGN THIS RELEASE AND WILL ABIDE BY ITS TERMS FOR MYSELF AND ON BEHALF OF PARTICIPANT.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:richText</componentName>
+                <identifier>contentbuilder_richText17</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-2172ea06-55bd-42e8-84d9-a4f7d67af9d4</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>columnBody</name>
+                    <value>Facet-2172ea06-55bd-42e8-84d9-a4f7d67af9d4</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnCount</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnIndex</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columnSpacer</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>padding</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>verticalAlign</name>
+                    <value>top</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>width</name>
+                    <value>100%</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:column</componentName>
+                <identifier>contentbuilder_column17</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>Facet-be09137b-a41b-4971-acf3-73e6385287a0</name>
+        <type>Facet</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>backgroundColor</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>backgroundImageUrl</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>columns</name>
+                    <value>Facet-be09137b-a41b-4971-acf3-73e6385287a0</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>verticalAlignment</name>
+                    <value>top</value>
+                </componentInstanceProperties>
+                <componentName>contentbuilder:row</componentName>
+                <identifier>contentbuilder_row17</identifier>
+            </componentInstance>
+        </itemInstances>
+        <name>main</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <masterLabel>Volunteer_Liability_waiver_notice</masterLabel>
+    <template>
+        <name>contentpage:defaultEmailTemplatePageTemplate</name>
+        <properties>
+            <name>backgroundColor</name>
+            <value>#E9EAEC</value>
+        </properties>
+        <properties>
+            <name>backgroundImageUrl</name>
+        </properties>
+        <properties>
+            <name>bodyColor</name>
+            <value>#FFFFFF</value>
+        </properties>
+        <properties>
+            <name>paddingBottom</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingLeft</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingRight</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>paddingTop</name>
+            <value>10</value>
+        </properties>
+        <properties>
+            <name>preheader</name>
+        </properties>
+    </template>
+    <type>EmailTemplatePage</type>
+</FlexiPage>
