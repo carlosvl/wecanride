@@ -3,7 +3,7 @@
     <actionCalls>
         <name>create_Client_Record_Link</name>
         <label>create Client Record Link</label>
-        <locationX>446</locationX>
+        <locationX>182</locationX>
         <locationY>350</locationY>
         <actionName>FileUploadImprovedHelper</actionName>
         <actionType>apex</actionType>
@@ -55,12 +55,33 @@
         </inputParameters>
     </actionCalls>
     <actionCalls>
+        <name>RefreshView</name>
+        <label>RefreshView</label>
+        <locationX>50</locationX>
+        <locationY>782</locationY>
+        <actionName>c:RefreshView</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+    </actionCalls>
+    <actionCalls>
+        <name>RefreshView1</name>
+        <label>RefreshView1</label>
+        <locationX>314</locationX>
+        <locationY>782</locationY>
+        <actionName>c:RefreshView</actionName>
+        <actionType>component</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+    </actionCalls>
+    <actionCalls>
         <name>Send_notice_to_client</name>
         <label>Send notice to client</label>
         <locationX>50</locationX>
         <locationY>674</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>RefreshView</targetReference>
+        </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
             <name>emailAddresses</name>
@@ -109,21 +130,20 @@
     <assignments>
         <name>reset</name>
         <label>reset</label>
-        <locationX>842</locationX>
+        <locationX>314</locationX>
         <locationY>674</locationY>
         <assignmentItems>
             <assignToReference>FileUpload.contentDocumentIds</assignToReference>
             <operator>Assign</operator>
         </assignmentItems>
         <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>GetClientRecord</targetReference>
+            <targetReference>RefreshView1</targetReference>
         </connector>
     </assignments>
     <decisions>
         <name>Share_With_Client_Dec</name>
         <label>Share With Client</label>
-        <locationX>446</locationX>
+        <locationX>182</locationX>
         <locationY>458</locationY>
         <defaultConnector>
             <targetReference>Completed</targetReference>
@@ -171,7 +191,7 @@
     <recordLookups>
         <name>GetClientRecord</name>
         <label>GetClientRecord</label>
-        <locationX>446</locationX>
+        <locationX>182</locationX>
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -192,7 +212,7 @@
     <screens>
         <name>Completed</name>
         <label>Completed</label>
-        <locationX>842</locationX>
+        <locationX>314</locationX>
         <locationY>566</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -211,7 +231,7 @@
     <screens>
         <name>File_Upload</name>
         <label>File Upload</label>
-        <locationX>446</locationX>
+        <locationX>182</locationX>
         <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -232,13 +252,13 @@
                     <inputParameters>
                         <name>sessionKey</name>
                         <value>
-                            <stringValue>fileuploadIn</stringValue>
+                            <elementReference>$Flow.InterviewGuid</elementReference>
                         </value>
                     </inputParameters>
                     <inputParameters>
                         <name>allowMultiple</name>
                         <value>
-                            <booleanValue>false</booleanValue>
+                            <booleanValue>true</booleanValue>
                         </value>
                     </inputParameters>
                     <inputParameters>
@@ -257,6 +277,12 @@
                         <name>renderFilesBelow</name>
                         <value>
                             <booleanValue>false</booleanValue>
+                        </value>
+                    </inputParameters>
+                    <inputParameters>
+                        <name>embedExternally</name>
+                        <value>
+                            <booleanValue>true</booleanValue>
                         </value>
                     </inputParameters>
                     <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
@@ -296,7 +322,7 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>320</locationX>
+        <locationX>56</locationX>
         <locationY>0</locationY>
         <connector>
             <targetReference>GetClientRecord</targetReference>

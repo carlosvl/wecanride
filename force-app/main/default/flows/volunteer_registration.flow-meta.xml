@@ -1,28 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionCalls>
-        <name>Email_to_Volunteer</name>
-        <label>Email to Volunteer</label>
-        <locationX>851</locationX>
-        <locationY>220</locationY>
-        <actionName>Contact.Volunteer_Returning_paperwork</actionName>
-        <actionType>emailAlert</actionType>
+        <name>Send_Email_to_Contact</name>
+        <label>Send Email to Contact</label>
+        <locationX>906</locationX>
+        <locationY>174</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
         <connector>
             <targetReference>beforeemail</targetReference>
         </connector>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
         <inputParameters>
-            <name>SObjectRowId</name>
+            <name>emailBody</name>
             <value>
-                <elementReference>sobjContact.Id</elementReference>
+                <elementReference>emailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>SendEmailAddress</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <elementReference>Subject</elementReference>
             </value>
         </inputParameters>
     </actionCalls>
     <actionCalls>
         <name>Send_Notification</name>
         <label>Send Notification</label>
-        <locationX>1177</locationX>
-        <locationY>2075</locationY>
+        <locationX>1380</locationX>
+        <locationY>3081</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -149,8 +167,8 @@
     <assignments>
         <name>emailforsender</name>
         <label>emailforsender</label>
-        <locationX>606</locationX>
-        <locationY>374</locationY>
+        <locationX>602</locationX>
+        <locationY>373</locationY>
         <assignmentItems>
             <assignToReference>SendEmailAddress</assignToReference>
             <operator>Assign</operator>
@@ -165,7 +183,7 @@
     <assignments>
         <name>Employment_Info</name>
         <label>Employment Info</label>
-        <locationX>1503</locationX>
+        <locationX>1333</locationX>
         <locationY>952</locationY>
         <assignmentItems>
             <assignToReference>sobjContact.Business__c</assignToReference>
@@ -193,117 +211,10 @@
         </connector>
     </assignments>
     <assignments>
-        <name>Releases</name>
-        <label>Releases</label>
-        <locationX>1534</locationX>
-        <locationY>1887</locationY>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Confidentiality_Release_Form__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>ConfReleaseAgree</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Confidentiality_Release_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>ConfReleaseDate</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Photo_Release__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>AgreePhoto</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Photo_Release_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>PhotoReleaseDate</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact_Relationship__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>EmergencyContact1RelationBIS</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Em1Phone</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact_2__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>EmergencyContact2Name</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact_Relationship_2__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>EmergencyContact2RelationBIS</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Consent_to_Medical_Treatment_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>MedicalConsentDate</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.ConsentSIgnatureRelationship__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>PARENTGUARDIANSELFConcent</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Liablility_Release_Date__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>WaiverDate</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Waiver_Full_Name__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>WaiverFull_Name</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact_2_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>EM2phone</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Emergency_Contact_Number__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>EmergencyContact1Name</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>CreateVolInfo</targetReference>
-        </connector>
-    </assignments>
-    <assignments>
         <name>VolInfoAssignment</name>
         <label>VolInfoAssignment</label>
-        <locationX>1625</locationX>
-        <locationY>1472</locationY>
+        <locationX>1380</locationX>
+        <locationY>1524</locationY>
         <assignmentItems>
             <assignToReference>sobjectVolInfo.Parent_Guardian_Name__c</assignToReference>
             <operator>Assign</operator>
@@ -347,94 +258,10 @@
             </value>
         </assignmentItems>
         <assignmentItems>
-            <assignToReference>sobjectVolInfo.Sidewalker__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>SideWalkerButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Barn_Aid__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Barn_AideButons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
             <assignToReference>sobjectVolInfo.WalkWeight__c</assignToReference>
             <operator>Assign</operator>
             <value>
                 <elementReference>WalkWeightButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Horse_Leader__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>LeaderButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Barn_Maintenance__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Barn_MaintenanceButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Feeder__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>FeederButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Help_on_Event_Committees__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Help_on_Event_CommitteesButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Help_at_Events__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Help_at_EventsButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Help_in_Office__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Help_in_OfficeButtons</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Parent_Guardian_CC_email__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>GuardianEmailCC</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Parent_Guardian_Relation__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>RelationshipPickList</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Parent_Guardian_Email__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Guardianemail</elementReference>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>sobjectVolInfo.Parent_Guardian_Phone__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>GuardianNewPhone</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -459,7 +286,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>CONFIDENTIALITY_RELEASE</targetReference>
+            <targetReference>CreateVolInfo</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -579,6 +406,38 @@
         </value>
     </choices>
     <decisions>
+        <name>Create_Guardians</name>
+        <label>Create Guardians</label>
+        <locationX>1185</locationX>
+        <locationY>1209</locationY>
+        <defaultConnector>
+            <targetReference>Skills</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>YesCreate</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CalcAge</leftValueReference>
+                <operator>GreaterThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>14.0</numberValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>CalcAge</leftValueReference>
+                <operator>LessThanOrEqualTo</operator>
+                <rightValue>
+                    <numberValue>18.0</numberValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>GetContact</targetReference>
+            </connector>
+            <label>Yes</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>ExistingContact</name>
         <label>ExistingContact</label>
         <locationX>897</locationX>
@@ -598,41 +457,9 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Email_to_Volunteer</targetReference>
+                <targetReference>Send_Email_to_Contact</targetReference>
             </connector>
             <label>Yes</label>
-        </rules>
-    </decisions>
-    <decisions>
-        <name>GuradianEmailValidation</name>
-        <label>GuradianEmailValidation</label>
-        <locationX>1337</locationX>
-        <locationY>747</locationY>
-        <defaultConnector>
-            <targetReference>Employment_Information</targetReference>
-        </defaultConnector>
-        <defaultConnectorLabel>Allgood</defaultConnectorLabel>
-        <rules>
-            <name>YesonCC</name>
-            <conditionLogic>and</conditionLogic>
-            <conditions>
-                <leftValueReference>GuardianEmailCC</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <elementReference>ChoiceYes</elementReference>
-                </rightValue>
-            </conditions>
-            <conditions>
-                <leftValueReference>Guardianemail</leftValueReference>
-                <operator>EqualTo</operator>
-                <rightValue>
-                    <stringValue></stringValue>
-                </rightValue>
-            </conditions>
-            <connector>
-                <targetReference>EnterGuardianEmail</targetReference>
-            </connector>
-            <label>YesonCC</label>
         </rules>
     </decisions>
     <decisions>
@@ -685,8 +512,8 @@
     <decisions>
         <name>WalkLiftReq</name>
         <label>WalkLiftReq</label>
-        <locationX>1432</locationX>
-        <locationY>1312</locationY>
+        <locationX>1374</locationX>
+        <locationY>1359</locationY>
         <defaultConnector>
             <targetReference>VolInfoAssignment</targetReference>
         </defaultConnector>
@@ -742,6 +569,7 @@
             <label>SayNoWalkLift</label>
         </rules>
     </decisions>
+    <description>2024 Version - This simplifies the signup , the volunteer will be sent to the vol coordinator for next steps and eventually be sent to register in the community</description>
     <dynamicChoiceSets>
         <name>Available_Times_Picklist</name>
         <dataType>Multipicklist</dataType>
@@ -816,19 +644,237 @@
         <locationX>1193</locationX>
         <locationY>1065</locationY>
         <connector>
+            <targetReference>Create_Guardians</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Existing_VolInfo</targetReference>
+        </faultConnector>
+        <inputReference>sobjContact</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Guardian</name>
+        <label>Create Guardian</label>
+        <locationX>911</locationX>
+        <locationY>1360</locationY>
+        <connector>
+            <targetReference>create_relationship</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Skills</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>AccountId</field>
+            <value>
+                <elementReference>GetContact.Account.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Email</field>
+            <value>
+                <elementReference>Guardianemail</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>FirstName</field>
+            <value>
+                <elementReference>GuardianName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>LastName</field>
+            <value>
+                <elementReference>GuardianLast_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>MobilePhone</field>
+            <value>
+                <elementReference>GuardianNewPhone</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>create_relationship</name>
+        <label>create relationship</label>
+        <locationX>1069</locationX>
+        <locationY>1360</locationY>
+        <connector>
             <targetReference>Skills</targetReference>
         </connector>
-        <inputReference>sobjContact</inputReference>
+        <faultConnector>
+            <targetReference>Skills</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>npe4__Contact__c</field>
+            <value>
+                <elementReference>Create_Guardian</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__RelatedContact__c</field>
+            <value>
+                <elementReference>sobjContact.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__Status__c</field>
+            <value>
+                <stringValue>Current</stringValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>npe4__Type__c</field>
+            <value>
+                <elementReference>RelationshipPickList</elementReference>
+            </value>
+        </inputAssignments>
+        <object>npe4__Relationship__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordCreates>
         <name>CreateVolInfo</name>
         <label>CreateVolInfo</label>
-        <locationX>1532</locationX>
-        <locationY>2087</locationY>
+        <locationX>1380</locationX>
+        <locationY>1656</locationY>
+        <connector>
+            <targetReference>GetVolInfo</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Existing_VolInfo</targetReference>
+        </faultConnector>
+        <inputReference>sobjectVolInfo</inputReference>
+    </recordCreates>
+    <recordCreates>
+        <name>CreateVolunteerWaiver</name>
+        <label>CreateVolunteerWaiver</label>
+        <locationX>1381</locationX>
+        <locationY>2811</locationY>
         <connector>
             <targetReference>All_completed</targetReference>
         </connector>
-        <inputReference>sobjectVolInfo</inputReference>
+        <faultConnector>
+            <targetReference>Existing_VolInfo</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Signed_Dated__c</field>
+            <value>
+                <elementReference>WaiverDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Signed_Name__c</field>
+            <value>
+                <elementReference>WaiverFull_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Volunteer__c</field>
+            <value>
+                <elementReference>GetVolInfo.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Year__c</field>
+            <value>
+                <elementReference>GetCurrentYear.Current_Year__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>waiver__c</field>
+            <value>
+                <elementReference>GetWaiver.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>VolunteerWaiver__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>CreateWaiverNewReg</name>
+        <label>CreateWaiverNewReg</label>
+        <locationX>1381</locationX>
+        <locationY>2672</locationY>
+        <connector>
+            <targetReference>CreateVolunteerWaiver</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Existing_VolInfo</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Barn_Aide__c</field>
+            <value>
+                <elementReference>Barn_AideButons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Barn_Maintenance__c</field>
+            <value>
+                <elementReference>Barn_MaintenanceButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Feeder__c</field>
+            <value>
+                <elementReference>FeederButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Help_at_Events__c</field>
+            <value>
+                <elementReference>Help_at_EventsButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Help_in_Office__c</field>
+            <value>
+                <elementReference>Help_in_OfficeButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Help_on_Event_Committees__c</field>
+            <value>
+                <elementReference>Help_on_Event_CommitteesButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Leader__c</field>
+            <value>
+                <elementReference>LeaderButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>GetRecordTypeVol_New_Registration_Volunteer.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Sidewalker__c</field>
+            <value>
+                <elementReference>SideWalkerButtons</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Volunteer__c</field>
+            <value>
+                <elementReference>GetVolInfo.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Year__c</field>
+            <value>
+                <elementReference>GetCurrentYear.Current_Year__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>waiver__c</field>
+            <value>
+                <elementReference>GetNewRegWaiverTemplate.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>VolunteerWaiver__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
         <name>Find_Existing_Contact</name>
@@ -852,12 +898,173 @@
         <queriedFields>Name</queriedFields>
         <queriedFields>Email</queriedFields>
     </recordLookups>
+    <recordLookups>
+        <name>GetContact</name>
+        <label>GetContact</label>
+        <locationX>911</locationX>
+        <locationY>1210</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Guardian</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>sobjContact.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetCurrentYear</name>
+        <label>GetCurrentYear</label>
+        <locationX>1381</locationX>
+        <locationY>1887</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetRecordTypeVol_New_Registration_Volunteer</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Current_Year</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>WaiverYear__mdt</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetNewRegWaiverTemplate</name>
+        <label>GetNewRegWaiverTemplate</label>
+        <locationX>1383</locationX>
+        <locationY>2142</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetRecordType_VolunteerWaiver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>NewRegistrationVol</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>waiver__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetRecordType_VolunteerWaiver</name>
+        <label>GetRecordType_VolunteerWaiver</label>
+        <locationX>1381</locationX>
+        <locationY>2272</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetWaiver</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>VolunteerWaiver__c</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Volunteer</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetRecordTypeVol_New_Registration_Volunteer</name>
+        <label>GetRecordTypeVol_New_Registration_Volunteer</label>
+        <locationX>1383</locationX>
+        <locationY>2004</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetNewRegWaiverTemplate</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>New_Registration_Volunteer</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetVolInfo</name>
+        <label>GetVolInfo</label>
+        <locationX>1381</locationX>
+        <locationY>1773</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetCurrentYear</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>sobjectVolInfo.Id</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Volunteer_Info__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>GetWaiver</name>
+        <label>GetWaiver</label>
+        <locationX>1381</locationX>
+        <locationY>2413</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Assumption_of_Risk</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>ClientWaiver</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>Year__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetCurrentYear.Current_Year__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>waiver__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
         <name>All_completed</name>
         <label>All completed</label>
-        <locationX>1334</locationX>
-        <locationY>2080</locationY>
+        <locationX>1380</locationX>
+        <locationY>2946</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -874,26 +1081,23 @@
     </screens>
     <screens>
         <name>Assumption_of_Risk</name>
-        <label>2019 Release and Waiver of Liability</label>
-        <locationX>1196</locationX>
-        <locationY>1889</locationY>
+        <label>Release and Waiver of Liability</label>
+        <locationX>1383</locationX>
+        <locationY>2536</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Releases</targetReference>
+            <targetReference>CreateWaiverNewReg</targetReference>
         </connector>
         <fields>
             <name>AssumptionofRiskTXT</name>
-            <fieldText>&lt;p style=&quot;text-align: left;&quot;&gt;&lt;b&gt;2021 Release and Waiver of Liability&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;The undersigned Participant (the “Participant” or I) desires to participate in the activities with We Can Ride, Inc., a Minnesota non-profit corporation, including without limitation, being on the property owned or used by We Can Ride, Inc. and engaging with or being near horses (the “ Activities”). In consideration of being allowed to participate in the Activities, Participant hereby agrees, on behalf of Participant, and Participant’s personal representatives, assigns, heirs, next of kin, and any other successors-in-interest who are bound by the terms of this Release, as follows:&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;b&gt;ACCEPTANCE OF RISK. I UNDERSTAND THAT EQUINE ACTIVITIES, INCLUDING WITHOUT LIMITATION, RIDING, HANDLING, AND BEING NEAR HORSES, AND BEING ON THE PROPERTY OF WE CAN RIDE, INC. HAVE MANY DANGERS AND RISKS AND CAN RESULT IN PERSONAL INJURY, DEATH AND/OR PROPERTY DAMAGE. &lt;/b&gt; I desire to be a part of the Activities and understand and accept that participating in the Activities may entail risks to myself, to others, and to property, and that my participation in the Activities is at my own risk.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;Under Minnesota Law, We Can Ride, Inc. is not liable for personal injury, death or property damage resulting from the inherent risks of equine activities. Pursuant to Minn. Stat. § 604.055, nothing in this Agreement purports or intends to waive liability for damages injuries, or death resulting from conduct that constitutes greater than ordinary negligence.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;b&gt;RELEASE AND INDEMNITY&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;I agree to release, hold harmless and indemnify We Can Ride, Inc., its owners, agents, employees, officers, directors, representatives, therapists, volunteers, assigns, members, owners of premises and trails, affiliated organizations, insurers, and others acting on its behalf (“Representatives”), from any and all present or future claims, losses, liabilities, costs and expenses of whatever kind or nature, including attorneys’ fees (Liability), whether in law or equity, arising from the Activities, including, without limitation, We Can Ride Inc.’s alleged failure to comply with applicable laws and regulations or any liability for personal injury, death or property damage which results from the ordinary negligence of We Can Ride, Inc. or its Representatives.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;b&gt; IN NO EVENT SHALL WE CAN RIDE, INC. HAVE ANY LIABILITY FOR CONSEQUENTIAL, INDIRECT, SPECIAL, OR PUNITIVE DAMAGES, WHETHER BASED IN TORT OR CONTRACT, OR WHETHER WE CAN RIDE, INC. KNEW OR SHOULD HAVE KNOWN THE LIKELIHOOD OF SUCH DAMAGES. &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;b&gt;OTHER&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;We Can Ride, Inc. does not assume any responsibility to provide Participant with financial or other assistance, including, but not limited to, medical insurance, health insurance, or disability benefits (other than as may be specified in a written employment agreement). We Can Ride, Inc. shall not be liable for the loss of, theft of, or damages to any personal property of Participant. This Release shall be governed by and construed in accordance with the laws of the State of Minnesota and is intended to be as broad and inclusive as permitted by law. If any of the provisions of this Release is held invalid, illegal or unenforceable, the validity, legality or enforceability of the remaining provisions shall not be affected.&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: left;&quot;&gt;{!GetWaiver.Description__c}&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>GoverningLawTXT</name>
-            <fieldText>&lt;div align=&quot;LEFT&quot;&gt;&lt;strong&gt;BY SIGNING THIS RELEASE, I EXPRESSLY STATE THAT I HAVE READ AND UNDERSTAND ITS TERMS AND THAT I HAVE GIVEN UP SUBSTANTIAL RIGHTS AND THAT I INDICATE MY INTENT TO ENTER INTO THIS RELEASE KNOWINGLY AND VOLUNTARILY.&lt;/strong&gt;&lt;/div&gt;
-&lt;div align=&quot;LEFT&quot;&gt;&amp;nbsp;&lt;/div&gt;
-
-&lt;div align=&quot;LEFT&quot;&gt;&lt;strong&gt;IF SIGNING AS PARENT/GUARDIAN, BY SIGNING THIS RELEASE, I CERTIFY THAT I AM THE PARENT OR LEGAL GUARDIAN OF THE PARTICIPANT, THAT I HAVE LEGAL AUTHORITY OVER PARTICIPANT, THAT I HAVE READ AND UNDERSTAND THE TERMS OF THIS RELEASE, AND THAT I FREELY SIGN THIS RELEASE AND WILL ABIDE BY ITS TERMS FOR MYSELF AND ON BEHALF OF THE PARTICIPANT. &lt;/strong&gt;&lt;/div&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: left;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;strong&gt;BY SIGNING THIS RELEASE, I EXPRESSLY STATE THAT I HAVE READ AND UNDERSTAND ITS TERMS AND THAT I HAVE GIVEN UP SUBSTANTIAL RIGHTS AND THAT I INDICATE MY INTENT TO ENTER INTO THIS RELEASE KNOWINGLY AND VOLUNTARILY.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&amp;nbsp;&lt;/p&gt;&lt;p style=&quot;text-align: left;&quot;&gt;&lt;strong&gt;IF SIGNING AS PARENT/GUARDIAN, BY SIGNING THIS RELEASE, I CERTIFY THAT I AM THE PARENT OR LEGAL GUARDIAN OF THE PARTICIPANT, THAT I HAVE LEGAL AUTHORITY OVER PARTICIPANT, THAT I HAVE READ AND UNDERSTAND THE TERMS OF THIS RELEASE, AND THAT I FREELY SIGN THIS RELEASE AND WILL ABIDE BY ITS TERMS FOR MYSELF AND ON BEHALF OF THE PARTICIPANT. &lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -951,7 +1155,7 @@
         </fields>
         <pausedText>Want to comeback later?</pausedText>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>beforeemail</name>
@@ -963,251 +1167,11 @@
         <allowPause>true</allowPause>
         <fields>
             <name>DispTextBeforeEmail</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Your email address is currently on file, we have sent you an email to &lt;/b&gt;({!SendEmailAddress}) &lt;b style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;please click on the link in your inbox.&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Your email address is currently on file, we have sent you an email to &lt;/strong&gt;({!SendEmailAddress}).&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt; If you have not completed your onboarding contact angelm@wecanride.org&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
-    </screens>
-    <screens>
-        <name>CONFIDENTIALITY_RELEASE</name>
-        <label>ACKNOWLEDGEMENT OF HANDBOOK AND CONFIDENTIALITY POLICY</label>
-        <locationX>1197</locationX>
-        <locationY>1469</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <connector>
-            <targetReference>PHOTO_RELEASE</targetReference>
-        </connector>
-        <fields>
-            <name>CONFIDENTIALITYRELEASEText</name>
-            <fieldText>I have received a current copy of the We Can Ride, Inc. Volunteer Handbook that contains volunteer policies and procedures, including, without limitation, the Confidentiality Policy. I acknowledge that I have read the Volunteer Handbook and understand that I am responsible for acting in accordance with the policies and procedures of We Can Ride, Inc.
-We Can Ride, Inc. retains the right to modify, amend, or change policies and procedures in the Volunteer Handbook at any time. Volunteers will be notified in advance of any changes.
-The Handbook can we found on www.wecanride.org under Volunteer information.</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>CONFIDENTIALITY_RELEASE_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>CONFIDENTIALITY_RELEASE_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>CONFIDENTIALITY_RELEASE_Section1_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>ConfReleaseDate</name>
-                    <dataType>Date</dataType>
-                    <fieldText>Date</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                    <validationRule>
-                        <errorMessage>You can&apos;t enter dates in the future</errorMessage>
-                        <formulaExpression> {!ConfReleaseDate} &lt;= TODAY ()</formulaExpression>
-                    </validationRule>
-                </fields>
-                <fields>
-                    <name>ConfReleaseAgree</name>
-                    <dataType>Boolean</dataType>
-                    <fieldText>Agree</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                    <validationRule>
-                        <errorMessage>You need to agree before continuing</errorMessage>
-                        <formulaExpression>{!ConfReleaseAgree}</formulaExpression>
-                    </validationRule>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>CONFIDENTIALITY_RELEASE_Section1_Column3</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>Emergency_Medical_Treatment</name>
-        <label>Emergencies</label>
-        <locationX>1196</locationX>
-        <locationY>1747</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <connector>
-            <targetReference>Assumption_of_Risk</targetReference>
-        </connector>
-        <fields>
-            <name>EmergencyMedicalTreatmentTXT</name>
-            <fieldText>&lt;DIV ALIGN=&quot;CENTER&quot;&gt;&lt;B&gt;Emergencies &lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;
-&lt;DIV ALIGN=&quot;CENTER&quot;&gt;In case of an emergency, this would go with you to the hospital.&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>EmergencyContact</name>
-            <fieldText>Please list two people who may be contacted in case of emergency:</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Em1</name>
-            <fieldText>First Emergency Contact</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>EmergencyContact1Name</name>
-            <dataType>String</dataType>
-            <fieldText>Name</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>EmergencyContact1RelationBIS</name>
-            <choiceReferences>Relationship1</choiceReferences>
-            <choiceReferences>None</choiceReferences>
-            <dataType>String</dataType>
-            <defaultSelectedChoiceReference>None</defaultSelectedChoiceReference>
-            <fieldText>Relationship</fieldText>
-            <fieldType>DropdownBox</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>Em1Phone</name>
-            <dataType>String</dataType>
-            <fieldText>Phone</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>EM2</name>
-            <fieldText>Second Emergency Contact</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>EmergencyContact2Name</name>
-            <dataType>String</dataType>
-            <fieldText>Name</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <fields>
-            <name>EmergencyContact2RelationBIS</name>
-            <choiceReferences>relationship2</choiceReferences>
-            <choiceReferences>None</choiceReferences>
-            <dataType>String</dataType>
-            <defaultSelectedChoiceReference>None</defaultSelectedChoiceReference>
-            <fieldText>Relationship</fieldText>
-            <fieldType>DropdownBox</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
-        <fields>
-            <name>EM2phone</name>
-            <dataType>String</dataType>
-            <fieldText>Phone</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <fields>
-            <name>ConsenttoMedicalTreatmentTXT</name>
-            <fieldText>&lt;DIV ALIGN=&quot;CENTER&quot;&gt;
-  &lt;B&gt;Acknowledgement and Consent&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;
-&lt;DIV ALIGN=&quot;LEFT&quot;&gt;I acknowledge and consent that We Can Ride, Inc. can take reasonable steps to seek medical care and transportation for me if necessary. &lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Emergency_Medical_Treatment_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>Emergency_Medical_Treatment_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>Emergency_Medical_Treatment_Section1_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>MedicalConsentDate</name>
-                    <dataType>Date</dataType>
-                    <fieldText>Date</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                </fields>
-                <fields>
-                    <name>Medical_Consent</name>
-                    <choiceReferences>None</choiceReferences>
-                    <choiceReferences>Consent</choiceReferences>
-                    <dataType>String</dataType>
-                    <defaultSelectedChoiceReference>None</defaultSelectedChoiceReference>
-                    <fieldText>Consent</fieldText>
-                    <fieldType>DropdownBox</fieldType>
-                    <isRequired>true</isRequired>
-                </fields>
-                <fields>
-                    <name>PARENTGUARDIANSELFConcent</name>
-                    <choiceReferences>Parent</choiceReferences>
-                    <choiceReferences>Guardian</choiceReferences>
-                    <choiceReferences>Self</choiceReferences>
-                    <choiceReferences>None</choiceReferences>
-                    <dataType>String</dataType>
-                    <defaultSelectedChoiceReference>None</defaultSelectedChoiceReference>
-                    <fieldText>Relationship</fieldText>
-                    <fieldType>DropdownBox</fieldType>
-                    <isRequired>true</isRequired>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>Emergency_Medical_Treatment_Section1_Column3</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
     </screens>
     <screens>
         <name>Employment_Information</name>
@@ -1222,8 +1186,7 @@ The Handbook can we found on www.wecanride.org under Volunteer information.</fie
         </connector>
         <fields>
             <name>EmployerInfo</name>
-            <fieldText>&lt;div align=&quot;CENTER&quot;&gt;&lt;strong&gt;EMPLOYMENT INFORMATION&lt;/strong&gt;&lt;/div&gt;
-&lt;div align=&quot;LEFT&quot;&gt;This helps us with grants and tracking employer matching gift programs.&lt;/div&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;EMPLOYMENT INFORMATION&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;This helps us with grants and tracking employer-matching gift programs.&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -1281,26 +1244,62 @@ The Handbook can we found on www.wecanride.org under Volunteer information.</fie
             <isRequired>false</isRequired>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
-        <name>EnterGuardianEmail</name>
-        <label>EnterGuardianEmail</label>
-        <locationX>1534</locationX>
-        <locationY>614</locationY>
-        <allowBack>false</allowBack>
+        <name>Existing_VolInfo</name>
+        <label>Existing VolInfo</label>
+        <locationX>864</locationX>
+        <locationY>2163</locationY>
+        <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
-        <connector>
-            <targetReference>Parent_Guardian_Info</targetReference>
-        </connector>
         <fields>
-            <name>textdisplayguardianemail</name>
-            <fieldText>Please enter an email address if you desire to be copied on communications</fieldText>
-            <fieldType>DisplayText</fieldType>
+            <name>Existing_VolInfo_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Existing_VolInfo_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>4</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Existing_VolInfo_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Error</name>
+                    <fieldText>&lt;p&gt;There is an error with your registration, please contact angelm@wecanride.com to complete your registration.&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;VolInfo Error&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;{!$Flow.FaultMessage}&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>4</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Existing_VolInfo_Section1_Column3</name>
+                <fieldType>Region</fieldType>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>4</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>MinorScreenRefusal</name>
@@ -1312,26 +1311,26 @@ The Handbook can we found on www.wecanride.org under Volunteer information.</fie
         <allowPause>true</allowPause>
         <fields>
             <name>MinorNotice</name>
-            <fieldText>Thank you for your interest. Unfortunately, you must be at least 14 to volunteer with We Can Ride.</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 14px;&quot;&gt;Thank you for being so interested. Unfortunately, you must be at least 14 to volunteer with We Can Ride.&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>Parent_Guardian_Info</name>
         <label>Parent/Guardian Information</label>
-        <locationX>1187</locationX>
-        <locationY>648</locationY>
+        <locationX>1195</locationX>
+        <locationY>761</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>GuradianEmailValidation</targetReference>
+            <targetReference>Employment_Information</targetReference>
         </connector>
         <fields>
             <name>ParentGuardianInfo</name>
-            <fieldText>Anyone between 14-18 will need to enter a Parent or Guardian information.</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;Anyone between 14-18 will need to enter a Parent or Guardian information.&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -1371,178 +1370,20 @@ The Handbook can we found on www.wecanride.org under Volunteer information.</fie
             <dataType>String</dataType>
             <fieldText>Email</fieldText>
             <fieldType>InputField</fieldType>
-            <isRequired>true</isRequired>
+            <isRequired>false</isRequired>
             <validationRule>
                 <errorMessage>Please type a valid email address.</errorMessage>
                 <formulaExpression>REGEX({!Email},&quot;[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}&quot;)</formulaExpression>
             </validationRule>
         </fields>
-        <fields>
-            <name>GuardianEmailCC</name>
-            <choiceReferences>None</choiceReferences>
-            <choiceReferences>ChoiceYes</choiceReferences>
-            <choiceReferences>ChoiceNo</choiceReferences>
-            <dataType>String</dataType>
-            <defaultSelectedChoiceReference>None</defaultSelectedChoiceReference>
-            <fieldText>I WISH TO BE COPIED ON EMAIL</fieldText>
-            <fieldType>DropdownBox</fieldType>
-            <isRequired>true</isRequired>
-        </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
-    </screens>
-    <screens>
-        <name>PHOTO_RELEASE</name>
-        <label>PHOTO RELEASE</label>
-        <locationX>1197</locationX>
-        <locationY>1604</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <allowPause>true</allowPause>
-        <connector>
-            <targetReference>Emergency_Medical_Treatment</targetReference>
-        </connector>
-        <fields>
-            <name>PhotoReleaseHeader</name>
-            <fieldText>&lt;DIV ALIGN=&quot;CENTER&quot;&gt;
-&lt;B&gt;PHOTO RELEASE&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>PHOTO_RELEASE_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>PHOTO_RELEASE_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>PHOTO_RELEASE_Section1_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>AgreePhoto</name>
-                    <dataType>Boolean</dataType>
-                    <fieldText>I Do</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                    <validationRule>
-                        <errorMessage>You have to select at least one option, but not both</errorMessage>
-                        <formulaExpression>OR(
-       AND(
-                 {!AgreePhoto},
-                 ({!Do_Not_Agree}=False)
-                  ),
-       AND(
-                 {!Do_Not_Agree},
-                 ({!AgreePhoto}=False)
-                  )
-)</formulaExpression>
-                    </validationRule>
-                </fields>
-                <fields>
-                    <name>Do_Not_Agree</name>
-                    <dataType>Boolean</dataType>
-                    <fieldText>I Do Not</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>PHOTO_RELEASE_Section1_Column3</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
-        </fields>
-        <fields>
-            <name>PHOTORELEASETxt</name>
-            <fieldText>&lt;DIV ALIGN=&quot;CENTER&quot;&gt;
-  consent to and grant my permission for We Can Ride, Inc. to use Volunteer’s and my photograph and to publicly distribute any and all photographs of myself or others for whom I am authorized to give consent, including the use of audio/visual materials for promotion, education, organized events, marketing, websites and social media, and exhibition or any other use to benefit We Can Ride.&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>PHOTO_RELEASE_Section2</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>PHOTO_RELEASE_Section2_Column1</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>PHOTO_RELEASE_Section2_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>PhotoReleaseDate</name>
-                    <dataType>Date</dataType>
-                    <fieldText>Date</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                    <validationRule>
-                        <errorMessage>You can&apos;t enter dates in the future</errorMessage>
-                        <formulaExpression>{!PhotoReleaseDate}&lt;= TODAY ()</formulaExpression>
-                    </validationRule>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>PHOTO_RELEASE_Section2_Column3</name>
-                <fieldType>Region</fieldType>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>4</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
-        </fields>
-        <fields>
-            <name>Guardian_text</name>
-            <fieldText>Parent/Guardian must &quot;Consent&quot; if Volunteer is under 18</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>Skills</name>
         <label>Skills/Abilities/</label>
-        <locationX>1194</locationX>
-        <locationY>1199</locationY>
+        <locationX>1193</locationX>
+        <locationY>1360</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1920,18 +1761,17 @@ The Handbook can we found on www.wecanride.org under Volunteer information.</fie
         <name>WalkLiftGarning</name>
         <label>Abilities for Class and Feeding</label>
         <locationX>1707</locationX>
-        <locationY>1200</locationY>
+        <locationY>1363</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <fields>
             <name>walkliftwarningText</name>
-            <fieldText>You have indicated you cannot meet one of the minimum requirements to volunteer in class or feed.
-However, we would welcome you volunteering in other ways (office, events). If you wish to do these, please click Previous to edit your entry. Or click Finish to cancel your registration.</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;You seem to be unable to meet one of the minimum requirements to volunteer in class or feed.&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong&gt;However, we would welcome you volunteering in other ways (office, events). If you&apos;d like to do these, please click Previous to edit your entry. Or click Finish to cancel your registration.&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <screens>
         <name>Welcome_Back</name>
@@ -1946,7 +1786,7 @@ However, we would welcome you volunteering in other ways (office, events). If yo
         </connector>
         <fields>
             <name>WelcomeMsg</name>
-            <fieldText>&lt;p&gt;&lt;b style=&quot;font-size: 11pt; font-family: Arial; color: rgb(0, 0, 0); background-color: transparent;&quot;&gt;Welcome! Please complete the online registration to Volunteer with We Can Ride.&amp;nbsp;&lt;/b&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;background-color: transparent; color: rgb(0, 0, 0); font-family: Arial; font-size: 11pt;&quot;&gt;Welcome! Please complete the online registration to Volunteer with We Can Ride.&amp;nbsp;&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -1996,11 +1836,11 @@ However, we would welcome you volunteering in other ways (office, events). If yo
             <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>true</showFooter>
-        <showHeader>true</showHeader>
+        <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>50</locationX>
-        <locationY>356</locationY>
+        <locationX>110</locationX>
+        <locationY>359</locationY>
         <connector>
             <targetReference>Welcome_Back</targetReference>
         </connector>
@@ -2009,7 +1849,7 @@ However, we would welcome you volunteering in other ways (office, events). If yo
     <textTemplates>
         <name>emailBody</name>
         <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;p&gt;You have a volunteer record with We Can Ride. Please click on the following link to update your record details. Thank you!&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;https://wecanride.force.com/forms/s/contact?Id={!sobjContact.Id}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;The We Can Ride Volunteer Team&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;color: rgb(35, 38, 41); font-family: -apple-system, &amp;quot;system-ui&amp;quot;, &amp;quot;Segoe UI&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, sans-serif; font-size: 15px; background-color: rgb(255, 255, 255);&quot;&gt;﻿&lt;/span&gt;&lt;/p&gt;</text>
+        <text>&lt;p style=&quot;text-align: center;&quot;&gt;You have a volunteer record with We Can Ride. &lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;If you have not completed your initial training, please contact &lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 12px; font-family: &amp;quot;Google Sans&amp;quot;, Roboto, RobotoDraft, Helvetica, Arial, sans-serif; color: rgb(94, 94, 94);&quot;&gt;angelm@wecanride.org for the next steps.&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;img src=&quot;https://wecanride--partial.sandbox.file.force.com/sfc/servlet.shepherd/version/download/068Rt000000pBvu?asPdf=false&amp;amp;operationContext=CHATTER&quot; alt=&quot;wcr-trans-lg small.png&quot;&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 15px; font-family: -apple-system, &amp;quot;system-ui&amp;quot;, &amp;quot;Segoe UI&amp;quot;, &amp;quot;Liberation Sans&amp;quot;, sans-serif; color: rgb(35, 38, 41);&quot;&gt;﻿&lt;/span&gt;&lt;/p&gt;</text>
     </textTemplates>
     <textTemplates>
         <name>emailnotification</name>
@@ -2059,13 +1899,6 @@ However, we would welcome you volunteering in other ways (office, events). If yo
     </variables>
     <variables>
         <name>varContactID</name>
-        <dataType>String</dataType>
-        <isCollection>false</isCollection>
-        <isInput>false</isInput>
-        <isOutput>false</isOutput>
-    </variables>
-    <variables>
-        <name>volinfoRecordID</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>false</isInput>
