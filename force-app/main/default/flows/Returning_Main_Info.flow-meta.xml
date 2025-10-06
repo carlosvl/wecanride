@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>61.0</apiVersion>
+    <assignments>
+        <name>Assignment_for_Riders</name>
+        <label>Assignment for Riders</label>
+        <locationX>182</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>varBirthDate</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetContact.Birthdate</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>varWeight</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>GetContact.Weight__c</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>New_Client_Info</targetReference>
+        </connector>
+    </assignments>
     <choices>
         <name>Father</name>
         <choiceText>Father</choiceText>
@@ -26,6 +49,14 @@
         </value>
     </choices>
     <choices>
+        <name>No</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
         <name>Yes</name>
         <choiceText>Yes</choiceText>
         <dataType>String</dataType>
@@ -34,10 +65,35 @@
         </value>
     </choices>
     <decisions>
+        <name>Is_Client</name>
+        <label>Is Client</label>
+        <locationX>182</locationX>
+        <locationY>974</locationY>
+        <defaultConnector>
+            <targetReference>UpdateWeight_Birthdate1</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Yes</defaultConnectorLabel>
+        <rules>
+            <name>NoClient</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetClientRecord.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>UpdateWeight_Birthdate</targetReference>
+            </connector>
+            <label>No</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>WeightLimit</name>
         <label>WeightLimit</label>
         <locationX>182</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <defaultConnector>
             <targetReference>UpdateContact</targetReference>
         </defaultConnector>
@@ -49,7 +105,7 @@
                 <leftValueReference>WeightN</leftValueReference>
                 <operator>GreaterThanOrEqualTo</operator>
                 <rightValue>
-                    <numberValue>195.0</numberValue>
+                    <numberValue>140.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -101,12 +157,8 @@
         <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>New_Client_Info</targetReference>
+            <targetReference>Assignment_for_Riders</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Error</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>ClientContact__c</field>
@@ -144,7 +196,7 @@
         <name>UpdateClientRecord</name>
         <label>UpdateClientRecord</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>1190</locationY>
         <faultConnector>
             <targetReference>Error</targetReference>
         </faultConnector>
@@ -163,21 +215,9 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Height__c</field>
-            <value>
-                <elementReference>Height</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>Name__c</field>
             <value>
                 <stringValue>{!First_Name}  {!Last_Name}</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Weight__c</field>
-            <value>
-                <elementReference>WeightN</elementReference>
             </value>
         </inputAssignments>
         <object>Riders__c</object>
@@ -185,10 +225,10 @@
     <recordUpdates>
         <name>UpdateContact</name>
         <label>UpdateContact</label>
-        <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>866</locationY>
         <connector>
-            <targetReference>UpdateClientRecord</targetReference>
+            <targetReference>Is_Client</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
@@ -215,6 +255,18 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Feeding_Tube__c</field>
+            <value>
+                <elementReference>Feeding_Tube</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Feet__c</field>
+            <value>
+                <elementReference>Feet</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>FirstName</field>
             <value>
                 <elementReference>First_Name</elementReference>
@@ -227,15 +279,15 @@
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>Height__c</field>
-            <value>
-                <elementReference>Height</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>HomePhone</field>
             <value>
                 <elementReference>Phone.value</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Inches__c</field>
+            <value>
+                <elementReference>Inches</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -275,6 +327,12 @@
             </value>
         </inputAssignments>
         <inputAssignments>
+            <field>Preferred_Name__c</field>
+            <value>
+                <elementReference>Preferred_Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Weight__c</field>
             <value>
                 <elementReference>WeightN</elementReference>
@@ -288,12 +346,69 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
-    <runInMode>SystemModeWithoutSharing</runInMode>
+    <recordUpdates>
+        <name>UpdateWeight_Birthdate</name>
+        <label>UpdateWeight&amp;Birthdate</label>
+        <locationX>50</locationX>
+        <locationY>1082</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetContact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Birthdate</field>
+            <value>
+                <elementReference>varBirthDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Weight__c</field>
+            <value>
+                <elementReference>WeightN</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>UpdateWeight_Birthdate1</name>
+        <label>UpdateWeight&amp;Birthdate</label>
+        <locationX>314</locationX>
+        <locationY>1082</locationY>
+        <connector>
+            <targetReference>UpdateClientRecord</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>GetContact.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Birthdate</field>
+            <value>
+                <elementReference>varBirthDate</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Weight__c</field>
+            <value>
+                <elementReference>WeightN</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Contact</object>
+    </recordUpdates>
+    <runInMode>DefaultMode</runInMode>
     <screens>
         <name>Error</name>
         <label>Error</label>
         <locationX>578</locationX>
-        <locationY>782</locationY>
+        <locationY>1298</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -309,7 +424,7 @@
         <name>New_Client_Info</name>
         <label>New Client Info</label>
         <locationX>182</locationX>
-        <locationY>350</locationY>
+        <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -341,6 +456,43 @@
                     <fieldText>Last Name</fieldText>
                     <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
+                </fields>
+                <fields>
+                    <name>Preferred_Name</name>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>GetContact.Preferred_Name__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Preferred Name</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>false</isRequired>
+                </fields>
+                <fields>
+                    <name>hw_msg</name>
+                    <fieldText>&lt;p&gt;Height in Feet and Inches&lt;/p&gt;</fieldText>
+                    <fieldType>DisplayText</fieldType>
+                </fields>
+                <fields>
+                    <name>Feet</name>
+                    <dataType>Number</dataType>
+                    <defaultValue>
+                        <elementReference>GetContact.Feet__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Feet</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                    <scale>0</scale>
+                </fields>
+                <fields>
+                    <name>Inches</name>
+                    <dataType>Number</dataType>
+                    <defaultValue>
+                        <elementReference>GetContact.Inches__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Inches</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                    <scale>0</scale>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -378,7 +530,7 @@
                         <formulaExpression>{!Date_of_Birth} &lt;= {!TwentyOneMonths}</formulaExpression>
                     </validationRule>
                     <visibilityRule>
-                        <conditionLogic>and</conditionLogic>
+                        <conditionLogic>or</conditionLogic>
                         <conditions>
                             <leftValueReference>GetContact.Client__c</leftValueReference>
                             <operator>EqualTo</operator>
@@ -386,21 +538,8 @@
                                 <booleanValue>true</booleanValue>
                             </rightValue>
                         </conditions>
-                    </visibilityRule>
-                </fields>
-                <fields>
-                    <name>Height</name>
-                    <dataType>String</dataType>
-                    <defaultValue>
-                        <elementReference>GetContact.Height__c</elementReference>
-                    </defaultValue>
-                    <fieldText>Height</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <isRequired>true</isRequired>
-                    <visibilityRule>
-                        <conditionLogic>and</conditionLogic>
                         <conditions>
-                            <leftValueReference>GetContact.Client__c</leftValueReference>
+                            <leftValueReference>GetContact.Prospect__c</leftValueReference>
                             <operator>EqualTo</operator>
                             <rightValue>
                                 <booleanValue>true</booleanValue>
@@ -419,7 +558,7 @@
                     <isRequired>true</isRequired>
                     <scale>0</scale>
                     <visibilityRule>
-                        <conditionLogic>and</conditionLogic>
+                        <conditionLogic>or</conditionLogic>
                         <conditions>
                             <leftValueReference>GetContact.Client__c</leftValueReference>
                             <operator>EqualTo</operator>
@@ -427,7 +566,26 @@
                                 <booleanValue>true</booleanValue>
                             </rightValue>
                         </conditions>
+                        <conditions>
+                            <leftValueReference>GetContact.Prospect__c</leftValueReference>
+                            <operator>EqualTo</operator>
+                            <rightValue>
+                                <booleanValue>true</booleanValue>
+                            </rightValue>
+                        </conditions>
                     </visibilityRule>
+                </fields>
+                <fields>
+                    <name>Feeding_Tube</name>
+                    <choiceReferences>Yes</choiceReferences>
+                    <choiceReferences>No</choiceReferences>
+                    <dataType>String</dataType>
+                    <defaultValue>
+                        <elementReference>GetContact.Feeding_Tube__c</elementReference>
+                    </defaultValue>
+                    <fieldText>Feeding Tube</fieldText>
+                    <fieldType>DropdownBox</fieldType>
+                    <isRequired>true</isRequired>
                 </fields>
                 <inputParameters>
                     <name>width</name>
@@ -673,13 +831,12 @@
         <name>WeightLimitPage</name>
         <label>WeightLimit</label>
         <locationX>50</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <isGoTo>true</isGoTo>
-            <targetReference>New_Client_Info</targetReference>
+            <targetReference>UpdateContact</targetReference>
         </connector>
         <fields>
             <name>WLDisp</name>
@@ -698,10 +855,25 @@
     </start>
     <status>Active</status>
     <variables>
+        <name>varBirthDate</name>
+        <dataType>Date</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>VarContactID</name>
         <dataType>String</dataType>
         <isCollection>false</isCollection>
         <isInput>true</isInput>
         <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>varWeight</name>
+        <dataType>Number</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <scale>2</scale>
     </variables>
 </Flow>

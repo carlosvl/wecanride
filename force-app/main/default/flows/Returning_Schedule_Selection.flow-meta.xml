@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>57.0</apiVersion>
+    <apiVersion>60.0</apiVersion>
     <assignments>
         <name>Assign_Requested</name>
         <label>Assign Requested</label>
-        <locationX>1922</locationX>
+        <locationX>2252</locationX>
         <locationY>2030</locationY>
         <assignmentItems>
             <assignToReference>varWaitListStatus</assignToReference>
@@ -20,7 +20,7 @@
     <assignments>
         <name>Assign_Wait_List</name>
         <label>Assign Wait List</label>
-        <locationX>1658</locationX>
+        <locationX>1988</locationX>
         <locationY>2030</locationY>
         <assignmentItems>
             <assignToReference>varWaitListStatus</assignToReference>
@@ -180,7 +180,7 @@
     <assignments>
         <name>Create_Collection</name>
         <label>Create Collection</label>
-        <locationX>1790</locationX>
+        <locationX>2120</locationX>
         <locationY>2438</locationY>
         <assignmentItems>
             <assignToReference>ColSelectedClasses</assignToReference>
@@ -193,6 +193,20 @@
             <targetReference>Loop_Classes</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>EraseValue</name>
+        <label>EraseValue</label>
+        <locationX>1064</locationX>
+        <locationY>1490</locationY>
+        <assignmentItems>
+            <assignToReference>TypeOfClass.value</assignToReference>
+            <operator>Assign</operator>
+        </assignmentItems>
+        <connector>
+            <isGoTo>true</isGoTo>
+            <targetReference>Session</targetReference>
+        </connector>
+    </assignments>
     <decisions>
         <name>Classes_Selected</name>
         <label>Classes Selected</label>
@@ -200,17 +214,53 @@
         <locationY>1382</locationY>
         <defaultConnector>
             <isGoTo>true</isGoTo>
-            <targetReference>Main</targetReference>
+            <targetReference>Show_Classes</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No</defaultConnectorLabel>
+        <rules>
+            <name>re_select_Session</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Spring</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Winter</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fall</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Summer</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>EraseValue</targetReference>
+            </connector>
+            <label>re select Session</label>
+        </rules>
         <rules>
             <name>YesClass</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>ClassSelComp.outputSelectedRows</leftValueReference>
-                <operator>IsNull</operator>
+                <leftValueReference>ClassSelComp.numberOfRowsSelected</leftValueReference>
+                <operator>GreaterThan</operator>
                 <rightValue>
-                    <booleanValue>false</booleanValue>
+                    <numberValue>0.0</numberValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -222,7 +272,7 @@
     <decisions>
         <name>ExistingReg</name>
         <label>ExistingReg</label>
-        <locationX>1636</locationX>
+        <locationX>1966</locationX>
         <locationY>1814</locationY>
         <defaultConnector>
             <targetReference>WaitList</targetReference>
@@ -280,9 +330,16 @@
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Spring</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>TypeOfClass.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Spring</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Spring</stringValue>
@@ -295,9 +352,16 @@
         </rules>
         <rules>
             <name>Summer</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>TypeOfClass.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Summer</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Summer</stringValue>
@@ -310,9 +374,16 @@
         </rules>
         <rules>
             <name>Fall</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>TypeOfClass.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Fall</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Fall</stringValue>
@@ -325,9 +396,16 @@
         </rules>
         <rules>
             <name>Winter</name>
-            <conditionLogic>and</conditionLogic>
+            <conditionLogic>or</conditionLogic>
             <conditions>
                 <leftValueReference>TypeOfClass.value</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Winter</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>ReSelectSession.value</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
                     <stringValue>Winter</stringValue>
@@ -510,7 +588,7 @@
     <decisions>
         <name>WaitList</name>
         <label>WaitList</label>
-        <locationX>1790</locationX>
+        <locationX>2120</locationX>
         <locationY>1922</locationY>
         <defaultConnector>
             <targetReference>Assign_Requested</targetReference>
@@ -546,7 +624,7 @@
     <loops>
         <name>Loop_Classes</name>
         <label>Loop Classes</label>
-        <locationX>1394</locationX>
+        <locationX>1724</locationX>
         <locationY>1490</locationY>
         <collectionReference>ClassSelComp.outputSelectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -579,7 +657,7 @@
     <recordCreates>
         <name>create_class_registration</name>
         <label>create class registration</label>
-        <locationX>1790</locationX>
+        <locationX>2120</locationX>
         <locationY>2222</locationY>
         <connector>
             <targetReference>GetCurrentClass</targetReference>
@@ -608,7 +686,7 @@
     <recordLookups>
         <name>Find_Existing_Reg</name>
         <label>Find Existing Reg</label>
-        <locationX>1636</locationX>
+        <locationX>1966</locationX>
         <locationY>1706</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -686,7 +764,7 @@
         <connector>
             <targetReference>AssignmentFall</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6) and not (7 or 8)</filterLogic>
+        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6 or 7) and not (8 or 9)</filterLogic>
         <filters>
             <field>Class_Start__c</field>
             <operator>GreaterThanOrEqualTo</operator>
@@ -727,6 +805,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Get_Client.Level_Calculated__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Class_Level__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SemiPrivate</stringValue>
             </value>
         </filters>
         <filters>
@@ -825,7 +910,7 @@
         <connector>
             <targetReference>AssignmentSpring</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6) and not (7 or 8)</filterLogic>
+        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6 or 7) and not (8 or 9)</filterLogic>
         <filters>
             <field>Class_Start__c</field>
             <operator>GreaterThanOrEqualTo</operator>
@@ -866,6 +951,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Get_Client.Level_Calculated__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Class_Level__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SemiPrivate</stringValue>
             </value>
         </filters>
         <filters>
@@ -941,7 +1033,7 @@
         <connector>
             <targetReference>AssignmentSummer</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6) and not ( 7 or 8)</filterLogic>
+        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6 or 7) and not ( 8 or 9)</filterLogic>
         <filters>
             <field>Class_Start__c</field>
             <operator>GreaterThanOrEqualTo</operator>
@@ -982,6 +1074,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Get_Client.Level_Calculated__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Class_Level__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SemiPrivate</stringValue>
             </value>
         </filters>
         <filters>
@@ -1057,7 +1156,7 @@
         <connector>
             <targetReference>AssignmentWinter</targetReference>
         </connector>
-        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6) and not (7 or 8)</filterLogic>
+        <filterLogic>1 AND 2 AND (3 or 4 or 5 or 6 or 7) and not (8 or 9)</filterLogic>
         <filters>
             <field>Class_Start__c</field>
             <operator>GreaterThanOrEqualTo</operator>
@@ -1098,6 +1197,13 @@
             <operator>EqualTo</operator>
             <value>
                 <elementReference>Get_Client.Level_Calculated__c</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>Class_Level__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>SemiPrivate</stringValue>
             </value>
         </filters>
         <filters>
@@ -1167,7 +1273,7 @@
     <recordLookups>
         <name>GetClassInfo</name>
         <label>GetClassInfo</label>
-        <locationX>1636</locationX>
+        <locationX>1966</locationX>
         <locationY>1598</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1209,7 +1315,7 @@
     <recordLookups>
         <name>GetCurrentClass</name>
         <label>GetCurrentClass</label>
-        <locationX>1790</locationX>
+        <locationX>2120</locationX>
         <locationY>2330</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
@@ -1230,7 +1336,7 @@
     <recordUpdates>
         <name>UpdatePreference</name>
         <label>UpdatePreference</label>
-        <locationX>1394</locationX>
+        <locationX>1724</locationX>
         <locationY>2822</locationY>
         <connector>
             <isGoTo>true</isGoTo>
@@ -1238,7 +1344,7 @@
         </connector>
         <inputReference>SelectedClassesOrder.outputEditedRows</inputReference>
     </recordUpdates>
-    <runInMode>SystemModeWithoutSharing</runInMode>
+    <runInMode>DefaultMode</runInMode>
     <screens>
         <name>Contact_The_Office</name>
         <label>Contact The Office</label>
@@ -1298,6 +1404,12 @@
                 <name>buttons</name>
                 <value>
                     <stringValue>[{&quot;label&quot;:&quot;Add Winter Session&quot;,&quot;value&quot;:&quot;Winter&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:0},{&quot;label&quot;:&quot;Add Spring Session&quot;,&quot;value&quot;:&quot;Spring&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:1},{&quot;label&quot;:&quot;Add Summer Session&quot;,&quot;value&quot;:&quot;Summer&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:2},{&quot;label&quot;:&quot;Add Fall Session&quot;,&quot;value&quot;:&quot;Fall&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:3}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>cssString</name>
+                <value>
+                    <stringValue>display: grid; place-items: center; font-weight: bold;</stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -1511,7 +1623,7 @@
     <screens>
         <name>Select_Order</name>
         <label>Select Order</label>
-        <locationX>1394</locationX>
+        <locationX>1724</locationX>
         <locationY>2714</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
@@ -1705,6 +1817,138 @@
             <targetReference>Classes_Selected</targetReference>
         </connector>
         <fields>
+            <name>ReSelectSession</name>
+            <extensionName>c:fsc_flowButtonBar</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>alignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>orientation</name>
+                <value>
+                    <stringValue>horizontal</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>showLines</name>
+                <value>
+                    <stringValue>below</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>actionMode</name>
+                <value>
+                    <stringValue>navigation</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>buttons</name>
+                <value>
+                    <stringValue>[{&quot;label&quot;:&quot;Add Winter Session&quot;,&quot;value&quot;:&quot;Winter&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:0},{&quot;label&quot;:&quot;Add Spring Session&quot;,&quot;value&quot;:&quot;Spring&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:1},{&quot;label&quot;:&quot;Add Summer Session&quot;,&quot;value&quot;:&quot;Summer&quot;,&quot;iconPosition&quot;:&quot;left&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:2},{&quot;label&quot;:&quot;Add Fall Session&quot;,&quot;value&quot;:&quot;Fall&quot;,&quot;iconPosition&quot;:&quot;right&quot;,&quot;variant&quot;:&quot;brand&quot;,&quot;index&quot;:3,&quot;iconName&quot;:null}]</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>cssString</name>
+                <value>
+                    <stringValue>display: grid; place-items: center; font-weight: bold;</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>MsgWinter</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;Choose your winter sessions&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>ReSelectSession.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Winter</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>TypeOfClass.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Winter</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>MsgSpring</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;Choose your spring sessions&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>ReSelectSession.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Spring</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>TypeOfClass.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Spring</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>MSgSummer</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;Choose your summer sessions&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>ReSelectSession.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Summer</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>TypeOfClass.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Summer</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>MsgFall</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;Choose your fall sessions&lt;/span&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>or</conditionLogic>
+                <conditions>
+                    <leftValueReference>ReSelectSession.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Fall</stringValue>
+                    </rightValue>
+                </conditions>
+                <conditions>
+                    <leftValueReference>TypeOfClass.value</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Fall</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
             <name>ClassSelComp</name>
             <dataTypeMappings>
                 <typeName>T</typeName>
@@ -1719,6 +1963,12 @@
                 </value>
             </inputParameters>
             <inputParameters>
+                <name>tableData</name>
+                <value>
+                    <elementReference>ClassWithSession</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
                 <name>cb_suppressBottomBar</name>
                 <value>
                     <stringValue>CB_FALSE</stringValue>
@@ -1727,13 +1977,13 @@
             <inputParameters>
                 <name>cb_navigateNextOnSave</name>
                 <value>
-                    <stringValue>CB_TRUE</stringValue>
+                    <stringValue>CB_FALSE</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>columnFields</name>
                 <value>
-                    <stringValue>Open_Spots__c,Session__c,Class_Level__c,Class_Type__c,Name,Class_Start__c,Instructor__c</stringValue>
+                    <stringValue>Open_Spots__c,Session__c,Class_Level__c,Class_Type__c,Name,Class_Start__c,Class_Duration_min__c,Instructor_Name__c</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -1745,25 +1995,13 @@
             <inputParameters>
                 <name>columnWidths</name>
                 <value>
-                    <stringValue>Open_Spots__c:126, Session__c:151, Class_Level__c:124, Class_Type__c:254, Name:270, Class_Start__c:205, Instructor__c:208</stringValue>
+                    <stringValue>Open_Spots__c:175, Session__c:150, Class_Level__c:95, Class_Type__c:245, Name:210, Class_Start__c:185, Class_Duration_min__c:110, Instructor_Name__c:175</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>columnFilters</name>
                 <value>
-                    <stringValue>All</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>cb_isRequired</name>
-                <value>
-                    <stringValue>CB_TRUE</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>cb_hideCheckboxColumn</name>
-                <value>
-                    <stringValue>CB_FALSE</stringValue>
+                    <stringValue>Open_Spots__c:true, Class_Level__c:true, Class_Type__c:true, Instructor_Name__c:true</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -1773,87 +2011,27 @@
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>tableData</name>
+                <name>cb_isRequired</name>
                 <value>
-                    <elementReference>ClassWithSession</elementReference>
+                    <stringValue>CB_FALSE</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>cb_allowNoneToBeChosen</name>
+                <name>cb_hideCheckboxColumn</name>
                 <value>
-                    <stringValue>CB_TRUE</stringValue>
+                    <stringValue>CB_FALSE</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>columnEdits</name>
+                <name>columnLabels</name>
                 <value>
-                    <stringValue>Preference__c:true</stringValue>
+                    <stringValue>Class_Duration_min__c:Duration</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>allowNoneToBeChosen</name>
+                <name>columnWraps</name>
                 <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>navigateNextOnSave</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-            <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
-        </fields>
-        <fields>
-            <name>ClassSelComp2</name>
-            <dataTypeMappings>
-                <typeName>T</typeName>
-                <typeValue>Class__c</typeValue>
-            </dataTypeMappings>
-            <extensionName>flowruntime:datatable</extensionName>
-            <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>label</name>
-                <value>
-                    <stringValue>Classes</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>selectionMode</name>
-                <value>
-                    <stringValue>MULTI_SELECT</stringValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>minRowSelection</name>
-                <value>
-                    <numberValue>1.0</numberValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>shouldDisplayLabel</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>tableData</name>
-                <value>
-                    <elementReference>ClassWithSession</elementReference>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>isShowSearchBar</name>
-                <value>
-                    <booleanValue>true</booleanValue>
-                </value>
-            </inputParameters>
-            <inputParameters>
-                <name>columns</name>
-                <value>
-                    <stringValue>[{&quot;apiName&quot;:&quot;Open_Spots__c&quot;,&quot;guid&quot;:&quot;column-b31d&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:0,&quot;label&quot;:&quot;Open Spots&quot;,&quot;type&quot;:&quot;customRichText&quot;},{&quot;apiName&quot;:&quot;Session__c&quot;,&quot;guid&quot;:&quot;column-5712&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:1,&quot;label&quot;:&quot;Session&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Class_Level__c&quot;,&quot;guid&quot;:&quot;column-8ee6&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:true,&quot;customHeaderLabel&quot;:&quot;Level&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:2,&quot;label&quot;:&quot;Class Level&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Class_Type__c&quot;,&quot;guid&quot;:&quot;column-769b&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:3,&quot;label&quot;:&quot;Class Type&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Name&quot;,&quot;guid&quot;:&quot;column-8705&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:4,&quot;label&quot;:&quot;Class Name&quot;,&quot;type&quot;:&quot;text&quot;},{&quot;apiName&quot;:&quot;Class_Start__c&quot;,&quot;guid&quot;:&quot;column-7ba9&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:5,&quot;label&quot;:&quot;Class Start&quot;,&quot;type&quot;:&quot;customDateTime&quot;},{&quot;apiName&quot;:&quot;Instructor__c&quot;,&quot;guid&quot;:&quot;column-c66e&quot;,&quot;editable&quot;:false,&quot;hasCustomHeaderLabel&quot;:false,&quot;customHeaderLabel&quot;:&quot;&quot;,&quot;wrapText&quot;:true,&quot;order&quot;:6,&quot;label&quot;:&quot;Instructor&quot;,&quot;type&quot;:&quot;customRichText&quot;}]</stringValue>
+                    <stringValue>Open_Spots__c:false, Session__c:true, Class_Level__c:true, Class_Type__c:true, Name:false, Class_Start__c:false, Class_Duration_min__c:true, Instructor_Name__c:false</stringValue>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
