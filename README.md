@@ -1,18 +1,55 @@
-# Salesforce DX Project: Next Steps
+# We Can Ride — Salesforce DX
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Therapeutic horseback riding nonprofit on Salesforce Experience Cloud. Community-facing screen flows handle client registration, returning annual paperwork, and volunteer management.
 
-## How Do You Plan to Deploy Your Changes?
+## LLM Wiki
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+This project uses the [LLM Wiki pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — a persistent, compounding knowledge base maintained by AI agents.
 
-## Configure Your Salesforce DX Project
+| Layer | Location | Purpose |
+|-------|----------|---------|
+| Raw sources | `force-app/`, `raw/sources/` | Immutable source of truth |
+| Wiki | `wiki/` | Interlinked synthesis and entity pages |
+| Schema | `AGENTS.md` | Agent conventions and workflows |
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### Quick start
 
-## Read All About It
+```bash
+# Search the wiki
+./scripts/wiki/search.sh "emergency contact permissions"
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+# Health-check wiki integrity
+./scripts/wiki/lint.sh
+```
+
+### Agent commands
+
+| Command | What it does |
+|---------|--------------|
+| **"ingest `<source>`"** | Read a source, update wiki pages, index, and log |
+| **"lint wiki"** | Run orphan/stale/drift checks |
+| **"commit"** | Auto-ingest changed metadata into wiki, then commit both |
+| Ask any project question | Agent reads `wiki/index.md` first, then relevant pages |
+
+Browse the wiki in Obsidian (open repo root as vault) or read `wiki/overview.md`.
+
+## Project structure
+
+```
+force-app/main/default/
+├── flows/           # 68 screen flows
+├── objects/         # Custom objects (Riders__c, Volunteer_Info__c, etc.)
+├── lwc/             # Lightning Web Components
+├── permissionsets/  # Community permission sets
+└── profiles/        # Experience Cloud profiles
+```
+
+## Salesforce DX
+
+- [Development models](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models)
+- [SFDX project configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm)
+- [Salesforce CLI reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+
+## Community
+
+- Site: https://wecanride.my.site.com/client/s/login

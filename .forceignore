@@ -8,7 +8,6 @@ package.xml
 **/appSwitcher/**
 **/fieldRestrictionRules/**
 **/objectTranslations/**
-**/profiles/**
 **/profilePasswordPolicy/**
 **/profileSessionSetting/**
 **/settings/**
@@ -21,7 +20,6 @@ package.xml
 *.appSwitcher
 *.rule
 *.objectTranslation
-*.profile
 *.profilePasswordPolicy
 *.profileSessionSetting
 *.sharingRules

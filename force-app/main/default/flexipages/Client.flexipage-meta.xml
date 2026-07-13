@@ -24,6 +24,9 @@
                         <valueListItems>
                             <value>Clone</value>
                         </valueListItems>
+                        <valueListItems>
+                            <value>Share</value>
+                        </valueListItems>
                     </valueList>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
@@ -399,32 +402,6 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>attachmentChecked</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>fileChecked</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>newNoteChkbox</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>noteChecked</name>
-                    <value>true</value>
-                </componentInstanceProperties>
-                <componentInstanceProperties>
-                    <name>uploadFilesCheckBox</name>
-                    <value>false</value>
-                </componentInstanceProperties>
-                <componentName>fan_astrea:NotesNAttachmentsFull</componentName>
-                <identifier>fan_astrea_NotesNAttachmentsFull</identifier>
-            </componentInstance>
-        </itemInstances>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
                     <name>parentFieldApiName</name>
                     <value>Riders__c.Id</value>
                 </componentInstanceProperties>
@@ -434,11 +411,11 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>relatedListComponentOverride</name>
-                    <value>NONE</value>
+                    <value>ADVGRID</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>rowsToDisplay</name>
-                    <value>10</value>
+                    <value>20</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>showActionBar</name>
@@ -600,16 +577,6 @@
                 </fieldInstanceProperties>
                 <fieldItem>Record.Client_Status__c</fieldItem>
                 <identifier>RecordClient_Status_cField</identifier>
-            </fieldInstance>
-        </itemInstances>
-        <itemInstances>
-            <fieldInstance>
-                <fieldInstanceProperties>
-                    <name>uiBehavior</name>
-                    <value>none</value>
-                </fieldInstanceProperties>
-                <fieldItem>Record.Diagnoses__c</fieldItem>
-                <identifier>RecordDiagnoses_cField</identifier>
             </fieldInstance>
         </itemInstances>
         <itemInstances>
@@ -870,6 +837,53 @@
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
+                    <name>DefaultPageSize</name>
+                    <value>10</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>FieldSetName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>HideOnError</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>PreventResponsiveness</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>RelationshipName</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>SDGConfiguration</name>
+                    <value>CustomObject:Diagnoses</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>SDGTag</name>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>SVGName</name>
+                    <value>standard:account</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>ShowDebug</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>Title</name>
+                    <value>Diagnoses</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>UseCache</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentName>sortablegrid:sdg</componentName>
+                <identifier>sortablegrid_sdg2</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
                     <name>columns</name>
                     <value>Facet-cad6f07e-115c-49cb-94a3-daa5cf22c377</value>
                 </componentInstanceProperties>
@@ -948,7 +962,7 @@
                 </componentInstanceProperties>
                 <componentInstanceProperties>
                     <name>sortFieldOrder</name>
-                    <value>Ascending</value>
+                    <value>Descending</value>
                 </componentInstanceProperties>
                 <componentName>lst:dynamicRelatedList</componentName>
                 <identifier>lst_dynamicRelatedList</identifier>
@@ -1040,6 +1054,23 @@
                 <identifier>RecordLastModifiedByIdField</identifier>
             </fieldInstance>
         </itemInstances>
+        <itemInstances>
+            <fieldInstance>
+                <fieldInstanceProperties>
+                    <name>uiBehavior</name>
+                    <value>none</value>
+                </fieldInstanceProperties>
+                <fieldItem>Record.Diagnoses__c</fieldItem>
+                <identifier>RecordDiagnoses_cField</identifier>
+                <visibilityRule>
+                    <criteria>
+                        <leftValue>{!$User.Username}</leftValue>
+                        <operator>CONTAINS</operator>
+                        <rightValue>clients@wecanride.org</rightValue>
+                    </criteria>
+                </visibilityRule>
+            </fieldInstance>
+        </itemInstances>
         <name>Facet-2249480f-04f9-4e93-9c2f-3b97d720cde4</name>
         <type>Facet</type>
     </flexiPageRegions>
@@ -1068,6 +1099,26 @@
         <type>Facet</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>context</name>
+                    <value>RECORD</value>
+                </componentInstanceProperties>
+                <componentName>forceChatter:publisher</componentName>
+                <identifier>forceChatter_publisher</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentInstanceProperties>
+                    <name>context</name>
+                    <value>RECORD</value>
+                </componentInstanceProperties>
+                <componentName>forceChatter:exposedFeed</componentName>
+                <identifier>forceChatter_exposedFeed</identifier>
+            </componentInstance>
+        </itemInstances>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>

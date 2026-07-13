@@ -102,6 +102,31 @@
         </connector>
     </assignments>
     <decisions>
+        <name>Has_Client_Record</name>
+        <label>Has Client Record</label>
+        <locationX>1274</locationX>
+        <locationY>500</locationY>
+        <defaultConnector>
+            <targetReference>GetActiveClientRecord</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Found</defaultConnectorLabel>
+        <rules>
+            <name>Missing_Client_Record</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>GetClient.Id</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Create_Client_Record</targetReference>
+            </connector>
+            <label>Missing</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>FoundWaiver</name>
         <label>FoundWaiver</label>
         <locationX>1365</locationX>
@@ -491,6 +516,29 @@
     </processMetadataValues>
     <processType>Flow</processType>
     <recordCreates>
+        <name>Create_Client_Record</name>
+        <label>Create Client Record</label>
+        <locationX>1274</locationX>
+        <locationY>620</locationY>
+        <connector>
+            <targetReference>GetActiveClientRecord</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>ClientContact__c</field>
+            <value>
+                <elementReference>VarContactID</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>GetContact.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Riders__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
         <name>CreateWaiver</name>
         <label>CreateWaiver</label>
         <locationX>1147</locationX>
@@ -501,7 +549,7 @@
         <inputAssignments>
             <field>Client__c</field>
             <value>
-                <elementReference>GetClient.Id</elementReference>
+                <elementReference>GetActiveClientRecord.Id</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -526,13 +574,34 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
     <recordLookups>
+        <name>GetActiveClientRecord</name>
+        <label>Get Active Client Record</label>
+        <locationX>1274</locationX>
+        <locationY>560</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>GetWaiverRecordType</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>ClientContact__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>VarContactID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Riders__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
         <name>GetClient</name>
         <label>GetClient</label>
         <locationX>1274</locationX>
         <locationY>440</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>GetWaiverRecordType</targetReference>
+            <targetReference>Has_Client_Record</targetReference>
         </connector>
         <filterLogic>and</filterLogic>
         <filters>
@@ -572,7 +641,7 @@
         <label>GetCurentClasses</label>
         <locationX>1530</locationX>
         <locationY>1025</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>countClasses</targetReference>
         </connector>
@@ -642,7 +711,7 @@
         <label>GetUpdatedClient</label>
         <locationX>1369</locationX>
         <locationY>1025</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>GetCurentClasses</targetReference>
         </connector>
@@ -693,7 +762,7 @@
             <field>Client__c</field>
             <operator>EqualTo</operator>
             <value>
-                <elementReference>GetClient.Id</elementReference>
+                <elementReference>GetActiveClientRecord.Id</elementReference>
             </value>
         </filters>
         <filters>
@@ -898,7 +967,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -946,7 +1015,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -994,7 +1063,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -1009,7 +1078,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -1057,7 +1126,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -1072,7 +1141,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -1120,7 +1189,7 @@
             <visibilityRule>
                 <conditionLogic>and</conditionLogic>
                 <conditions>
-                    <leftValueReference>GetClient.Id</leftValueReference>
+                    <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                     <operator>IsNull</operator>
                     <rightValue>
                         <booleanValue>false</booleanValue>
@@ -1141,7 +1210,7 @@
                     <visibilityRule>
                         <conditionLogic>and</conditionLogic>
                         <conditions>
-                            <leftValueReference>GetClient.Id</leftValueReference>
+                            <leftValueReference>GetActiveClientRecord.Id</leftValueReference>
                             <operator>IsNull</operator>
                             <rightValue>
                                 <booleanValue>false</booleanValue>
