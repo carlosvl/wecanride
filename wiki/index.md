@@ -43,6 +43,7 @@ Content catalog for the We Can Ride Salesforce project. Agents: read this file f
 |------|---------|
 | [[entities/permission-sets/flow-user-access]] | Base flow execution for community users |
 | [[entities/permission-sets/community-returning-flow-access]] | Returning flow access grant |
+| [[entities/permission-sets/community-waiver-year-access]] | WaiverYear custom metadata field read |
 
 ## Entities — LWC
 

@@ -46,6 +46,7 @@ Some flows use `runInMode: SystemModeWithoutSharing` to bypass sharing rules. Th
 3. Does user have CRUD on objects the flow touches? (`Riders__c`, `Contact`, `Volunteer_Info__c`)
 4. Does user have FLS on fields referenced in flow screens and record elements?
 5. For USF components: is `USF_Flow_Screen_Component_Datatable` assigned?
+6. For `GetCurrentYear` / `WaiverYear__mdt` flows: does user have `WaiverYear__mdt` custom metadata **type** access on profile or permission set?
 
 ## Related
 

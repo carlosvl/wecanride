@@ -1,0 +1,35 @@
+---
+description: Ingest wiki changes before any git commit
+alwaysApply: true
+---
+
+# Commit → Wiki Ingest
+
+When the user asks to **commit**, **create a commit**, or otherwise save work to git, run wiki ingest **before** any `git add` / `git commit`.
+
+## Pre-commit wiki ingest
+
+1. Run `git status` and `git diff` to identify changed files.
+2. For each changed path under `force-app/`, `orgs/`, `config/`, or `raw/sources/`:
+   - Treat the diff as a raw source (see `AGENTS.md` § Ingest).
+   - Update affected `wiki/entities/`, `wiki/concepts/`, or `wiki/synthesis/` pages.
+   - Bump `last_verified` on touched pages.
+   - Add new flows/objects/permission sets to `wiki/manifests/` if missing.
+3. Update `wiki/index.md` for any new or renamed pages.
+4. Append to `wiki/log.md`:
+   ```
+   ## [YYYY-MM-DD] ingest | pre-commit
+   - Sources: <changed file list>
+   - Updated: [[page-a]], [[page-b]]
+   - Notes: auto-ingest before commit
+   ```
+5. If wiki files changed, **stage them together** with the source changes in the same commit.
+
+## Skip ingest when
+
+- Only `wiki/` or `AGENTS.md` files changed (already wiki work).
+- User explicitly says **"commit without wiki"** or **"skip wiki ingest"**.
+
+## Then commit
+
+Follow the user's git safety protocol: `git status`, `git diff`, draft message, `git add`, `git commit`. Wiki updates belong in the same commit as the metadata they document.
