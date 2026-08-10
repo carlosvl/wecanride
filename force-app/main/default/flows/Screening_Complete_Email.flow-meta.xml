@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>Sends a Screening Complete welcome email with 6 PDF attachments when Application_Submitted__c changes to Yes on a New Registration waiver.</description>
+    <environments>Default</environments>
+    <interviewLabel>Screening Complete Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Screening Complete Email</label>
+
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+
+    <processType>AutoLaunchedFlow</processType>
+    <runInMode>SystemModeWithSharing</runInMode>
+    <status>Active</status>
+
+    <!-- ===== actionCalls (grouped) ===== -->
+    <actionCalls>
+        <name>Send_Screening_Complete_Email</name>
+        <label>Send Screening Complete Email</label>
+        <locationX>176</locationX>
+        <locationY>638</locationY>
+        <actionName>SendEmailWithAttachments</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>toAddress</name>
+            <value>
+                <elementReference>ContactEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccAddress</name>
+            <value>
+                <stringValue>clients@wecanride.org</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subject</name>
+            <value>
+                <stringValue>Welcome to the Program - Getting Started and Next Steps</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>htmlBody</name>
+            <value>
+                <elementReference>ScreeningCompleteBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>orgWideEmailAddress</name>
+            <value>
+                <stringValue>clients@wecanride.org</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>documentTitles</name>
+            <value>
+                <elementReference>DocumentTitlesList</elementReference>
+            </value>
+        </inputParameters>
+    </actionCalls>
+
+    <!-- ===== decisions (grouped) ===== -->
+    <decisions>
+        <name>Check_Has_Contact</name>
+        <label>Has Contact?</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has Contact</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ClientContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Has_Email</name>
+        <label>Has Email?</label>
+        <locationX>176</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>Send_Screening_Complete_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has Email</defaultConnectorLabel>
+        <rules>
+            <name>No_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContactEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Email</label>
+        </rules>
+    </decisions>
+
+    <!-- ===== formulas (grouped) ===== -->
+    <formulas>
+        <name>DocumentTitlesList</name>
+        <dataType>String</dataType>
+        <expression>&quot;Client Handbook,Client Registration and Policies,Payment Policy Notice - Therapeutic Riding and Hippotherapy,(Yearly) Session Dates,Therapeutic and Hippotherapy Riding Guidelines,Guide for Requesting Classes&quot;</expression>
+    </formulas>
+
+    <!-- ===== recordLookups (grouped) ===== -->
+    <recordLookups>
+        <name>Get_Client_Record</name>
+        <label>Get Client Record</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <connector>
+            <targetReference>Check_Has_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Client__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Riders__c</object>
+        <outputAssignments>
+            <assignToReference>ClientContactId</assignToReference>
+            <field>ClientContact__c</field>
+        </outputAssignments>
+        <storeOutputAutomatically>false</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Email</name>
+        <label>Get Contact Email</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Check_Has_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ClientContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>ContactEmail</assignToReference>
+            <field>Email</field>
+        </outputAssignments>
+        <storeOutputAutomatically>false</storeOutputAutomatically>
+    </recordLookups>
+
+    <!-- ===== start ===== -->
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Client_Record</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Application_Submitted__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Yes</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0126T000001lGQBQA2</stringValue>
+            </value>
+        </filters>
+        <object>VolunteerWaiver__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+
+    <!-- ===== textTemplates ===== -->
+    <textTemplates>
+        <name>ScreeningCompleteBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;html&gt;
+&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
+&lt;body style=&quot;height: auto; min-height: auto;&quot;&gt;
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Hello,&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Welcome to our program! We are so excited to have you join us.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Our Client Engagement Coordinator will be reaching out shortly to assist with your first session enrollment. To help you get started, we have put together some information regarding our registration process and what to expect moving forward.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Enrollment &amp;amp; Deposits&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;While registration for the full year opens each Fall, you are welcome to request sessions at any time once enrollment opens or throughout the year. Here is how our process works:&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Securing Your Spot:&lt;/strong&gt; Once you request a session, you will receive an invoice for a &lt;strong&gt;$150 deposit&lt;/strong&gt;. Your placement is officially reserved once this is paid. The deposit is ultimately applied towards your full session fee.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Session Fees:&lt;/strong&gt; You will receive the final invoice for the remaining balance a few weeks before the session begins. The final invoice will show the $150 deposit that has already been paid.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Cancellation Policy&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;We understand that plans can change. To receive a &lt;strong&gt;full refund&lt;/strong&gt; of your session deposit, please notify us at least &lt;strong&gt;30 days&lt;/strong&gt; before the session start date. If a cancellation occurs within that 30-day window, the deposit will be retained.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Requesting Future Sessions&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Attached is a guide to help you navigate our portal. You will only see classes that match your assigned level.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-left:40px; margin-right:40px; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Note:&lt;/strong&gt; If you do not see a day or time that fits your schedule, please reach out! We are happy to explore other options and will do our best to accommodate you.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Preparing for Your First Class&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;To ensure you are ready for the barn, please review the following:&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Attire:&lt;/strong&gt; Riders must have proper riding attire and their own helmet before the first class.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Resources:&lt;/strong&gt; Check the &lt;strong&gt;Client Handbook&lt;/strong&gt; for specific gear requirements and safety details.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Instructor Check-in:&lt;/strong&gt; About a week before your session begins, keep an eye out for an email from your instructor with final details and specific information for your class.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;If you have any questions or need a hand with the portal, feel free to contact us at &lt;strong&gt;clients@wecanride.org&lt;/strong&gt;. We are always here to help!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Best regards,&lt;br/&gt;We Can Ride&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+
+    <!-- ===== variables (grouped) ===== -->
+    <variables>
+        <name>ClientContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ContactEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
