@@ -1,0 +1,68 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_medium slds-m-bottom_small">Diagnoses</h2>
+        <p class="slds-text-body_regular slds-text-color_weak slds-m-bottom_large">
+            Please select all diagnoses that apply. This information helps our therapy team prepare to best serve you.
+        </p>
+
+        <!-- Already Completed Banner -->
+        <template lwc:if={isCompleted}>
+            <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
+                <span>This form has already been completed. You may update your selections below.</span>
+            </div>
+        </template>
+
+        <!-- Error Banner -->
+        <template lwc:if={error}>
+            <div class="slds-notify slds-notify_alert slds-alert_error slds-m-bottom_medium" role="alert">
+                <span>{error}</span>
+            </div>
+        </template>
+
+        <!-- Diagnoses Multi-Select (uses dual listbox for better UX with large list) -->
+        <div class="slds-m-bottom_large">
+            <lightning-dual-listbox
+                label="Select all diagnoses that apply"
+                source-label="Available Diagnoses"
+                selected-label="Selected Diagnoses"
+                field-level-help="Search and select from the list. Use the arrows to move items between lists."
+                options={diagnosisOptions}
+                value={selectedDiagnoses}
+                onchange={handleDiagnosesChange}
+                min="1"
+                size="10"
+            ></lightning-dual-listbox>
+        </div>
+
+        <!-- Additional Notes -->
+        <div class="slds-m-bottom_large">
+            <lightning-textarea
+                label="Additional Notes (optional)"
+                value={additionalNotes}
+                onchange={handleNotesChange}
+                max-length="5000"
+                placeholder="Any additional information about your diagnoses that you'd like us to know..."
+            ></lightning-textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+            <lightning-button
+                label="Cancel"
+                variant="neutral"
+                onclick={handleCancel}
+                class="slds-m-right_small"
+            ></lightning-button>
+            <lightning-button
+                label={saveButtonLabel}
+                variant="brand"
+                onclick={handleSave}
+                disabled={!canSave}
+            ></lightning-button>
+        </div>
+
+        <template lwc:if={isSaving}>
+            <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+        </template>
+    </div>
+</template>
