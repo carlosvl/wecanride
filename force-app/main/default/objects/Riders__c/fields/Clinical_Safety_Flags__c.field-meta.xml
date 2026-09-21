@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Clinical_Safety_Flags__c</fullName>
+    <externalId>false</externalId>
+    <label>Clinical Safety Flags</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Uncontrolled Seizures or Physical Issues</fullName>
+                <default>false</default>
+                <label>Uncontrolled Seizures or Physical Issues</label>
+            </value>
+            <value>
+                <fullName>Dangerous or Aggressive Behaviors</fullName>
+                <default>false</default>
+                <label>Dangerous or Aggressive Behaviors</label>
+            </value>
+            <value>
+                <fullName>Psychosis Paranoia Hallucinations or PTSD</fullName>
+                <default>false</default>
+                <label>Psychosis, Paranoia, Hallucinations, or PTSD</label>
+            </value>
+            <value>
+                <fullName>Sexual or Physical Violence</fullName>
+                <default>false</default>
+                <label>Sexual or Physical Violence</label>
+            </value>
+            <value>
+                <fullName>Drug or Alcohol Abuse</fullName>
+                <default>false</default>
+                <label>Drug or Alcohol Abuse</label>
+            </value>
+            <value>
+                <fullName>Actively Suicidal or Homicidal</fullName>
+                <default>false</default>
+                <label>Actively Suicidal or Homicidal</label>
+            </value>
+            <value>
+                <fullName>Actively Dissociating</fullName>
+                <default>false</default>
+                <label>Actively Dissociating</label>
+            </value>
+            <value>
+                <fullName>Fire Setting Animal Abuse Hitting Kicking</fullName>
+                <default>false</default>
+                <label>Fire Setting, Animal Abuse, Hitting, Kicking, Yelling, Swearing</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>8</visibleLines>
+</CustomField>
