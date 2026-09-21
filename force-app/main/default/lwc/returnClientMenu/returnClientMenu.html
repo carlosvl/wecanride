@@ -1,0 +1,528 @@
+<template>
+    <!-- Loading Spinner -->
+    <template lwc:if={isLoading}>
+        <div class="slds-align_absolute-center" style="min-height: 300px;">
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </div>
+    </template>
+
+    <!-- Error State -->
+    <template lwc:if={error}>
+        <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+            <span class="slds-assistive-text">Error</span>
+            <h2>{error}</h2>
+        </div>
+    </template>
+
+    <!-- No Client Found -->
+    <template lwc:if={noClientFound}>
+        <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
+            <lightning-icon icon-name="utility:info" size="large" class="slds-m-bottom_medium"></lightning-icon>
+            <h3 class="slds-text-heading_medium slds-m-top_medium">No Active Client Record Found</h3>
+            <p class="slds-text-body_regular slds-m-top_small">
+                We could not find an active client record for your account.
+                Please contact us at <strong>clients@wecanride.org</strong> for assistance.
+            </p>
+        </div>
+    </template>
+
+    <!-- Main Content (when data is loaded) -->
+    <template lwc:if={hasClientData}>
+
+        <!-- ═══════ SERVICE TYPE SELECTOR VIEW ═══════ -->
+        <template lwc:if={isServiceTypeView}>
+            <c-return-client-service-type
+                waiver-id={waiverId}
+                client-id={clientId}
+                contact-id={resolvedContactId}
+                current-year={currentYear}
+                onservicetypeselected={handleServiceTypeSelected}
+                onformcancel={handleFormCancel}
+            ></c-return-client-service-type>
+        </template>
+
+        <!-- ═══════ CLINICAL SCREENING VIEW (Mental Health only) ═══════ -->
+        <template lwc:if={isClinicalScreeningView}>
+            <c-return-client-clinical-screening
+                waiver-id={waiverId}
+                client-id={clientId}
+                contact-id={resolvedContactId}
+                current-year={currentYear}
+                onscreeningcomplete={handleScreeningComplete}
+                onformcancel={handleScreeningCancel}
+            ></c-return-client-clinical-screening>
+        </template>
+
+        <!-- ═══════ PAUSED VIEW (Clinical Safety Flag) ═══════ -->
+        <template lwc:if={isPausedView}>
+            <div class="slds-card slds-p-around_large slds-text-align_center">
+                <div class="slds-m-bottom_large">
+                    <lightning-icon icon-name="utility:info" size="large" alternative-text="Information"></lightning-icon>
+                </div>
+                <h2 class="slds-text-heading_medium slds-m-bottom_medium">Application Paused</h2>
+                <p class="slds-text-body_regular slds-m-bottom_large paused-message">
+                    <em>{pausedMessage}</em>
+                </p>
+                <p class="slds-text-body_small slds-text-color_weak">
+                    If you have questions, please contact We Can Ride at
+                    <strong>clients@wecanride.org</strong> or call
+                    <strong>952-934-0057</strong>.
+                </p>
+            </div>
+        </template>
+
+        <!-- ═══════ MENU VIEW ═══════ -->
+        <template lwc:if={isMenuView}>
+            <div class="slds-card slds-p-around_medium menu-container">
+
+                <!-- Header -->
+                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_medium">
+                    <div>
+                        <h1 class="slds-text-heading_large">{menuHeading}</h1>
+                        <p class="slds-text-body_regular slds-text-color_weak slds-m-top_xx-small">
+                            {menuSubheading}
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Already Submitted Banner -->
+                <template lwc:if={isAlreadySubmitted}>
+                    <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
+                        <lightning-icon icon-name="utility:success" variant="inverse" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        <h2>Your application has been submitted! Our team will be in touch.</h2>
+                    </div>
+                </template>
+
+                <!-- Progress Bar -->
+                <div class="slds-m-bottom_large progress-section">
+                    <div class="slds-grid slds-grid_align-spread slds-m-bottom_xx-small">
+                        <span class="slds-text-title_caps">{progressLabel}</span>
+                        <span class="slds-text-title_caps">{progressPercent}%</span>
+                    </div>
+                    <div class="slds-progress-bar" aria-valuemin="0" aria-valuemax="100" aria-valuenow={progressPercent} role="progressbar">
+                        <span class="slds-progress-bar__value" style={progressBarStyle}>
+                            <span class="slds-assistive-text">Progress: {progressPercent}%</span>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- ── Profile Info Section ── -->
+                <div class="slds-m-bottom_large">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
+                        <lightning-icon icon-name="utility:identity" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        Profile Information
+                    </h2>
+
+                    <!-- Group Home Toggle -->
+                    <div class="slds-box slds-box_x-small slds-theme_shade slds-m-bottom_small group-home-toggle-box">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-grid_align-spread">
+                            <div class="slds-media slds-media_center">
+                                <div class="slds-media__figure">
+                                    <lightning-icon icon-name="utility:home" size="x-small"></lightning-icon>
+                                </div>
+                                <div class="slds-media__body">
+                                    <span class="slds-text-body_regular">Does this client live in a Group Home?</span>
+                                </div>
+                            </div>
+                            <lightning-input
+                                type="toggle"
+                                label="Lives in Group Home"
+                                variant="label-hidden"
+                                checked={livesInGroupHome}
+                                onchange={handleGroupHomeToggle}
+                                disabled={isGroupHomeToggleSaving}
+                                message-toggle-active="Yes"
+                                message-toggle-inactive="No"
+                                class="group-home-toggle"
+                            ></lightning-input>
+                        </div>
+                    </div>
+
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <template for:each={profileForms} for:item="step">
+                            <div key={step.key} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_small">
+                                <div class={step.cardClass}>
+                                    <div class="slds-card__header slds-grid slds-grid_align-spread">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <lightning-icon icon-name={step.icon} size="small"></lightning-icon>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <h3 class="slds-card__header-title slds-truncate">{step.label}</h3>
+                                            </div>
+                                        </div>
+                                        <span class={step.statusClass}>{step.statusLabel}</span>
+                                    </div>
+                                    <div class="slds-card__footer">
+                                        <lightning-button
+                                            label={step.buttonLabel}
+                                            variant={step.buttonVariant}
+                                            data-step={step.key}
+                                            onclick={handleOpenForm}
+                                        ></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ── Required Forms Section ── -->
+                <div class="slds-m-bottom_large">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
+                        <lightning-icon icon-name="utility:checklist" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        Required Forms
+                    </h2>
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <template for:each={requiredForms} for:item="step">
+                            <div key={step.key} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_small">
+                                <div class={step.cardClass}>
+                                    <div class="slds-card__header slds-grid slds-grid_align-spread">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <lightning-icon icon-name={step.icon} size="small"></lightning-icon>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <h3 class="slds-card__header-title slds-truncate">{step.label}</h3>
+                                            </div>
+                                        </div>
+                                        <span class={step.statusClass}>{step.statusLabel}</span>
+                                    </div>
+                                    <div class="slds-card__footer">
+                                        <lightning-button
+                                            label={step.buttonLabel}
+                                            variant={step.buttonVariant}
+                                            data-step={step.key}
+                                            onclick={handleOpenForm}
+                                        ></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- ── Diagnosis Forms Section (Riding only) ── -->
+                <template lwc:if={hasDiagnosisForms}>
+                    <div class="slds-m-bottom_large">
+                        <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
+                            <lightning-icon icon-name="utility:upload" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                            Diagnosis Forms
+                            <span class="slds-text-body_small slds-text-color_weak slds-m-left_x-small">(if applicable)</span>
+                        </h2>
+                        <div class="slds-grid slds-wrap slds-gutters_small">
+                            <template for:each={diagnosisForms} for:item="step">
+                                <div key={step.key} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_small">
+                                    <div class={step.cardClass}>
+                                        <div class="slds-card__header slds-grid slds-grid_align-spread">
+                                            <div class="slds-media slds-media_center">
+                                                <div class="slds-media__figure">
+                                                    <lightning-icon icon-name={step.icon} size="small"></lightning-icon>
+                                                </div>
+                                                <div class="slds-media__body">
+                                                    <h3 class="slds-card__header-title slds-truncate">{step.label}</h3>
+                                                </div>
+                                            </div>
+                                            <span class={step.statusClass}>{step.statusLabel}</span>
+                                        </div>
+                                        <div class="slds-card__footer">
+                                            <lightning-button
+                                                label={step.buttonLabel}
+                                                variant={step.buttonVariant}
+                                                data-step={step.key}
+                                                onclick={handleOpenForm}
+                                            ></lightning-button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- ── Specialty Forms Section ── -->
+                <div class="slds-m-bottom_large">
+                    <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
+                        <lightning-icon icon-name="utility:lock" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        Specialty Forms
+                    </h2>
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <template for:each={specialtyForms} for:item="step">
+                            <div key={step.key} class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-p-bottom_small">
+                                <div class={step.cardClass}>
+                                    <div class="slds-card__header slds-grid slds-grid_align-spread">
+                                        <div class="slds-media slds-media_center">
+                                            <div class="slds-media__figure">
+                                                <lightning-icon icon-name={step.icon} size="small"></lightning-icon>
+                                            </div>
+                                            <div class="slds-media__body">
+                                                <h3 class="slds-card__header-title slds-truncate">{step.label}</h3>
+                                            </div>
+                                        </div>
+                                        <span class={step.statusClass}>{step.statusLabel}</span>
+                                    </div>
+                                    <div class="slds-card__footer">
+                                        <lightning-button
+                                            label={step.buttonLabel}
+                                            variant={step.buttonVariant}
+                                            data-step={step.key}
+                                            onclick={handleOpenForm}
+                                        ></lightning-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+                <!-- Submit Application -->
+                <div class="slds-align_absolute-center slds-m-top_medium">
+                    <lightning-button
+                        label={submitButtonLabel}
+                        variant="success"
+                        disabled={cannotSubmit}
+                        onclick={handleSubmitApplication}
+                        class="submit-button"
+                    ></lightning-button>
+                </div>
+
+            </div>
+        </template>
+
+        <!-- ═══════ FORM VIEW ═══════ -->
+        <template lwc:if={isFormView}>
+            <div class="slds-card slds-p-around_medium form-container">
+
+                <!-- Form Header -->
+                <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-m-bottom_medium form-header">
+                    <lightning-button
+                        label="← Back to Menu"
+                        variant="base"
+                        onclick={handleBackToMenu}
+                    ></lightning-button>
+                    <span class="slds-text-title_caps">
+                        Step {currentStepNumber} of {totalSteps}
+                    </span>
+                </div>
+
+                <!-- Child Form Components -->
+
+                <!-- Profile Forms -->
+                <template lwc:if={isMainInfo}>
+                    <c-return-client-main-info
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        contact-record={contact}
+                        client-record={clientData.client}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-main-info>
+                </template>
+
+                <template lwc:if={isParentGuardian}>
+                    <c-return-client-parent-guardian
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-parent-guardian>
+                </template>
+
+                <template lwc:if={isEmergencyContact}>
+                    <c-return-client-emergency-contact
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-emergency-contact>
+                </template>
+
+                <template lwc:if={isGroupHome}>
+                    <c-return-client-group-home
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-group-home>
+                </template>
+
+                <!-- Waiver Forms -->
+                <template lwc:if={isPhotoRelease}>
+                    <c-return-client-photo-release
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-photo-release>
+                </template>
+
+                <template lwc:if={isEmergencyTreatment}>
+                    <c-return-client-emergency-treatment
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-emergency-treatment>
+                </template>
+
+                <template lwc:if={isClientWaiver}>
+                    <c-return-client-waiver
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        record-type-id={waiverRecordTypeId}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-waiver>
+                </template>
+
+                <template lwc:if={isMedicalHistory}>
+                    <c-return-client-medical-history
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-medical-history>
+                </template>
+
+                <template lwc:if={isPaymentInfo}>
+                    <c-return-client-payment
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-payment>
+                </template>
+
+                <template lwc:if={isHeightWeight}>
+                    <c-return-client-height-weight
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        contact-record={contact}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-height-weight>
+                </template>
+
+                <template lwc:if={isDownSyndrome}>
+                    <c-return-client-down-syndrome
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-down-syndrome>
+                </template>
+
+                <template lwc:if={isSeizureForm}>
+                    <c-return-client-seizure
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-seizure>
+                </template>
+
+                <template lwc:if={isScoliosis}>
+                    <c-return-client-scoliosis
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-scoliosis>
+                </template>
+
+                <template lwc:if={isConfidentialityHippa}>
+                    <c-return-client-confidentiality-hippa
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        record-type-id={waiverRecordTypeId}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-confidentiality-hippa>
+                </template>
+
+                <template lwc:if={isTherapyCancellation}>
+                    <c-return-client-therapy-cancellation
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        record-type-id={waiverRecordTypeId}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-therapy-cancellation>
+                </template>
+
+                <!-- Mental Health Specific Forms -->
+                <template lwc:if={isDiagnoses}>
+                    <c-return-client-diagnoses
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-diagnoses>
+                </template>
+
+                <template lwc:if={isInformedConsent}>
+                    <c-return-client-informed-consent
+                        waiver-id={waiverId}
+                        client-id={clientId}
+                        contact-id={contact.Id}
+                        current-year={currentYear}
+                        record-type-id={waiverRecordTypeId}
+                        waiver={waiver}
+                        onformcomplete={handleFormComplete}
+                        onformcancel={handleFormCancel}
+                    ></c-return-client-informed-consent>
+                </template>
+
+            </div>
+        </template>
+
+    </template>
+</template>

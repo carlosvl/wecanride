@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Return Client Menu</masterLabel>
+    <description>Returning client registration form hub — replaces the Return Client Menu flow with an SLDS card-based dashboard.</description>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+    </targets>
+</LightningComponentBundle>

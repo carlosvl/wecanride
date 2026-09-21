@@ -1,0 +1,101 @@
+/* ─── Return Client Menu — Parent Component Styles ─── */
+
+:host {
+    display: block;
+}
+
+/* Container */
+.menu-container,
+.form-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Section Headings */
+.section-heading {
+    display: flex;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+/* Progress Bar */
+.progress-section {
+    background: #f4f6f9;
+    border-radius: 0.5rem;
+    padding: 1rem;
+}
+
+.slds-progress-bar {
+    height: 0.75rem;
+    border-radius: 0.375rem;
+    background-color: #d8dde6;
+}
+
+.slds-progress-bar__value {
+    border-radius: 0.375rem;
+    background-color: #04844b;
+    transition: width 0.4s ease;
+}
+
+/* Group Home Toggle Box */
+.group-home-toggle-box {
+    border-radius: 0.5rem;
+    border: 1px solid #d8dde6;
+}
+
+.group-home-toggle {
+    flex-shrink: 0;
+}
+
+/* Form Cards */
+.form-card {
+    border: 1px solid #d8dde6;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    transition: all 0.2s ease;
+    cursor: default;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.form-card:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.form-card--completed {
+    border-left: 4px solid #04844b;
+    background-color: #f3faf6;
+}
+
+/* Badge Styles */
+.slds-badge_success {
+    background-color: #04844b;
+    color: white;
+}
+
+/* Form Header */
+.form-header {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.75rem;
+}
+
+/* Submit Button */
+.submit-button {
+    min-width: 280px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .menu-container,
+    .form-container {
+        padding: 0.75rem;
+    }
+
+    .form-card {
+        min-height: auto;
+    }
+}
