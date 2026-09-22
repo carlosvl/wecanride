@@ -50,6 +50,10 @@ export default class ReturnClientServiceType extends LightningElement {
         return true;
     }
 
+    get cannotSave() {
+        return !this.canSave;
+    }
+
     get saveButtonLabel() {
         if (!this.selectedProgram) return 'Select a program to continue';
         if (this.isMentalHealth && this.selectedServices.length === 0) return 'Select at least one service';

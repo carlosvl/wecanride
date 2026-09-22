@@ -68,6 +68,10 @@ export default class ReturnClientClinicalScreening extends LightningElement {
         return true;
     }
 
+    get cannotSave() {
+        return !this.canSave;
+    }
+
     get saveButtonLabel() {
         if (this.hasFlags && !this.detailText.trim()) {
             return 'Please provide details above';

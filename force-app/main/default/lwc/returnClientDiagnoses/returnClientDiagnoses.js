@@ -47,6 +47,10 @@ export default class ReturnClientDiagnoses extends LightningElement {
         return this.selectedDiagnoses.length > 0;
     }
 
+    get cannotSave() {
+        return !this.canSave;
+    }
+
     get saveButtonLabel() {
         if (this.selectedDiagnoses.length === 0) {
             return 'Select at least one diagnosis';
