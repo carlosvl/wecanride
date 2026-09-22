@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <apiVersion>56.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
     <description>Update contact volunteer checkbox</description>
     <environments>Default</environments>
     <interviewLabel>UpdateContact {!$Flow.CurrentDateTime}</interviewLabel>
@@ -41,6 +42,18 @@
             <field>Volunteer__c</field>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Client__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Prospect__c</field>
+            <value>
+                <booleanValue>false</booleanValue>
             </value>
         </inputAssignments>
         <object>Contact</object>
