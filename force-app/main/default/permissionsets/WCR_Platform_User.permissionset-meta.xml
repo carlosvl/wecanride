@@ -6,6 +6,14 @@
     <license>Salesforce Platform</license>
 
     <!-- ═══════════════════════════════════════════ -->
+    <!--  APP VISIBILITY                               -->
+    <!-- ═══════════════════════════════════════════ -->
+    <applicationVisibilities>
+        <application>We_Can_Ride_Platform</application>
+        <visible>true</visible>
+    </applicationVisibilities>
+
+    <!-- ═══════════════════════════════════════════ -->
     <!--  OBJECT PERMISSIONS                         -->
     <!-- ═══════════════════════════════════════════ -->
 
