@@ -1,0 +1,98 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">Payment Information</h2>
+
+        <template lwc:if={isCompleted}>
+            <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
+                <span>Payment info has been submitted. You may update below.</span>
+            </div>
+        </template>
+
+        <p class="slds-text-body_regular slds-m-bottom_medium">
+            <strong>Responsibility for Payment.</strong> I hereby acknowledge that I am ultimately responsible
+            for <strong>all</strong> charges applied to my account <strong>whether or not covered by insurance or waiver</strong>.
+            I further acknowledge that I have read, understand and agreed to the Payment Policy Notice as well as
+            all additional policies and procedures regarding class cancellation and payments.
+        </p>
+
+        <!-- Payer Info -->
+        <h3 class="slds-text-heading_small slds-m-bottom_small">Payer Information</h3>
+        <div class="slds-grid slds-wrap slds-gutters">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                <lightning-input label="Payer Name" data-field="payerName" value={payerName} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                <lightning-input label="Phone" type="tel" data-field="payerPhone" value={payerPhone} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                <lightning-input label="Street Address" data-field="payerStreet" value={payerStreet} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                <lightning-input label="City" data-field="payerCity" value={payerCity} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                <lightning-input label="State" data-field="payerState" value={payerState} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                <lightning-input label="ZIP Code" data-field="payerZip" value={payerZip} onchange={handleInputChange} required></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                <lightning-input label="Email" type="email" data-field="payerEmail" value={payerEmail} onchange={handleInputChange} required></lightning-input>
+            </div>
+        </div>
+
+        <!-- Third Party Toggle -->
+        <div class="slds-m-top_medium slds-m-bottom_small">
+            <lightning-input
+                type="toggle"
+                label="Third Party Payer"
+                message-toggle-active="Yes"
+                message-toggle-inactive="No"
+                checked={hasThirdParty}
+                onchange={handleThirdPartyToggle}
+            ></lightning-input>
+        </div>
+
+        <!-- Third Party Section (conditional) -->
+        <template lwc:if={hasThirdParty}>
+            <h3 class="slds-text-heading_small slds-m-bottom_small slds-m-top_medium">Third Party Payer</h3>
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input label="Third-Party Payer/Waiver Name" data-field="thirdPartyName" value={thirdPartyName} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input label="Contact" data-field="thirdPartyContact" value={thirdPartyContact} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning-input label="Street Address" data-field="thirdPartyStreet" value={thirdPartyStreet} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <lightning-input label="City" data-field="thirdPartyCity" value={thirdPartyCity} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <lightning-input label="State" data-field="thirdPartyState" value={thirdPartyState} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-p-bottom_small">
+                    <lightning-input label="ZIP Code" data-field="thirdPartyZip" value={thirdPartyZip} onchange={handleInputChange}></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input label="Email" type="email" data-field="thirdPartyEmail" value={thirdPartyEmail} onchange={handleInputChange}></lightning-input>
+                </div>
+            </div>
+        </template>
+
+        <!-- Signature -->
+        <div class="slds-m-top_medium slds-p-top_medium" style="border-top: 1px solid #e5e5e5;">
+            <lightning-input label="Signature (Full Name)" data-field="signatureName" value={signatureName} onchange={handleInputChange} required placeholder="Type your full legal name"></lightning-input>
+        </div>
+
+        <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="Save & Continue" variant="brand" onclick={handleSave} disabled={isSaving}></lightning-button>
+        </div>
+
+        <template lwc:if={isSaving}>
+            <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+        </template>
+    </div>
+</template>

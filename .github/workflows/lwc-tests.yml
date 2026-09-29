@@ -1,0 +1,42 @@
+name: LWC Unit Tests
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'force-app/main/default/lwc/**'
+      - 'package.json'
+      - 'jest.config.js'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'force-app/main/default/lwc/**'
+      - 'package.json'
+      - 'jest.config.js'
+
+jobs:
+  lwc-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run LWC unit tests with coverage
+        run: npm run test:unit:coverage
+
+      - name: Upload coverage report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lwc-coverage-report
+          path: coverage/
+          retention-days: 30

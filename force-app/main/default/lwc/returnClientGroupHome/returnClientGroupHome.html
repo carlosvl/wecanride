@@ -1,0 +1,310 @@
+<template>
+    <!-- Loading Spinner -->
+    <template lwc:if={isLoading}>
+        <div class="slds-align_absolute-center" style="min-height: 200px;">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <template lwc:if={isLoadingView}>
+        <div class="slds-align_absolute-center" style="min-height: 200px;">
+            <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </div>
+    </template>
+
+    <!-- ═══════ OVERVIEW VIEW ═══════ -->
+    <template lwc:if={isOverview}>
+        <div class="slds-card slds-p-around_medium">
+            <div class="slds-text-heading_medium slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:home" size="small" class="slds-m-right_x-small"></lightning-icon>
+                Group Home Information
+            </div>
+
+            <template lwc:if={hasCurrentGroupHome}>
+                <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Group Home</p>
+                            <p class="slds-text-body_regular slds-text-title_bold">{currentGroupHomeName}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Phone</p>
+                            <p class="slds-text-body_regular">{currentGroupHomePhone}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Address</p>
+                            <p class="slds-text-body_regular">{currentGroupHomeAddress}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slds-grid slds-grid_align-center slds-m-top_medium button-group">
+                    <lightning-button
+                        label="Change Group Home"
+                        variant="neutral"
+                        onclick={handleChangeGroupHome}
+                        class="slds-m-right_small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="Done"
+                        variant="brand"
+                        onclick={handleDone}
+                    ></lightning-button>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <!-- ═══════ SEARCH VIEW ═══════ -->
+    <template lwc:if={isSearch}>
+        <div class="slds-card slds-p-around_medium">
+            <div class="slds-text-heading_medium slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:search" size="small" class="slds-m-right_x-small"></lightning-icon>
+                Find Your Group Home
+            </div>
+
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+                Search for your Group Home below. If you can't find it, you can submit a request to add it.
+            </p>
+
+            <!-- Search Bar -->
+            <div class="slds-grid slds-m-bottom_medium">
+                <div class="slds-col slds-grow">
+                    <lightning-input
+                        type="text"
+                        label="Search Group Homes"
+                        placeholder="Type to search by name..."
+                        value={searchTerm}
+                        onchange={handleSearchInput}
+                        onkeyup={handleSearchKeyUp}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-no-flex slds-align-bottom slds-m-left_small">
+                    <lightning-button
+                        label="Search"
+                        variant="neutral"
+                        onclick={handleSearch}
+                        disabled={isSearching}
+                    ></lightning-button>
+                </div>
+            </div>
+
+            <!-- Search Results List -->
+            <template lwc:if={hasSearchResults}>
+                <p class="slds-text-title_caps slds-text-color_weak slds-m-bottom_xx-small">Results</p>
+                <div class="slds-scrollable_y results-container">
+                    <template for:each={groupHomeResults} for:item="home">
+                        <div
+                            key={home.id}
+                            class={home.cardClass}
+                            data-id={home.id}
+                            onclick={handleSelectGroupHome}
+                        >
+                            <div class="slds-grid slds-grid_vertical-align-center">
+                                <div class="slds-col slds-grow">
+                                    <p class="slds-text-body_regular"><strong>{home.name}</strong></p>
+                                    <p class="slds-text-body_small slds-text-color_weak">{home.address}</p>
+                                    <p class="slds-text-body_small slds-text-color_weak">{home.phone}</p>
+                                </div>
+                                <template lwc:if={home.isSelected}>
+                                    <lightning-icon icon-name="utility:check" size="small" variant="success" class="slds-m-left_small"></lightning-icon>
+                                </template>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </template>
+
+            <template lwc:if={isSearching}>
+                <div class="slds-align_absolute-center slds-m-vertical_medium">
+                    <lightning-spinner alternative-text="Searching" size="small"></lightning-spinner>
+                </div>
+            </template>
+
+            <div class="slds-grid slds-grid_align-spread slds-m-top_medium button-group">
+                <lightning-button
+                    label="Can't find my Group Home"
+                    variant="neutral"
+                    onclick={handleCantFindMine}
+                ></lightning-button>
+                <div>
+                    <lightning-button
+                        label="Cancel"
+                        variant="neutral"
+                        onclick={handleCancel}
+                        class="slds-m-right_small"
+                    ></lightning-button>
+                    <lightning-button
+                        label="Select"
+                        variant="brand"
+                        onclick={handleConfirmSelection}
+                        disabled={isSaving}
+                    ></lightning-button>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════ REQUEST NEW VIEW ═══════ -->
+    <template lwc:if={isRequestNew}>
+        <div class="slds-card slds-p-around_medium">
+            <div class="slds-text-heading_medium slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:new" size="small" class="slds-m-right_x-small"></lightning-icon>
+                Request New Group Home
+            </div>
+
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+                Fill in the details below. Your request will be reviewed by our team before the Group Home is added.
+            </p>
+
+            <div class="slds-grid slds-wrap slds-gutters_small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="Group Home Name"
+                        value={requestName}
+                        data-field="requestName"
+                        onchange={handleRequestInput}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                    <lightning-input
+                        type="tel"
+                        label="Phone"
+                        value={requestPhone}
+                        data-field="requestPhone"
+                        onchange={handleRequestInput}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="Street Address"
+                        value={requestStreet}
+                        data-field="requestStreet"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="City"
+                        value={requestCity}
+                        data-field="requestCity"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="State"
+                        value={requestState}
+                        data-field="requestState"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="Postal Code"
+                        value={requestPostalCode}
+                        data-field="requestPostalCode"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                    <lightning-input
+                        type="text"
+                        label="Contact Person"
+                        value={requestContactPerson}
+                        data-field="requestContactPerson"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-m-bottom_small">
+                    <lightning-input
+                        type="email"
+                        label="Contact Email"
+                        value={requestEmail}
+                        data-field="requestEmail"
+                        onchange={handleRequestInput}
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium button-group">
+                <lightning-button
+                    label="Back"
+                    variant="neutral"
+                    onclick={handleBackToSearch}
+                    class="slds-m-right_small"
+                ></lightning-button>
+                <lightning-button
+                    label="Submit Request"
+                    variant="brand"
+                    onclick={handleSubmitRequest}
+                    disabled={isSaving}
+                ></lightning-button>
+            </div>
+        </div>
+    </template>
+
+    <!-- ═══════ PENDING REQUEST VIEW ═══════ -->
+    <template lwc:if={isPendingRequest}>
+        <div class="slds-card slds-p-around_medium">
+            <div class="slds-text-heading_medium slds-m-bottom_medium">
+                <lightning-icon icon-name="utility:clock" size="small" class="slds-m-right_x-small"></lightning-icon>
+                Group Home Request Pending
+            </div>
+
+            <template lwc:if={submissionMessage}>
+                <div class="slds-notify slds-notify_alert slds-alert_warning slds-m-bottom_medium" role="alert">
+                    <lightning-icon icon-name="utility:info" variant="inverse" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{submissionMessage}</h2>
+                </div>
+            </template>
+
+            <template lwc:if={hasPendingRequest}>
+                <div class="slds-box slds-theme_shade slds-m-bottom_medium">
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Requested Group Home</p>
+                            <p class="slds-text-body_regular slds-text-title_bold">{pendingRequestName}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Status</p>
+                            <span class="slds-badge slds-badge_warning">{pendingRequestStatus}</span>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Phone</p>
+                            <p class="slds-text-body_regular">{pendingRequestPhone}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-3 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Submitted</p>
+                            <p class="slds-text-body_regular">{pendingRequestDate}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                            <p class="slds-text-title_caps slds-text-color_weak">Address</p>
+                            <p class="slds-text-body_regular">{pendingRequestAddress}</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <div class="slds-grid slds-grid_align-center slds-m-top_medium">
+                <lightning-button
+                    label="Done"
+                    variant="brand"
+                    onclick={handleDone}
+                ></lightning-button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Saving Overlay -->
+    <template lwc:if={isSaving}>
+        <lightning-spinner alternative-text="Saving" size="medium" class="saving-spinner"></lightning-spinner>
+    </template>
+</template>

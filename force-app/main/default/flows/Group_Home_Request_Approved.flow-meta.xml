@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <description>When a Group Home Request is approved, creates the Group Home Account, links it to the client Riders__c record, and stamps the waiver.</description>
+    <environments>Default</environments>
+    <interviewLabel>Group Home Request Approved {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Group Home Request Approved</label>
+
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+
+    <processType>AutoLaunchedFlow</processType>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <status>Active</status>
+
+    <!-- ===== Record Lookups ===== -->
+
+    <!-- Look up the Group_Home RecordType Id -->
+    <recordLookups>
+        <name>Get_Group_Home_RecordType</name>
+        <label>Get Group Home RecordType</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Create_Group_Home_Account</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>DeveloperName</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Group_Home</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>SobjectType</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Account</stringValue>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>RecordType</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+
+    <!-- ===== Record Creates ===== -->
+
+    <!-- Create the Group Home Account -->
+    <recordCreates>
+        <name>Create_Group_Home_Account</name>
+        <label>Create Group Home Account</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <connector>
+            <targetReference>Update_Request_with_Account</targetReference>
+        </connector>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>$Record.Name</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Phone</field>
+            <value>
+                <elementReference>$Record.Phone__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingStreet</field>
+            <value>
+                <elementReference>$Record.Street__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingCity</field>
+            <value>
+                <elementReference>$Record.City__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingState</field>
+            <value>
+                <elementReference>$Record.State__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>BillingPostalCode</field>
+            <value>
+                <elementReference>$Record.Postal_Code__c</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>RecordTypeId</field>
+            <value>
+                <elementReference>Get_Group_Home_RecordType.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Account</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+
+    <!-- ===== Record Updates ===== -->
+
+    <!-- Update the request record with the created Account Id -->
+    <recordUpdates>
+        <name>Update_Request_with_Account</name>
+        <label>Update Request with Account</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Update_Client_Group_Home</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Id</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Created_Account__c</field>
+            <value>
+                <elementReference>Create_Group_Home_Account</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Group_Home_Request__c</object>
+    </recordUpdates>
+
+    <!-- Update the Riders__c record with the new Group Home -->
+    <recordUpdates>
+        <name>Update_Client_Group_Home</name>
+        <label>Update Client Group Home</label>
+        <locationX>176</locationX>
+        <locationY>518</locationY>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Client__c</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Group_Home__c</field>
+            <value>
+                <elementReference>Create_Group_Home_Account</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Riders__c</object>
+    </recordUpdates>
+
+    <!-- ===== Start ===== -->
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Group_Home_RecordType</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Approved</stringValue>
+            </value>
+        </filters>
+        <object>Group_Home_Request__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+</Flow>

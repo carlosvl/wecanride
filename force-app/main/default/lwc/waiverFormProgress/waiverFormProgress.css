@@ -1,0 +1,55 @@
+.progress-container {
+    border-radius: 0.5rem;
+}
+
+.progress-ring-wrapper {
+    flex-shrink: 0;
+}
+
+.ring-progress {
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.category-header {
+    color: #706e6b;
+    font-size: 0.6875rem;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 0.25rem;
+}
+
+.step-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.35rem 0.5rem;
+    border-radius: 0.25rem;
+    min-height: 2rem;
+}
+
+.step-complete {
+    background-color: #f0faf0;
+    border-color: #91db8b;
+}
+
+.step-pending {
+    background-color: #fafaf9;
+    border-color: #e5e5e5;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.step-col {
+    min-width: 200px;
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+    .step-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

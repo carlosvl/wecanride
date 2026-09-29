@@ -1,0 +1,189 @@
+<template>
+    <div class="slds-box slds-box_x-small slds-theme_default detail-container">
+        <h3 class="slds-text-heading_small slds-m-bottom_small">
+            <lightning-icon icon-name="utility:description" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+            Waiver Details
+        </h3>
+
+        <lightning-accordion allow-multiple-sections-open active-section-name="signatures">
+
+            <!-- Signatures Section -->
+            <lightning-accordion-section name="signatures" label="Signatures &amp; Dates">
+                <template lwc:if={hasSignatures}>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col"><div class="slds-truncate">Form</div></th>
+                                <th scope="col"><div class="slds-truncate">Signed Name</div></th>
+                                <th scope="col"><div class="slds-truncate">Date</div></th>
+                                <th scope="col"><div class="slds-truncate">Status</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={signatureRows} for:item="sig">
+                                <tr key={sig.key}>
+                                    <td><div class="slds-truncate">{sig.formName}</div></td>
+                                    <td><div class="slds-truncate">{sig.displayName}</div></td>
+                                    <td><div class="slds-truncate">{sig.formattedDate}</div></td>
+                                    <td>
+                                        <span class="slds-badge slds-badge_success">{sig.status}</span>
+                                    </td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-body_small slds-text-color_weak slds-p-around_small">
+                        No signatures recorded yet.
+                    </p>
+                </template>
+            </lightning-accordion-section>
+
+            <!-- Payment Info Section -->
+            <lightning-accordion-section name="payment" label="Payment Info">
+                <template lwc:if={hasPaymentData}>
+                    <div class="slds-form slds-form_stacked">
+                        <template for:each={paymentFields} for:item="field">
+                            <div key={field.key} class="slds-form-element slds-m-bottom_xx-small">
+                                <label class="slds-form-element__label">{field.label}</label>
+                                <div class="slds-form-element__control">
+                                    <!-- Read mode -->
+                                    <template lwc:if={field.isEditing}>
+                                        <div class="slds-grid slds-grid_vertical-align-end">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                value={editValue}
+                                                onchange={handleEditChange}
+                                                class="slds-grow">
+                                            </lightning-input>
+                                            <lightning-button-group class="slds-m-left_xx-small">
+                                                <lightning-button-icon
+                                                    icon-name="utility:check"
+                                                    alternative-text="Save"
+                                                    variant="brand"
+                                                    onclick={handleEditSave}
+                                                    disabled={isSaving}>
+                                                </lightning-button-icon>
+                                                <lightning-button-icon
+                                                    icon-name="utility:close"
+                                                    alternative-text="Cancel"
+                                                    onclick={handleEditCancel}>
+                                                </lightning-button-icon>
+                                            </lightning-button-group>
+                                        </div>
+                                    </template>
+                                    <template lwc:else>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span class="slds-form-element__static slds-grow">{field.displayValue}</span>
+                                            <template lwc:if={field.showEdit}>
+                                                <lightning-button-icon
+                                                    icon-name="utility:edit"
+                                                    alternative-text="Edit"
+                                                    variant="bare"
+                                                    size="x-small"
+                                                    data-field={field.apiName}
+                                                    onclick={handleEditClick}>
+                                                </lightning-button-icon>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-body_small slds-text-color_weak slds-p-around_small">
+                        Payment information not yet provided.
+                    </p>
+                </template>
+            </lightning-accordion-section>
+
+            <!-- Medical Info Section -->
+            <lightning-accordion-section name="medical" label="Medical Info">
+                <template lwc:if={hasMedicalData}>
+                    <div class="slds-form slds-form_stacked">
+                        <template for:each={medicalFields} for:item="field">
+                            <div key={field.key} class="slds-form-element slds-m-bottom_xx-small">
+                                <label class="slds-form-element__label">{field.label}</label>
+                                <div class="slds-form-element__control">
+                                    <template lwc:if={field.isEditing}>
+                                        <div class="slds-grid slds-grid_vertical-align-end">
+                                            <lightning-input
+                                                variant="label-hidden"
+                                                value={editValue}
+                                                onchange={handleEditChange}
+                                                class="slds-grow">
+                                            </lightning-input>
+                                            <lightning-button-group class="slds-m-left_xx-small">
+                                                <lightning-button-icon
+                                                    icon-name="utility:check"
+                                                    alternative-text="Save"
+                                                    variant="brand"
+                                                    onclick={handleEditSave}
+                                                    disabled={isSaving}>
+                                                </lightning-button-icon>
+                                                <lightning-button-icon
+                                                    icon-name="utility:close"
+                                                    alternative-text="Cancel"
+                                                    onclick={handleEditCancel}>
+                                                </lightning-button-icon>
+                                            </lightning-button-group>
+                                        </div>
+                                    </template>
+                                    <template lwc:else>
+                                        <div class="slds-grid slds-grid_vertical-align-center">
+                                            <span class="slds-form-element__static slds-grow">{field.displayValue}</span>
+                                            <template lwc:if={field.showEdit}>
+                                                <lightning-button-icon
+                                                    icon-name="utility:edit"
+                                                    alternative-text="Edit"
+                                                    variant="bare"
+                                                    size="x-small"
+                                                    data-field={field.apiName}
+                                                    onclick={handleEditClick}>
+                                                </lightning-button-icon>
+                                            </template>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-body_small slds-text-color_weak slds-p-around_small">
+                        Medical information not yet provided.
+                    </p>
+                </template>
+            </lightning-accordion-section>
+
+            <!-- Diagnoses Section -->
+            <lightning-accordion-section name="diagnoses" label="Diagnoses">
+                <template lwc:if={hasDiagnosesData}>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Selected Diagnoses</label>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">{diagnosesValue}</span>
+                        </div>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <p class="slds-text-body_small slds-text-color_weak slds-p-around_small">
+                        No diagnoses information recorded.
+                    </p>
+                </template>
+            </lightning-accordion-section>
+
+            <!-- Application Status -->
+            <lightning-accordion-section name="appStatus" label="Application Status">
+                <div class="slds-grid slds-grid_vertical-align-center slds-p-around_small">
+                    <span class="slds-m-right_small">Status:</span>
+                    <span class={applicationBadgeClass}>{applicationStatus}</span>
+                </div>
+            </lightning-accordion-section>
+
+        </lightning-accordion>
+    </div>
+</template>

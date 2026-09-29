@@ -1,0 +1,14 @@
+.alert-banner {
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-bottom: 0;
+}
+
+.clinical-card {
+    border-radius: 0.5rem;
+}
+
+.detail-text {
+    white-space: pre-wrap;
+    font-size: 0.8125rem;
+    color: #3e3e3c;
+}

@@ -1,0 +1,88 @@
+<template>
+    <lightning-card title={dashboardTitle} icon-name="standard:entitlement">
+
+        <!-- Error State -->
+        <template lwc:if={error}>
+            <div class="slds-m-around_medium">
+                <div class="slds-notify slds-notify_alert slds-alert_error" role="alert">
+                    <span class="slds-assistive-text">error</span>
+                    <lightning-icon icon-name="utility:error" alternative-text="Error" variant="inverse" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                    <h2>{error}</h2>
+                </div>
+            </div>
+        </template>
+
+        <!-- Empty State: No waivers found -->
+        <template lwc:if={showEmptyState}>
+            <div class="slds-illustration slds-illustration_small slds-p-around_large slds-text-align_center">
+                <lightning-icon icon-name="utility:info" size="large" class="slds-m-bottom_small"></lightning-icon>
+                <h3 class="slds-text-heading_medium slds-m-bottom_x-small">No Registration Records</h3>
+                <p class="slds-text-body_regular slds-text-color_weak">
+                    This client does not have any waiver/registration records yet.
+                </p>
+            </div>
+        </template>
+
+        <!-- Dashboard Content -->
+        <template lwc:if={hasSummaries}>
+            <!-- Year Selector -->
+            <div class="slds-p-horizontal_medium slds-p-top_small">
+                <c-waiver-year-selector
+                    years={availableYears}
+                    selected-year={selectedYear}
+                    onyearchange={handleYearChange}>
+                </c-waiver-year-selector>
+            </div>
+
+            <!-- Loading Spinner for Detail -->
+            <template lwc:if={isLoadingDetail}>
+                <div class="slds-is-relative slds-p-around_large" style="min-height: 200px;">
+                    <lightning-spinner alternative-text="Loading waiver details" size="medium"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Waiver Detail Panels -->
+            <template lwc:if={waiverDetail}>
+                <!-- Clinical Flags (show first if flagged) -->
+                <template lwc:if={clinicalData}>
+                    <c-waiver-clinical-flags
+                        clinical-data={clinicalData}
+                        class="slds-p-horizontal_medium slds-p-top_small">
+                    </c-waiver-clinical-flags>
+                </template>
+
+                <!-- Form Completion Progress -->
+                <div class="slds-p-horizontal_medium slds-p-top_small">
+                    <c-waiver-form-progress
+                        completion-status={selectedWaiverStatus}
+                        program-type={selectedProgramType}
+                        forms-completed={formsCompletedCount}
+                        total-forms={totalFormsCount}>
+                    </c-waiver-form-progress>
+                </div>
+
+                <!-- Detail Panel (signatures, payment, medical — inline edit) -->
+                <div class="slds-p-horizontal_medium slds-p-top_small">
+                    <c-waiver-detail-panel
+                        waiver-id={selectedWaiverId}
+                        waiver={waiverRecord}
+                        signatures={signatures}
+                        onfieldupdate={handleFieldUpdate}>
+                    </c-waiver-detail-panel>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="slds-p-around_medium">
+                    <c-waiver-admin-actions
+                        waiver-id={selectedWaiverId}
+                        completion-status={selectedWaiverStatus}
+                        program-type={selectedProgramType}
+                        application-submitted={isApplicationSubmitted}
+                        onformreset={handleFormReset}
+                        onapplicationreopened={handleApplicationReopened}>
+                    </c-waiver-admin-actions>
+                </div>
+            </template>
+        </template>
+    </lightning-card>
+</template>

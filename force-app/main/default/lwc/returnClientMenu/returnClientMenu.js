@@ -135,7 +135,6 @@ export default class ReturnClientMenu extends LightningElement {
                 // No program type saved yet — show service type selector
                 this.currentView = 'serviceType';
             }
-
             this.error = undefined;
             this.isLoading = false;
 
@@ -145,6 +144,8 @@ export default class ReturnClientMenu extends LightningElement {
                 this.waiverTemplates = templates;
             }
         } catch (err) {
+            console.error('[ReturnClientMenu] initializeData ERROR:', err);
+            console.error('[ReturnClientMenu] error body:', JSON.stringify(err.body));
             this.error = err.body ? err.body.message : err.message;
             this.isLoading = false;
         }

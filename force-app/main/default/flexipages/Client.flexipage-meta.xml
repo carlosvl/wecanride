@@ -901,6 +901,12 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentName>c:clientWaiverDashboard</componentName>
+                <identifier>c_clientWaiverDashboard</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentInstanceProperties>
                     <name>actionNames</name>
                     <valueList>

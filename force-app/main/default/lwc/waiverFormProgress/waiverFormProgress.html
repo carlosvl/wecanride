@@ -1,0 +1,69 @@
+<template>
+    <div class="slds-box slds-box_x-small slds-theme_default progress-container">
+        <!-- Progress Summary Row -->
+        <div class="slds-grid slds-grid_align-spread slds-grid_vertical-align-center slds-p-bottom_small">
+            <!-- Progress Ring -->
+            <div class="slds-grid slds-grid_vertical-align-center">
+                <div class="progress-ring-wrapper">
+                    <svg class="progress-ring" width="60" height="60" viewBox="0 0 100 100">
+                        <!-- Background circle -->
+                        <circle
+                            class="ring-bg"
+                            cx="50" cy="50" r="45"
+                            fill="none"
+                            stroke="#d8dde6"
+                            stroke-width="8">
+                        </circle>
+                        <!-- Progress circle -->
+                        <circle
+                            class="ring-progress"
+                            cx="50" cy="50" r="45"
+                            fill="none"
+                            stroke={ringColor}
+                            stroke-width="8"
+                            stroke-linecap="round"
+                            style={ringStyle}
+                            transform="rotate(-90 50 50)">
+                        </circle>
+                        <!-- Percentage text -->
+                        <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+                              class="ring-text" font-size="20" font-weight="700"
+                              fill="#3e3e3c">
+                            {percentComplete}%
+                        </text>
+                    </svg>
+                </div>
+                <div class="slds-m-left_small">
+                    <h3 class="slds-text-heading_small">Form Completion</h3>
+                    <p class="slds-text-body_small slds-text-color_weak">{progressLabel} forms completed</p>
+                </div>
+            </div>
+            <!-- Program Type Badge -->
+            <span class="slds-badge slds-badge_inverse">{programType}</span>
+        </div>
+
+        <!-- Step Grid by Category -->
+        <template for:each={categorizedSteps} for:item="category">
+            <div key={category.key} class="slds-m-top_small">
+                <h4 class="slds-text-title_caps slds-m-bottom_xx-small category-header">{category.name}</h4>
+                <div class="slds-grid slds-wrap slds-gutters_x-small">
+                    <template for:each={category.steps} for:item="step">
+                        <div key={step.key} class="slds-col slds-size_1-of-3 slds-p-bottom_xx-small step-col">
+                            <div class={step.cardClass}>
+                                <div class="slds-grid slds-grid_vertical-align-center">
+                                    <lightning-icon
+                                        icon-name={step.icon}
+                                        size="x-small"
+                                        class="slds-m-right_xx-small">
+                                    </lightning-icon>
+                                    <span class="slds-truncate step-label" title={step.label}>{step.label}</span>
+                                </div>
+                                <span class={step.statusBadgeClass}>{step.statusLabel}</span>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+    </div>
+</template>

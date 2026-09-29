@@ -187,6 +187,59 @@ public without sharing class ReturnClientMenuController {
 
         if (!waivers.isEmpty()) {
             data.waiver = waivers[0];
+        } else {
+            // Look up the ClientWaiver template for the current year (waiver__c is required)
+            List<waiver__c> waiverTemplates = [
+                SELECT Id FROM waiver__c
+                WHERE Name = 'ClientWaiver'
+                AND Year__c = :data.currentYear
+                LIMIT 1
+            ];
+            // Fallback: grab any waiver template for the year if ClientWaiver not found
+            if (waiverTemplates.isEmpty()) {
+                waiverTemplates = [
+                    SELECT Id FROM waiver__c
+                    WHERE Year__c = :data.currentYear
+                    LIMIT 1
+                ];
+            }
+
+            // Auto-create waiver for the current year if none exists
+            VolunteerWaiver__c newWaiver = new VolunteerWaiver__c(
+                Client__c = data.client.Id,
+                Year__c = data.currentYear,
+                RecordTypeId = rt.Id,
+                waiver__c = waiverTemplates.isEmpty() ? null : waiverTemplates[0].Id
+            );
+            insert newWaiver;
+            // Re-query to get all fields with defaults
+            data.waiver = [
+                SELECT Id, Client__c, Year__c, Forms_Completed__c,
+                       Application_Submitted__c,
+                       Photo_Release__c, Photo_Release_Name__c, Photo_Release_Date__c,
+                       Auth_for_Emerg_Med_Treatment__c,
+                       Client_Waiver__c,
+                       Medical_History_Form_PL__c, Medical_History_Form__c,
+                       Payer_Info__c, Payer__c, Payer_Address__c, Payer_Phone__c,
+                       Payer_email__c, Payment_Signature_Name__c,
+                       Third_Party_Payer_Waiver_Name__c, Third_Party_Address__c,
+                       Third_Party_Contact__c, Third_Party_email__c,
+                       WeightHeight__c,
+                       Down_Syndrome__c, Down_Syndrome_Date__c,
+                       Seizure_Form__c, Seizure_Form_Date__c, Seizure_Information__c,
+                       ScoliosisForm__c, Scoliosis_Form__c,
+                       Confidentiality_HIPPA__c, Confidentiality_HIPPA_Date__c,
+                       Hippotherapy_Cancellation_Policy__c, Hippotherapy_Cancellation_Policy_Date__c,
+                       Group_Home_Info__c,
+                       Main_Info__c, Parent_Guardian_Info__c, Emergency_Contact_Info__c,
+                       Program_Type__c, Service_Type__c, Clinical_Screening__c,
+                       Informed_Consent__c, Informed_Consent_Date__c, Informed_Consent_Name__c,
+                       Diagnoses_Info__c,
+                       Schedule_Completed_PL__c
+                FROM VolunteerWaiver__c
+                WHERE Id = :newWaiver.Id
+                LIMIT 1
+            ];
         }
 
         // Build completion status map from stamp fields

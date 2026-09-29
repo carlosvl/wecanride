@@ -1,0 +1,33 @@
+.button-group {
+    padding-top: 0.5rem;
+}
+
+/* Search Results */
+.results-container {
+    max-height: 300px;
+    margin-bottom: 0.5rem;
+}
+
+.result-card {
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border: 2px solid transparent;
+    padding: 0.5rem 0.75rem;
+}
+
+.result-card:hover {
+    background-color: #f4f6f9;
+}
+
+.result-card--selected {
+    border-color: #0176d3;
+    background-color: #eef4ff;
+}
+
+.saving-spinner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+}

@@ -1,0 +1,129 @@
+<template>
+    <div class="slds-box slds-box_x-small slds-theme_default actions-container">
+        <h3 class="slds-text-heading_small slds-m-bottom_small">
+            <lightning-icon icon-name="utility:settings" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+            Admin Actions
+        </h3>
+
+        <!-- Loading Overlay -->
+        <template lwc:if={isProcessing}>
+            <lightning-spinner alternative-text="Processing" size="small" class="slds-m-bottom_small"></lightning-spinner>
+        </template>
+
+        <div class="slds-grid slds-wrap slds-gutters_small">
+            <!-- Reset Single Form Step -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                <template lwc:if={hasCompletedSteps}>
+                    <lightning-combobox
+                        name="resetStep"
+                        label="Reset a Form Step"
+                        placeholder="Select a completed step..."
+                        options={resetStepOptions}
+                        onchange={handleStepSelect}
+                        disabled={isProcessing}>
+                    </lightning-combobox>
+                </template>
+                <template lwc:else>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Reset a Form Step</label>
+                        <p class="slds-text-body_small slds-text-color_weak">No completed steps to reset.</p>
+                    </div>
+                </template>
+            </div>
+
+            <!-- Reset All Forms -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label">Reset All Forms</label>
+                    <div class="slds-form-element__control">
+                        <lightning-button
+                            label="Reset All"
+                            variant="destructive"
+                            icon-name="utility:refresh"
+                            onclick={handleResetAllClick}
+                            disabled={isProcessing}>
+                        </lightning-button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reopen Application -->
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-3 slds-m-bottom_small">
+                <div class="slds-form-element">
+                    <label class="slds-form-element__label">Reopen Application</label>
+                    <div class="slds-form-element__control">
+                        <template lwc:if={applicationSubmitted}>
+                            <lightning-button
+                                label="Reopen"
+                                variant="brand-outline"
+                                icon-name="utility:unlock"
+                                onclick={handleReopenClick}
+                                disabled={isProcessing}>
+                            </lightning-button>
+                        </template>
+                        <template lwc:else>
+                            <p class="slds-text-body_small slds-text-color_weak">Application not yet submitted.</p>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Single Step Confirmation Modal -->
+    <template lwc:if={showResetConfirm}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Confirm Reset</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>{resetConfirmMessage}</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCancelReset} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label="Reset" variant="destructive" onclick={handleConfirmReset}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Reset All Confirmation Modal -->
+    <template lwc:if={showResetAllConfirm}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Confirm Reset All</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>Are you sure you want to reset <strong>ALL</strong> form steps? This will clear all completion data for every form on this waiver record. This action cannot be undone.</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCancelResetAll} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label="Reset All Forms" variant="destructive" onclick={handleConfirmResetAll}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+
+    <!-- Reopen Application Confirmation Modal -->
+    <template lwc:if={showReopenConfirm}>
+        <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <h2 class="slds-text-heading_medium">Confirm Reopen</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium">
+                    <p>Are you sure you want to reopen this application? The client will be able to edit their forms again.</p>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning-button label="Cancel" onclick={handleCancelReopen} class="slds-m-right_x-small"></lightning-button>
+                    <lightning-button label="Reopen Application" variant="brand" onclick={handleConfirmReopen}></lightning-button>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

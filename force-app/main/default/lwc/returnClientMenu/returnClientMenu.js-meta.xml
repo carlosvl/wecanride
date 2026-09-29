@@ -10,4 +10,14 @@
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>
     </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="contactId" type="String" label="Contact ID" description="Optional: pass a Contact ID directly. If blank, resolves from the logged-in user." />
+        </targetConfig>
+        <targetConfig targets="lightning__RecordPage">
+            <objects>
+                <object>Contact</object>
+            </objects>
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
