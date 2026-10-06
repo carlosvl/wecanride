@@ -208,7 +208,7 @@
                         <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
                             <lightning-icon icon-name="utility:upload" size="x-small" class="slds-m-right_x-small"></lightning-icon>
                             Diagnosis Forms
-                            <span class="slds-text-body_small slds-text-color_weak slds-m-left_x-small">(if applicable)</span>
+                            <span class="slds-text-body_small slds-text-color_weak slds-m-left_x-small">(required if diagnoses applies)</span>
                         </h2>
                         <div class="slds-grid slds-wrap slds-gutters_small">
                             <template for:each={diagnosisForms} for:item="step">
@@ -245,6 +245,7 @@
                     <h2 class="slds-text-heading_small slds-m-bottom_small section-heading">
                         <lightning-icon icon-name="utility:lock" size="x-small" class="slds-m-right_x-small"></lightning-icon>
                         Specialty Forms
+                        <span class="slds-text-body_small slds-text-color_weak slds-m-left_x-small">(required for hippotherapy or mental health clients only)</span>
                     </h2>
                     <div class="slds-grid slds-wrap slds-gutters_small">
                         <template for:each={specialtyForms} for:item="step">

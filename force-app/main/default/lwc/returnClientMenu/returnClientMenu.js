@@ -25,11 +25,11 @@ const RIDING_FORM_STEPS = [
     { key: 'medicalHistory',      label: 'Medical History',        icon: 'utility:file',        category: 'required', order: 8 },
     { key: 'paymentInfo',         label: 'Payment Info',           icon: 'utility:money',       category: 'required', order: 9 },
     { key: 'heightWeight',        label: 'Height & Weight',        icon: 'utility:metric',      category: 'required', order: 10 },
+    { key: 'diagnoses',           label: 'Diagnoses',              icon: 'utility:record',      category: 'required', order: 11 },
     // ── Diagnosis Forms (conditional) ───────────────────
-    { key: 'downSyndrome',        label: 'Down Syndrome',          icon: 'utility:upload',      category: 'diagnosis', order: 11 },
-    { key: 'seizureForm',         label: 'Seizure Form',           icon: 'utility:upload',      category: 'diagnosis', order: 12 },
-    { key: 'scoliosis',           label: 'Scoliosis',             icon: 'utility:upload',      category: 'diagnosis', order: 13 },
-    { key: 'diagnoses',           label: 'Diagnoses',              icon: 'utility:record',      category: 'diagnosis', order: 14 },
+    { key: 'downSyndrome',        label: 'Down Syndrome',          icon: 'utility:upload',      category: 'diagnosis', order: 12 },
+    { key: 'seizureForm',         label: 'Seizure Form',           icon: 'utility:upload',      category: 'diagnosis', order: 13 },
+    { key: 'scoliosis',           label: 'Scoliosis',             icon: 'utility:upload',      category: 'diagnosis', order: 14 },
     // ── Specialty Forms ─────────────────────────────────
     { key: 'confidentialityHippa', label: 'Confidentiality/HIPPA', icon: 'utility:lock',        category: 'specialty', order: 15 },
     { key: 'therapyCancellation',  label: 'Therapy Cancellation',  icon: 'utility:record_delete', category: 'specialty', order: 16 }
@@ -324,13 +324,21 @@ export default class ReturnClientMenu extends LightningElement {
         return count;
     }
 
+    get requiredVisibleSteps() {
+        return this.visibleSteps.filter(s => REQUIRED_CATEGORIES.includes(s.category));
+    }
+
+    get requiredCompletedCount() {
+        return this.requiredVisibleSteps.filter(s => s.isCompleted).length;
+    }
+
     get progressPercent() {
-        const total = this.visibleSteps.length;
-        return total > 0 ? Math.round((this.completedCount / total) * 100) : 0;
+        const total = this.requiredVisibleSteps.length;
+        return total > 0 ? Math.round((this.requiredCompletedCount / total) * 100) : 0;
     }
 
     get progressLabel() {
-        return `${this.completedCount} of ${this.visibleSteps.length} forms completed`;
+        return `${this.requiredCompletedCount} of ${this.requiredVisibleSteps.length} forms completed`;
     }
 
     get requiredSteps() {
