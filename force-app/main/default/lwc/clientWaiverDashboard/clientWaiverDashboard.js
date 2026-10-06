@@ -91,6 +91,10 @@ export default class ClientWaiverDashboard extends LightningElement {
         return this.waiverDetail ? this.waiverDetail.signatures : [];
     }
 
+    get diagnosisRecords() {
+        return this.waiverDetail ? this.waiverDetail.diagnoses : [];
+    }
+
     get waiverRecord() {
         return this.waiverDetail ? this.waiverDetail.waiver : null;
     }

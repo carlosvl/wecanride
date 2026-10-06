@@ -160,14 +160,26 @@
             </lightning-accordion-section>
 
             <!-- Diagnoses Section -->
-            <lightning-accordion-section name="diagnoses" label="Diagnoses">
+            <lightning-accordion-section name="diagnoses" label="Diagnoses ({diagnosisCount})">
                 <template lwc:if={hasDiagnosesData}>
-                    <div class="slds-form-element">
-                        <label class="slds-form-element__label">Selected Diagnoses</label>
-                        <div class="slds-form-element__control">
-                            <span class="slds-form-element__static">{diagnosesValue}</span>
-                        </div>
-                    </div>
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-bottom_small">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <th scope="col"><div class="slds-truncate">Condition</div></th>
+                                <th scope="col"><div class="slds-truncate">Date</div></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <template for:each={diagnosisRecords} for:item="diag">
+                                <tr key={diag.id}>
+                                    <td><div class="slds-truncate">{diag.conditionName}</div></td>
+                                    <td><div class="slds-truncate">
+                                        <lightning-formatted-date-time value={diag.diagDate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                                    </div></td>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
                 </template>
                 <template lwc:else>
                     <p class="slds-text-body_small slds-text-color_weak slds-p-around_small">

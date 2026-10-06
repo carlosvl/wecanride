@@ -16,6 +16,7 @@ export default class ReturnClientMainInfo extends LightningElement {
     @api waiver;
     @api contactRecord;
     @api clientRecord;
+    @api programType = '';
 
     firstName = '';
     lastName = '';
@@ -75,8 +76,24 @@ export default class ReturnClientMainInfo extends LightningElement {
         this.gender = event.detail.value;
     }
 
+    get isMentalHealth() {
+        return this.programType === 'Mental Health';
+    }
+
+    get heightWeightRequired() {
+        return this.programType !== 'Mental Health';
+    }
+
+    get heightLabel() {
+        return this.isMentalHealth ? 'Height (optional)' : 'Height';
+    }
+
+    get weightLabel() {
+        return this.isMentalHealth ? 'Weight — lbs (optional)' : 'Weight (lbs)';
+    }
+
     get showWeightWarning() {
-        return this.weightWarning !== '';
+        return this.weightWarning !== '' && this.programType !== 'Mental Health';
     }
 
     async handleSave() {

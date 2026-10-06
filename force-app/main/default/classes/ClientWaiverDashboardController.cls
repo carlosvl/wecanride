@@ -32,6 +32,7 @@ public without sharing class ClientWaiverDashboardController {
         @AuraEnabled public List<SignatureInfo> signatures;
         @AuraEnabled public ClinicalData clinicalData;
         @AuraEnabled public Map<String, String> completionStatus;
+        @AuraEnabled public List<ReturnClientMenuController.DiagnosisRecord> diagnoses;
     }
 
     /**
@@ -165,6 +166,10 @@ public without sharing class ClientWaiverDashboardController {
      */
     @AuraEnabled(cacheable=true)
     public static List<WaiverSummary> getWaiverSummaries(Id clientId) {
+        // Check if client lives in group home
+        Riders__c client = [SELECT Id, Lives_in_Group_Home__c FROM Riders__c WHERE Id = :clientId LIMIT 1];
+        Boolean livesInGroupHome = client.Lives_in_Group_Home__c == true;
+
         // Get the Client RecordType Id
         RecordType rt = [
             SELECT Id
@@ -220,7 +225,7 @@ public without sharing class ClientWaiverDashboardController {
             s.createdDate = w.CreatedDate.date();
 
             // Build completion map and count
-            Map<String, String> statusMap = buildCompletionMap(w);
+            Map<String, String> statusMap = buildCompletionMap(w, livesInGroupHome);
             s.completionStatus = statusMap;
 
             // Count completed vs total for the relevant program
@@ -283,13 +288,18 @@ public without sharing class ClientWaiverDashboardController {
 
         WaiverDetail detail = new WaiverDetail();
         detail.waiver = waiver;
-        detail.completionStatus = buildCompletionMap(waiver);
+        // Check group home status for completion map
+        Riders__c client2 = [SELECT Id, Lives_in_Group_Home__c FROM Riders__c WHERE Id = :waiver.Client__c LIMIT 1];
+        detail.completionStatus = buildCompletionMap(waiver, client2.Lives_in_Group_Home__c == true);
 
         // Extract signatures from stamp fields
         detail.signatures = extractSignatures(waiver);
 
         // Get clinical data from the parent Riders__c record
         detail.clinicalData = getClinicalDataForClient(waiver.Client__c, waiver);
+
+        // Get diagnoses records for the client
+        detail.diagnoses = ReturnClientMenuController.getDiagnosesForClient(waiver.Client__c);
 
         return detail;
     }
@@ -402,7 +412,7 @@ public without sharing class ClientWaiverDashboardController {
      * Builds a map of form step → completion status from waiver stamp fields.
      * Mirrors the logic in ReturnClientMenuController.buildCompletionMap.
      */
-    private static Map<String, String> buildCompletionMap(VolunteerWaiver__c waiver) {
+    private static Map<String, String> buildCompletionMap(VolunteerWaiver__c waiver, Boolean livesInGroupHome) {
         Map<String, String> statusMap = new Map<String, String>();
 
         // Profile forms
@@ -425,8 +435,9 @@ public without sharing class ClientWaiverDashboardController {
             return statusMap;
         }
 
+        // Group Home: auto-complete if client doesn't live in group home
         statusMap.put('groupHome',
-            waiver.Group_Home_Info__c == 'Completed' ? 'Completed' : 'Not Started');
+            (waiver.Group_Home_Info__c == 'Completed' || livesInGroupHome == false) ? 'Completed' : 'Not Started');
         statusMap.put('photoRelease',
             String.isNotBlank(waiver.Photo_Release__c) ? waiver.Photo_Release__c : 'Not Started');
         statusMap.put('emergencyTreatment',
@@ -556,7 +567,8 @@ public without sharing class ClientWaiverDashboardController {
             LIMIT 1
         ];
 
-        Map<String, String> statusMap = buildCompletionMap(waiver);
+        Riders__c client3 = [SELECT Id, Lives_in_Group_Home__c FROM Riders__c WHERE Id = :waiver.Client__c LIMIT 1];
+        Map<String, String> statusMap = buildCompletionMap(waiver, client3.Lives_in_Group_Home__c == true);
         Integer completedCount = 0;
         for (String status : statusMap.values()) {
             if (status != null && status != '' && status != 'Not Started') {

@@ -1596,7 +1596,136 @@ public without sharing class ReturnClientMenuController {
         }
     }
 
-    // ─── Mental Health: Save Diagnoses ───────────────────────────────────
+    // ─── Diagnoses: Relational Model (diagnoses__c + Condition__c) ──────
+
+    /**
+     * Wrapper for a single diagnosis record.
+     */
+    public class DiagnosisRecord {
+        @AuraEnabled public Id id;
+        @AuraEnabled public String name;           // auto-number
+        @AuraEnabled public Id conditionId;
+        @AuraEnabled public String conditionName;   // Condition__c.Name
+        @AuraEnabled public Date diagDate;
+    }
+
+    /**
+     * Wrapper for condition picklist options.
+     */
+    public class ConditionOption {
+        @AuraEnabled public Id value;     // Condition__c.Id
+        @AuraEnabled public String label; // Condition__c.Name
+    }
+
+    /**
+     * Returns all diagnoses__c records for the given client.
+     */
+    @AuraEnabled
+    public static List<DiagnosisRecord> getDiagnosesForClient(Id clientId) {
+        List<DiagnosisRecord> results = new List<DiagnosisRecord>();
+        for (diagnoses__c d : [
+            SELECT Id, Name, Conditions__c, Conditions__r.Name, Date__c
+            FROM diagnoses__c
+            WHERE Client__c = :clientId
+            ORDER BY Date__c DESC NULLS LAST, Name ASC
+        ]) {
+            DiagnosisRecord rec = new DiagnosisRecord();
+            rec.id = d.Id;
+            rec.name = d.Name;
+            rec.conditionId = d.Conditions__c;
+            rec.conditionName = d.Conditions__r != null ? d.Conditions__r.Name : '';
+            rec.diagDate = d.Date__c;
+            results.add(rec);
+        }
+        return results;
+    }
+
+    /**
+     * Returns all Condition__c records as picklist options (cacheable reference data).
+     */
+    @AuraEnabled(cacheable=true)
+    public static List<ConditionOption> getConditionOptions() {
+        List<ConditionOption> options = new List<ConditionOption>();
+        for (Condition__c c : [
+            SELECT Id, Name FROM Condition__c ORDER BY Name ASC
+        ]) {
+            ConditionOption opt = new ConditionOption();
+            opt.value = c.Id;
+            opt.label = c.Name;
+            options.add(opt);
+        }
+        return options;
+    }
+
+    /**
+     * Creates a new diagnoses__c record for the client.
+     */
+    @AuraEnabled
+    public static SaveResult addDiagnosis(Id clientId, Id conditionId, Date diagDate) {
+        try {
+            diagnoses__c diag = new diagnoses__c(
+                Client__c = clientId,
+                Conditions__c = conditionId,
+                Date__c = diagDate
+            );
+            insert diag;
+
+            SaveResult result = new SaveResult();
+            result.success = true;
+            return result;
+        } catch (Exception e) {
+            return buildErrorResult(e.getMessage());
+        }
+    }
+
+    /**
+     * Deletes a diagnoses__c record.
+     */
+    @AuraEnabled
+    public static SaveResult deleteDiagnosis(Id diagnosisId) {
+        try {
+            delete [SELECT Id FROM diagnoses__c WHERE Id = :diagnosisId LIMIT 1];
+
+            SaveResult result = new SaveResult();
+            result.success = true;
+            return result;
+        } catch (Exception e) {
+            return buildErrorResult(e.getMessage());
+        }
+    }
+
+    /**
+     * Completes the diagnoses step on the waiver.
+     * If isNa is true, marks as N/A (reviewed but no diagnoses apply).
+     * Otherwise validates at least one diagnosis record exists.
+     */
+    @AuraEnabled
+    public static SaveResult completeDiagnosesStep(Id waiverId, Id clientId, Boolean isNa) {
+        try {
+            if (isNa != true) {
+                // Verify at least one diagnosis exists
+                Integer count = [SELECT COUNT() FROM diagnoses__c WHERE Client__c = :clientId];
+                if (count == 0) {
+                    return buildErrorResult('Please add at least one diagnosis before completing this step, or select "N/A — Mark as Reviewed" if no diagnoses apply.');
+                }
+            }
+
+            VolunteerWaiver__c waiver = new VolunteerWaiver__c(
+                Id = waiverId,
+                Diagnoses_Info__c = 'Completed'
+            );
+            update waiver;
+
+            return buildSuccessResult(waiverId);
+        } catch (Exception e) {
+            return buildErrorResult(e.getMessage());
+        }
+    }
+
+    /**
+     * Legacy wrapper — kept for backward compatibility but now delegates
+     * to the relational model. Not used by the new LWC.
+     */
     @AuraEnabled
     public static SaveResult saveDiagnoses(Id waiverId, Id clientId, String diagnoses, String additionalNotes) {
         try {

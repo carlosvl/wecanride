@@ -2,13 +2,14 @@
     <div class="slds-card slds-p-around_medium">
         <h2 class="slds-text-heading_medium slds-m-bottom_small">Diagnoses</h2>
         <p class="slds-text-body_regular slds-text-color_weak slds-m-bottom_large">
-            Please select all diagnoses that apply. This information helps our therapy team prepare to best serve you.
+            Please add all diagnoses that apply. Select a condition from the list and optionally provide a date.
+            You must add at least one diagnosis to continue. If the client has no diagnosis, select "No diagnoses to report" option at the bottom.
         </p>
 
         <!-- Already Completed Banner -->
         <template lwc:if={isCompleted}>
             <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
-                <span>This form has already been completed. You may update your selections below.</span>
+                <span>This form has already been completed. You may update your diagnoses below.</span>
             </div>
         </template>
 
@@ -19,50 +20,186 @@
             </div>
         </template>
 
-        <!-- Diagnoses Multi-Select (uses dual listbox for better UX with large list) -->
-        <div class="slds-m-bottom_large">
-            <lightning-dual-listbox
-                label="Select all diagnoses that apply"
-                source-label="Available Diagnoses"
-                selected-label="Selected Diagnoses"
-                field-level-help="Search and select from the list. Use the arrows to move items between lists."
-                options={diagnosisOptions}
-                value={selectedDiagnoses}
-                onchange={handleDiagnosesChange}
-                min="1"
-                size="10"
-            ></lightning-dual-listbox>
-        </div>
+        <!-- Loading Spinner -->
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading diagnoses" size="medium"></lightning-spinner>
+        </template>
 
-        <!-- Additional Notes -->
-        <div class="slds-m-bottom_large">
-            <lightning-textarea
-                label="Additional Notes (optional)"
-                value={additionalNotes}
-                onchange={handleNotesChange}
-                max-length="5000"
-                placeholder="Any additional information about your diagnoses that you'd like us to know..."
-            ></lightning-textarea>
-        </div>
+        <template lwc:else>
+            <!-- Add New Diagnosis Section -->
+            <div class="slds-box slds-m-bottom_medium slds-p-around_small slds-theme_shade">
+                <h3 class="slds-text-heading_small slds-m-bottom_small">Add New Diagnosis</h3>
+                <div class="slds-grid slds-gutters slds-wrap">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-m-bottom_small">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="condition-search">
+                                <abbr class="slds-required" title="required">*</abbr>
+                                Condition
+                            </label>
+                            <div class="slds-form-element__control slds-combobox-group">
+                                <div class="slds-combobox_container">
+                                    <input
+                                        type="text"
+                                        id="condition-search"
+                                        class="slds-input"
+                                        placeholder="Type to search conditions..."
+                                        value={searchTerm}
+                                        oninput={handleSearchChange}
+                                        onfocus={handleSearchFocus}
+                                        onblur={handleSearchBlur}
+                                        autocomplete="off"
+                                    />
+                                    <!-- Dropdown Results -->
+                                    <template lwc:if={showDropdown}>
+                                        <div class="slds-dropdown slds-dropdown_length-10 slds-dropdown_fluid" role="listbox">
+                                            <ul class="slds-listbox slds-listbox_vertical" role="presentation">
+                                                <template for:each={filteredOptions} for:item="opt">
+                                                    <li key={opt.value}
+                                                        class="slds-listbox__item"
+                                                        role="option"
+                                                        data-id={opt.value}
+                                                        data-label={opt.label}
+                                                        onmousedown={handleSelectCondition}>
+                                                        <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-truncate">{opt.label}</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                                <template lwc:if={noFilteredResults}>
+                                                    <li class="slds-listbox__item">
+                                                        <div class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small">
+                                                            <span class="slds-media__body">
+                                                                <span class="slds-truncate slds-text-color_weak">No matching conditions found</span>
+                                                            </span>
+                                                        </div>
+                                                    </li>
+                                                </template>
+                                            </ul>
+                                        </div>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-m-bottom_small">
+                        <lightning-input
+                            type="date"
+                            label="Date (optional)"
+                            value={diagDate}
+                            onchange={handleDateChange}
+                        ></lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_2-of-12 slds-m-bottom_small slds-grid slds-grid_vertical-align-end">
+                        <lightning-button
+                            label="Add"
+                            variant="brand"
+                            onclick={handleAdd}
+                            disabled={cannotAdd}
+                            icon-name="utility:add"
+                        ></lightning-button>
+                    </div>
+                </div>
+                <template lwc:if={isAdding}>
+                    <lightning-spinner alternative-text="Adding..." size="small"></lightning-spinner>
+                </template>
+            </div>
 
-        <!-- Action Buttons -->
-        <div class="slds-grid slds-grid_align-end slds-m-top_medium">
-            <lightning-button
-                label="Cancel"
-                variant="neutral"
-                onclick={handleCancel}
-                class="slds-m-right_small"
-            ></lightning-button>
-            <lightning-button
-                label={saveButtonLabel}
-                variant="brand"
-                onclick={handleSave}
-                disabled={cannotSave}
-            ></lightning-button>
-        </div>
+            <!-- Current Diagnoses Table -->
+            <div class="slds-m-bottom_medium">
+                <h3 class="slds-text-heading_small slds-m-bottom_x-small">
+                    Current Diagnoses ({diagnosisCount})
+                </h3>
+                <template lwc:if={hasDiagnoses}>
+                    <lightning-datatable
+                        key-field="id"
+                        data={diagnoses}
+                        columns={columns}
+                        hide-checkbox-column
+                        onrowaction={handleRowAction}
+                    ></lightning-datatable>
+                </template>
+                <template lwc:else>
+                    <div class="slds-illustration slds-illustration_small slds-p-around_medium slds-text-align_center">
+                        <p class="slds-text-body_regular slds-text-color_weak">
+                            No diagnoses added yet. Use the form above to add at least one diagnosis.
+                        </p>
+                    </div>
+                </template>
+            </div>
 
-        <template lwc:if={isSaving}>
-            <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+            <!-- Delete Confirmation Modal -->
+            <template lwc:if={showDeleteConfirm}>
+                <section role="dialog" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        <header class="slds-modal__header">
+                            <h2 class="slds-modal__title">Delete Diagnosis</h2>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <p>Do you want to delete this diagnosis?</p>
+                            <p class="slds-text-heading_small slds-m-top_small"><strong>{deleteConfirmName}</strong></p>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button
+                                label="Cancel"
+                                variant="neutral"
+                                onclick={handleCancelDelete}
+                                class="slds-m-right_small"
+                            ></lightning-button>
+                            <lightning-button
+                                label="Yes, Delete"
+                                variant="destructive"
+                                onclick={handleConfirmDelete}
+                            ></lightning-button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+
+            <!-- N/A Option -->
+            <template lwc:if={showNaOption}>
+                <div class="slds-box slds-m-bottom_medium slds-p-around_small slds-theme_default">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <div class="slds-col slds-grow">
+                            <p class="slds-text-body_regular">
+                                <lightning-icon icon-name="utility:info" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                                No diagnoses to report? You can mark this section as reviewed and continue.
+                            </p>
+                        </div>
+                        <div class="slds-col slds-no-flex slds-m-left_medium">
+                            <lightning-button
+                                label="N/A — Mark as Reviewed"
+                                variant="neutral"
+                                onclick={handleMarkNa}
+                                disabled={isSaving}
+                                icon-name="utility:check"
+                            ></lightning-button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- Action Buttons -->
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+                <lightning-button
+                    label="Cancel"
+                    variant="neutral"
+                    onclick={handleCancel}
+                    class="slds-m-right_small"
+                ></lightning-button>
+                <lightning-button
+                    label={completeButtonLabel}
+                    variant="brand"
+                    onclick={handleComplete}
+                    disabled={cannotComplete}
+                ></lightning-button>
+            </div>
+
+            <template lwc:if={isSaving}>
+                <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+            </template>
         </template>
     </div>
 </template>

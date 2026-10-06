@@ -1,5 +1,6 @@
 import { LightningElement, api, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { CurrentPageReference } from 'lightning/navigation';
 import getClientData from '@salesforce/apex/ReturnClientMenuController.getClientData';
 import getContactIdForUser from '@salesforce/apex/ReturnClientMenuController.getContactIdForUser';
 import submitApplication from '@salesforce/apex/ReturnClientMenuController.submitApplication';
@@ -28,9 +29,10 @@ const RIDING_FORM_STEPS = [
     { key: 'downSyndrome',        label: 'Down Syndrome',          icon: 'utility:upload',      category: 'diagnosis', order: 11 },
     { key: 'seizureForm',         label: 'Seizure Form',           icon: 'utility:upload',      category: 'diagnosis', order: 12 },
     { key: 'scoliosis',           label: 'Scoliosis',             icon: 'utility:upload',      category: 'diagnosis', order: 13 },
+    { key: 'diagnoses',           label: 'Diagnoses',              icon: 'utility:record',      category: 'diagnosis', order: 14 },
     // ── Specialty Forms ─────────────────────────────────
-    { key: 'confidentialityHippa', label: 'Confidentiality/HIPPA', icon: 'utility:lock',        category: 'specialty', order: 14 },
-    { key: 'therapyCancellation',  label: 'Therapy Cancellation',  icon: 'utility:record_delete', category: 'specialty', order: 15 }
+    { key: 'confidentialityHippa', label: 'Confidentiality/HIPPA', icon: 'utility:lock',        category: 'specialty', order: 15 },
+    { key: 'therapyCancellation',  label: 'Therapy Cancellation',  icon: 'utility:record_delete', category: 'specialty', order: 16 }
 ];
 
 /**
@@ -80,6 +82,18 @@ export default class ReturnClientMenu extends LightningElement {
     clientData;
     waiverTemplates;
     _resolvedContactId;
+    _pageRecordId;   // Contact ID extracted from the page URL
+
+    // ─── Wire: Extract recordId from the Experience Cloud page URL ───
+    @wire(CurrentPageReference)
+    handlePageReference(pageRef) {
+        if (pageRef) {
+            // In Experience Cloud, the record ID is in state.recordId or attributes.recordId
+            this._pageRecordId = pageRef.state?.recordId
+                || pageRef.attributes?.recordId
+                || null;
+        }
+    }
 
     // ─── Lifecycle: Resolve Contact ID then load data ───
     connectedCallback() {
@@ -88,10 +102,14 @@ export default class ReturnClientMenu extends LightningElement {
 
     async initializeData() {
         try {
-            // If contactId was passed as a property, use it directly
-            let contactId = this.contactId || this.recordId;
+            // Priority order for resolving the contact:
+            // 1. contactId design property (explicitly set in Experience Builder)
+            // 2. _pageRecordId from CurrentPageReference (the contact page being viewed)
+            // 3. recordId @api (Lightning Record Page)
+            // 4. Fallback: resolve from the logged-in user
+            let contactId = this.contactId || this._pageRecordId || this.recordId;
 
-            // Otherwise, resolve from the logged-in user
+            // Fallback: resolve from the logged-in user only if nothing else is available
             if (!contactId && USER_ID) {
                 contactId = await getContactIdForUser({ userId: USER_ID });
             }
@@ -118,10 +136,13 @@ export default class ReturnClientMenu extends LightningElement {
                 if (savedProgramType === 'Mental Health') {
                     const screeningStatus = data.waiver?.Clinical_Screening__c || '';
                     this.clinicalScreeningStatus = screeningStatus;
-                    if (screeningStatus === 'Flagged') {
+                    // Only pause if screening is flagged AND admin hasn't unpaused
+                    const isIntakePaused = data.client?.Intake_Paused__c === true;
+                    if (screeningStatus === 'Flagged' && isIntakePaused) {
                         this.intakePaused = true;
                         this.currentView = 'paused';
-                    } else if (screeningStatus === 'Completed') {
+                    } else if (screeningStatus === 'Flagged' || screeningStatus === 'Completed') {
+                        // Admin has unpaused, or screening passed — show menu
                         this.currentView = 'menu';
                     } else {
                         // Not yet screened — go to clinical screening after service type

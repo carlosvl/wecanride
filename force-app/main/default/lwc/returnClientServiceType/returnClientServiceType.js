@@ -2,8 +2,8 @@ import { LightningElement, api } from 'lwc';
 import saveServiceType from '@salesforce/apex/ReturnClientMenuController.saveServiceType';
 
 const PROGRAM_OPTIONS = [
-    { label: 'Riding', value: 'Riding' },
-    { label: 'Mental Health', value: 'Mental Health' }
+    { label: 'Therapeutic Riding or Hippotherapy', value: 'Riding' },
+    { label: 'Mental Health Therapy', value: 'Mental Health' }
 ];
 
 const SERVICE_TYPE_OPTIONS = [

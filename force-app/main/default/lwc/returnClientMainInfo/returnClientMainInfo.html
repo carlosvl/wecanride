@@ -56,22 +56,22 @@
         <div class="slds-grid slds-wrap slds-gutters">
             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                 <lightning-input
-                    label="Height"
+                    label={heightLabel}
                     data-field="height"
                     value={height}
                     onchange={handleInputChange}
-                    required
-                    placeholder="e.g., 5'6"
+                    required={heightWeightRequired}
+                    placeholder="e.g., 5'6&quot;"
                 ></lightning-input>
             </div>
             <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
                 <lightning-input
                     type="number"
-                    label="Weight (lbs)"
+                    label={weightLabel}
                     data-field="weight"
                     value={weight}
                     onchange={handleInputChange}
-                    required
+                    required={heightWeightRequired}
                     min="0"
                     step="0.1"
                 ></lightning-input>

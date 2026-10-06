@@ -11,6 +11,7 @@ export default class WaiverDetailPanel extends LightningElement {
     @api waiverId;
     @api waiver;        // Full VolunteerWaiver__c record
     @api signatures;    // List<SignatureInfo> from Apex
+    @api diagnoses;     // List<DiagnosisRecord> from Apex
 
     @track editingField = null;  // Field API name currently being edited
     @track editValue = '';       // Temporary edited value
@@ -88,12 +89,20 @@ export default class WaiverDetailPanel extends LightningElement {
     // ── Computed: Diagnoses Section ──────────────────────
 
     get hasDiagnosesData() {
-        if (!this.waiver) return false;
-        return this.waiver.Diagnoses_Info__c === 'Completed' ||
-               this.waiver.Diagnoses__c != null;
+        return (this.diagnoses && this.diagnoses.length > 0) ||
+               (this.waiver && (this.waiver.Diagnoses_Info__c === 'Completed' || this.waiver.Diagnoses__c != null));
+    }
+
+    get diagnosisRecords() {
+        return this.diagnoses || [];
+    }
+
+    get diagnosisCount() {
+        return this.diagnosisRecords.length;
     }
 
     get diagnosesValue() {
+        // Fallback for old picklist data
         return this.waiver ? (this.waiver.Diagnoses__c || '—') : '—';
     }
 
