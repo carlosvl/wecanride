@@ -338,7 +338,7 @@ export default class ReturnClientMenu extends LightningElement {
     }
 
     get progressLabel() {
-        return `${this.requiredCompletedCount} of ${this.requiredVisibleSteps.length} forms completed`;
+        return `${this.requiredCompletedCount} OF ${this.requiredVisibleSteps.length} FORMS COMPLETED`;
     }
 
     get requiredSteps() {

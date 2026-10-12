@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Main_Info__c</fullName>
+    <description>Tracks whether the Main Info form step has been completed</description>
     <externalId>false</externalId>
     <label>Main Info</label>
     <required>false</required>
@@ -15,6 +16,11 @@
                 <fullName>Completed</fullName>
                 <default>false</default>
                 <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <label>Not Started</label>
             </value>
         </valueSetDefinition>
     </valueSet>
