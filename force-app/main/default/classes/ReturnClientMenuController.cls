@@ -380,6 +380,22 @@ public without sharing class ReturnClientMenuController {
                 LIMIT 1
             ];
 
+            // Prevent duplicate child waiver (guard against double-click / network retry)
+            Id templateId = templates.isEmpty() ? null : templates[0].Id;
+            if (templateId != null) {
+                List<VolunteerWaiver__c> existingChild = [
+                    SELECT Id FROM VolunteerWaiver__c
+                    WHERE Client__c = :clientId
+                    AND Year__c = :year
+                    AND RecordTypeId = :recordTypeId
+                    AND waiver__c = :templateId
+                    LIMIT 1
+                ];
+                if (!existingChild.isEmpty()) {
+                    return buildSuccessResult(waiverId);
+                }
+            }
+
             // Create child waiver record (same pattern as the original flow)
             VolunteerWaiver__c childWaiver = new VolunteerWaiver__c(
                 Client__c = clientId,
@@ -388,7 +404,7 @@ public without sharing class ReturnClientMenuController {
                 Signed_Dated__c = Date.today(),
                 Year__c = year,
                 RecordTypeId = recordTypeId,
-                waiver__c = templates.isEmpty() ? null : templates[0].Id
+                waiver__c = templateId
             );
             insert childWaiver;
 
@@ -535,6 +551,19 @@ public without sharing class ReturnClientMenuController {
             );
             update parentWaiver;
 
+            // Prevent duplicate child waiver (guard against double-click / network retry)
+            List<VolunteerWaiver__c> existingChild = [
+                SELECT Id FROM VolunteerWaiver__c
+                WHERE Client__c = :clientId
+                AND Year__c = :year
+                AND waiver__c = :waiverTemplateId
+                AND Confidentiality_HIPPA__c = 'Yes'
+                LIMIT 1
+            ];
+            if (!existingChild.isEmpty()) {
+                return buildSuccessResult(waiverId);
+            }
+
             // Create child waiver record
             VolunteerWaiver__c childWaiver = new VolunteerWaiver__c(
                 Client__c = clientId,
@@ -576,6 +605,18 @@ public without sharing class ReturnClientMenuController {
                 Hippotherapy_Cancellation_Policy_Date__c = Date.today()
             );
             update parentWaiver;
+
+            // Prevent duplicate child waiver (guard against double-click / network retry)
+            List<VolunteerWaiver__c> existingChild = [
+                SELECT Id FROM VolunteerWaiver__c
+                WHERE Client__c = :clientId
+                AND Year__c = :year
+                AND waiver__c = :waiverTemplateId
+                LIMIT 1
+            ];
+            if (!existingChild.isEmpty()) {
+                return buildSuccessResult(waiverId);
+            }
 
             // Create child waiver record
             VolunteerWaiver__c childWaiver = new VolunteerWaiver__c(
@@ -1795,6 +1836,19 @@ public without sharing class ReturnClientMenuController {
                 Informed_Consent_Date__c = signedDate
             );
             update parentWaiver;
+
+            // Prevent duplicate child waiver (guard against double-click / network retry)
+            List<VolunteerWaiver__c> existingChild = [
+                SELECT Id FROM VolunteerWaiver__c
+                WHERE Client__c = :clientId
+                AND Year__c = :year
+                AND waiver__c = :waiverTemplateId
+                AND Informed_Consent__c = 'Completed'
+                LIMIT 1
+            ];
+            if (!existingChild.isEmpty()) {
+                return buildSuccessResult(waiverId);
+            }
 
             // Create child waiver record (same pattern as ClientWaiver / ConfidentialityHippa)
             VolunteerWaiver__c childWaiver = new VolunteerWaiver__c(
