@@ -14,17 +14,17 @@
             <value>
                 <fullName>Therapeutic Riding</fullName>
                 <default>false</default>
-                <label>Therapeutic Riding</label>
+                <label>Adaptive Riding</label>
             </value>
             <value>
                 <fullName>Therapeutic Riding Private</fullName>
                 <default>false</default>
-                <label>Therapeutic Riding Private</label>
+                <label>Adaptive Riding Private</label>
             </value>
             <value>
                 <fullName>Therapeutic Riding Semi-Private</fullName>
                 <default>false</default>
-                <label>Therapeutic Riding Semi-Private</label>
+                <label>Adaptive Riding Semi-Private</label>
             </value>
             <value>
                 <fullName>Hippotherapy</fullName>
