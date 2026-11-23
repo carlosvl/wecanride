@@ -19,6 +19,7 @@ Content catalog for the We Can Ride Salesforce project. Agents: read this file f
 | [[concepts/community-access]] | Experience Cloud profile and permission sets for community users |
 | [[concepts/flow-permissions]] | Flow run permissions, `Flow_User_Access`, additional permission flags |
 | [[concepts/returning-client-paperwork]] | How `Returning` orchestrates `Returning_*` subflows |
+| [[concepts/office-staff-platform-profile]] | `Office Staff Platform` profile (Salesforce Platform license): Office Staff clone with CRUD on Account, Contact, Riders and children, Class/Class Time/Client Class (deployed 2026-11-23) |
 | [[concepts/duplicate-merge-rules]] | Rules and pipeline for merging duplicate Contacts into the community-login record (pilot run 2026-11-12, site findings 2026-11-13, `UpdateContact` Prospect flip and Rider collapse 2026-11-16) |
 | [[concepts/site-yearly-waiver]] | How the client site builds the yearly waiver; year/label and returning-client carry-over deployed 2026-11-16 |
 | [[reports/client-login-assessment-2026-11-16]] | The 77 Client logins with a Rider: single Rider, paperwork state, who the carry-over reaches, 15 backfill candidates (backfilled 2026-11-17) |

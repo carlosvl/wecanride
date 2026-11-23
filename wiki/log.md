@@ -247,3 +247,8 @@ Append-only timeline of wiki operations. Parse with: `grep "^## \[" wiki/log.md 
 ## [2026-11-18] lint | Automated health check
 - Report: [[reports/lint-2026-11-18]]
 - Issues: 18
+
+## [2026-11-23] ingest | Office Staff Platform profile
+- Sources: `Office Staff` profile, `Admin` profile (VolunteerWaiver record types), `WCR_Platform_User` permission set, Riders__c/Class__c object metadata
+- Updated: [[concepts/office-staff-platform-profile]], [[entities/objects/riders]]
+- Notes: Salesforce licenses 10/10 used, so created a Salesforce Platform clone of Office Staff and deployed it to WCRProd (check-only first). Switched by hand afterwards: Natalie Cerchio, Emma Heimlich and Jenny Miller are on it (confirmed in org); Natalie still lacks `WCR_Platform_User`.
