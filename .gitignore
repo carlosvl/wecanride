@@ -40,3 +40,9 @@ $RECYCLE.BIN/
 .env
 .cci
 .vscode
+
+# Local merge backups (contain personal data; never commit)
+backups/
+__pycache__/
+.tmp/
+.zcc/
