@@ -896,7 +896,7 @@
         <locationY>1505</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Update_Account_NU</targetReference>
+            <targetReference>Will_it_ride</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Error</targetReference>
@@ -914,27 +914,6 @@
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
     <recordLookups>
-        <name>Get_Account_Owner_ID</name>
-        <label>Get Account Owner ID</label>
-        <locationX>988</locationX>
-        <locationY>1164</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
-        <connector>
-            <targetReference>UpdateAccount</targetReference>
-        </connector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>DeveloperName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <stringValue>SalesforceTeam</stringValue>
-            </value>
-        </filters>
-        <getFirstRecordOnly>true</getFirstRecordOnly>
-        <object>account_owner__mdt</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
-    </recordLookups>
-    <recordLookups>
         <name>Get_License_Counts</name>
         <label>Get License Counts</label>
         <locationX>1198</locationX>
@@ -948,7 +927,7 @@
             <field>LicenseDefinitionKey</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>PID_Partner_Community_Login</stringValue>
+                <stringValue>PID_Customer_Community_Plus_Login</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -969,7 +948,7 @@
             <field>Name</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>WCR Community Login</stringValue>
+                <stringValue>WCR Customer Community Plus Login</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -1000,67 +979,6 @@
         <object>Contact</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
-    <recordUpdates>
-        <name>Update_Account_NU</name>
-        <label>Update Account NU</label>
-        <locationX>1691</locationX>
-        <locationY>1632</locationY>
-        <connector>
-            <targetReference>Will_it_ride</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Account.Account.Id</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>IsPartner</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
-    <recordUpdates>
-        <name>UpdateAccount</name>
-        <label>UpdateAccount</label>
-        <locationX>988</locationX>
-        <locationY>1292</locationY>
-        <connector>
-            <targetReference>NewContactNeeded</targetReference>
-        </connector>
-        <faultConnector>
-            <targetReference>Error</targetReference>
-        </faultConnector>
-        <filterLogic>and</filterLogic>
-        <filters>
-            <field>Id</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>FindContact.Account.Id</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>OwnerId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Get_Account_Owner_ID.ID__c</elementReference>
-            </value>
-        </filters>
-        <inputAssignments>
-            <field>IsPartner</field>
-            <value>
-                <booleanValue>true</booleanValue>
-            </value>
-        </inputAssignments>
-        <object>Account</object>
-    </recordUpdates>
     <runInMode>SystemModeWithoutSharing</runInMode>
     <screens>
         <name>Completed</name>
@@ -1654,7 +1572,7 @@
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_Account_Owner_ID</targetReference>
+            <targetReference>NewContactNeeded</targetReference>
         </connector>
         <fields>
             <name>Show_Contacts_Section1</name>
