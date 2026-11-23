@@ -1,0 +1,102 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">Seizure Form</h2>
+
+        <template lwc:if={isCompleted}>
+            <div class="slds-notify slds-notify_alert slds-alert_success slds-m-bottom_medium" role="alert">
+                <span>This form has already been completed. You may update below.</span>
+            </div>
+        </template>
+
+        <!-- Last Seizure Question -->
+        <div class="slds-m-bottom_medium">
+            <lightning-combobox
+                label="Last Seizure"
+                value={lastSeizure}
+                options={lastSeizureOptions}
+                onchange={handleLastSeizureChange}
+                required
+                placeholder="Select..."
+            ></lightning-combobox>
+        </div>
+
+        <!-- Conditional: Last 3 years question -->
+        <template lwc:if={showLast3Question}>
+            <div class="slds-m-bottom_medium">
+                <lightning-combobox
+                    label="Has the seizure occurred in the last 3 years?"
+                    value={lastThreeYears}
+                    options={yesNoOptions}
+                    onchange={handleLast3Change}
+                    placeholder="Select..."
+                ></lightning-combobox>
+            </div>
+        </template>
+
+        <!-- Branch: 5+ years — no form needed -->
+        <template lwc:if={showNoFormNeeded}>
+            <div class="slds-box slds-text-align_center slds-m-bottom_medium" style="background: #f3faf6;">
+                <p class="slds-text-body_regular">You do not need to fill out a form.</p>
+            </div>
+        </template>
+
+        <!-- Branch: < 5 years AND in last 3 — file upload -->
+        <template lwc:if={showFileUpload}>
+            <div class="slds-grid slds-wrap slds-gutters slds-m-top_medium">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_medium">
+                    <div class="slds-box" style="background: #fafaf9;">
+                        <p class="slds-text-body_regular slds-m-bottom_small">
+                            Download the following form, have your doctor fill it out, and then upload it.
+                        </p>
+                        <p class="slds-m-bottom_small">
+                            <a href="https://wecanride.my.salesforce.com/sfc/p/61000000Z9c1/a/6T000001R2wb/j7WzViQCxn1w9XQKKfQXZ9xFgvhygPoCpQB_8wH94yY"
+                               target="_blank" rel="noopener noreferrer" class="slds-text-link">
+                                Download Seizure Form
+                            </a>
+                        </p>
+                        <p class="slds-text-body_small slds-text-color_weak">
+                            <strong>If you don't have the file ready, click Cancel to return to the menu.</strong>
+                        </p>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_medium">
+                    <lightning-file-upload
+                        label={uploadLabel}
+                        name="seizureUpload"
+                        record-id={clientId}
+                        accept={acceptedFormats}
+                        onuploadfinished={handleUploadFinished}
+                    ></lightning-file-upload>
+                    <template lwc:if={fileUploaded}>
+                        <div class="slds-m-top_small">
+                            <span class="slds-badge slds-badge_success">File uploaded successfully</span>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </template>
+
+        <!-- Branch: < 5 years AND NOT in last 3 — detail fields -->
+        <template lwc:if={showDetailFields}>
+            <div class="slds-m-top_medium">
+                <lightning-input label="Type of seizure" data-field="seizureType" value={seizureType} onchange={handleInputChange}></lightning-input>
+                <lightning-textarea label="Typical aura/pre-seizure sensations or behaviors during seizure" data-field="auraPreSeizure" value={auraPreSeizure} onchange={handleInputChange} class="slds-m-top_small"></lightning-textarea>
+                <lightning-textarea label="Typical motor activity during seizure" data-field="motorActivity" value={motorActivity} onchange={handleInputChange} class="slds-m-top_small"></lightning-textarea>
+                <lightning-input label="Average duration of seizure" data-field="avgDuration" value={avgDuration} onchange={handleInputChange} class="slds-m-top_small"></lightning-input>
+                <lightning-input label="Current frequency of seizures" data-field="frequency" value={frequency} onchange={handleInputChange} class="slds-m-top_small"></lightning-input>
+                <lightning-input label="Date of last seizure" type="date" data-field="lastSeizureDate" value={lastSeizureDate} onchange={handleInputChange} class="slds-m-top_small"></lightning-input>
+                <lightning-textarea label="Description of behavior during the recovery state and its duration" data-field="recoveryBehavior" value={recoveryBehavior} onchange={handleInputChange} class="slds-m-top_small"></lightning-textarea>
+                <lightning-textarea label="What to do if seizure occurs at center" data-field="whatToDoAtCenter" value={whatToDoAtCenter} onchange={handleInputChange} class="slds-m-top_small"></lightning-textarea>
+            </div>
+        </template>
+
+        <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+            <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+            <lightning-button label="Save & Continue" variant="brand" onclick={handleSave} disabled={isSaving}></lightning-button>
+        </div>
+
+        <template lwc:if={isSaving}>
+            <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+        </template>
+    </div>
+</template>

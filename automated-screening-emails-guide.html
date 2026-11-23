@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Screening Emails — User Guide</title>
+  <script src="https://assets.meshmesh.io/system/tailwindcss-browser-4.js"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #0070d2;
+      --color-primary-dark: #005fb2;
+      --color-accent: #04844b;
+      --color-accent-light: #e6f7ef;
+      --color-warn: #ff9800;
+      --color-warn-light: #fff8e1;
+      --color-bg: #f4f6f9;
+      --color-card: #ffffff;
+      --color-text: #333333;
+      --color-muted: #6b7280;
+    }
+  </style>
+</head>
+<body class="bg-bg text-text font-sans leading-relaxed">
+
+  <!-- Header -->
+  <div class="bg-primary text-white py-8 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="text-sm uppercase tracking-widest opacity-80 mb-1">We Can Ride</p>
+      <h1 class="text-3xl font-bold">Automated Screening Emails</h1>
+      <p class="text-lg opacity-90 mt-2">User Guide for Staff</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-6 py-10 space-y-10">
+
+    <!-- Overview -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">Overview</h2>
+      <p class="text-lg mb-4">
+        Two new automated emails have been set up in Salesforce to streamline communication with <strong>new clients</strong> during the screening and enrollment process. These emails are sent automatically — no manual action is needed beyond what you already do in the system.
+      </p>
+      <div class="bg-accent-light border-l-4 border-accent rounded-r-lg p-4 mb-4">
+        <p class="font-semibold text-accent">Key Point</p>
+        <p>These emails are sent <strong>only to new clients</strong> (New Registration waivers under NewClientPolicies). Volunteers will never receive these emails.</p>
+      </div>
+      <div class="bg-blue-50 border-l-4 border-primary rounded-r-lg p-4">
+        <p class="font-semibold text-primary">Staff Visibility</p>
+        <p>Both emails automatically CC <strong>clients@wecanride.org</strong>, so staff will receive a copy of every email sent to clients.</p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="border-gray-200">
+
+    <!-- Email 1 -->
+    <section>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-primary text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">1</span>
+        <h2 class="text-2xl font-bold text-primary">Screening Scheduled</h2>
+      </div>
+
+      <div class="bg-card rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6">
+          <table class="w-full text-sm">
+            <tbody>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted w-40">Subject Line</td>
+                <td class="py-3">Screening Appointment Confirmation</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Sent From</td>
+                <td class="py-3">clients@wecanride.org</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Sent To</td>
+                <td class="py-3">The client's email address (from their Contact record)</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">CC</td>
+                <td class="py-3">clients@wecanride.org <span class="text-xs text-muted">(staff copy)</span></td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Attachments</td>
+                <td class="py-3">None</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold text-muted">Template</td>
+                <td class="py-3">"Screening Scheduled" (in Salesforce Email Templates)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-3">When does it send?</h3>
+        <p class="mb-4">This email is sent <strong>immediately</strong> when you enter a Screening Date/Time on a new client's waiver record for the <strong>first time</strong>.</p>
+
+        <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+          <h4 class="font-semibold text-primary mb-3">Step by Step</h4>
+          <ol class="space-y-3">
+            <li class="flex gap-3">
+              <span class="bg-primary/10 text-primary font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">1</span>
+              <span>Open the client's <strong>NewClientPolicies waiver</strong> record</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-primary/10 text-primary font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">2</span>
+              <span>Fill in the <strong>Screening Date/Time</strong> field with the scheduled date and time</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-primary/10 text-primary font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">3</span>
+              <span><strong>Save</strong> the record</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-primary/10 text-primary font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">4</span>
+              <span>The email is sent <strong>automatically</strong> to the client with the date and time included in the message</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="bg-warn-light border-l-4 border-warn rounded-r-lg p-4 mt-5">
+        <p class="font-semibold text-amber-800">Important Notes</p>
+        <ul class="mt-2 space-y-1 text-amber-900">
+          <li>The email only sends the <strong>first time</strong> you enter a date. If you change the date later, it will <strong>not</strong> send again automatically.</li>
+          <li>The client must have a <strong>Contact record with an email address</strong> linked through their Client (Rider) record. If no email is on file, the email cannot be sent.</li>
+        </ul>
+      </div>
+
+      <div class="mt-5">
+        <h3 class="text-lg font-semibold mb-2">What does the email say?</h3>
+        <p>The email welcomes the client and includes:</p>
+        <ul class="mt-2 space-y-1 text-muted list-disc list-inside">
+          <li>The <strong>scheduled date and time</strong> of their screening (pulled automatically from the record)</li>
+          <li>Arrival and parking instructions (4301 County Rd 24, Maple Plain, MN 55359)</li>
+          <li>What to expect during the 45-minute screening visit</li>
+          <li>Information about the screening fee</li>
+          <li>Next steps after the screening</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="border-gray-200">
+
+    <!-- Email 2 -->
+    <section>
+      <div class="flex items-center gap-3 mb-4">
+        <span class="bg-accent text-white text-sm font-bold rounded-full w-8 h-8 flex items-center justify-center">2</span>
+        <h2 class="text-2xl font-bold text-accent">Screening Complete</h2>
+      </div>
+
+      <div class="bg-card rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div class="p-6">
+          <table class="w-full text-sm">
+            <tbody>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted w-40">Subject Line</td>
+                <td class="py-3">Welcome to the Program - Getting Started & Next Steps</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Sent From</td>
+                <td class="py-3">clients@wecanride.org</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Sent To</td>
+                <td class="py-3">The client's email address (from their Contact record)</td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">CC</td>
+                <td class="py-3">clients@wecanride.org <span class="text-xs text-muted">(staff copy)</span></td>
+              </tr>
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4 font-semibold text-muted">Attachments</td>
+                <td class="py-3 font-semibold text-accent">6 PDF documents (see below)</td>
+              </tr>
+              <tr>
+                <td class="py-3 pr-4 font-semibold text-muted">Template</td>
+                <td class="py-3">"Screening Complete" (in Salesforce Email Templates)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-3">When does it send?</h3>
+        <p class="mb-4">This email is sent <strong>automatically</strong> after you complete the screening process and click the <strong>"Complete Application"</strong> button on the waiver record.</p>
+
+        <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+          <h4 class="font-semibold text-accent mb-3">Step by Step</h4>
+          <ol class="space-y-3">
+            <li class="flex gap-3">
+              <span class="bg-accent/10 text-accent font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">1</span>
+              <span>Complete the client's screening and fill in all screening-related fields on the waiver</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-accent/10 text-accent font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">2</span>
+              <span>Enter any additional information needed for the application</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-accent/10 text-accent font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">3</span>
+              <span>Click the <strong>"Complete Application"</strong> button on the waiver record</span>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-accent/10 text-accent font-bold rounded-full w-7 h-7 flex items-center justify-center text-sm shrink-0">4</span>
+              <span>The email is sent <strong>automatically</strong> to the client with all 6 documents attached</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-3">Attached Documents</h3>
+        <p class="mb-3">The following 6 PDF documents are automatically attached to every "Screening Complete" email:</p>
+        <div class="bg-card rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+          <table class="w-full text-sm">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="text-left py-3 px-4 font-semibold text-muted">#</th>
+                <th class="text-left py-3 px-4 font-semibold text-muted">Document</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">1</td>
+                <td class="py-3 px-4">Client Handbook</td>
+              </tr>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">2</td>
+                <td class="py-3 px-4">Client Registration & Policies</td>
+              </tr>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">3</td>
+                <td class="py-3 px-4">Payment Policy Notice — Therapeutic Riding & Hippotherapy</td>
+              </tr>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">4</td>
+                <td class="py-3 px-4">(Yearly) Session Dates</td>
+              </tr>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">5</td>
+                <td class="py-3 px-4">Therapeutic & Hippotherapy Riding Guidelines</td>
+              </tr>
+              <tr class="border-t border-gray-100">
+                <td class="py-3 px-4">6</td>
+                <td class="py-3 px-4">Guide for Requesting Classes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-muted mt-3">These documents are pulled from Salesforce Files. If a document needs to be updated, upload the new version to the same Content record in Salesforce — the email will automatically use the latest version.</p>
+      </div>
+
+      <div class="mt-5">
+        <h3 class="text-lg font-semibold mb-2">What does the email say?</h3>
+        <p>The email welcomes the client to the program and includes:</p>
+        <ul class="mt-2 space-y-1 text-muted list-disc list-inside">
+          <li>Enrollment and deposit information ($150 deposit)</li>
+          <li>Cancellation policy details (30-day notice for full refund)</li>
+          <li>How to request future sessions through the portal</li>
+          <li>How to prepare for their first class (attire, helmet, etc.)</li>
+          <li>Contact information (clients@wecanride.org)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="border-gray-200">
+
+    <!-- Quick Reference -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">Quick Reference</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-primary/5 rounded-xl p-5 border border-primary/10">
+          <h3 class="font-bold text-primary mb-2">Email 1: Screening Scheduled</h3>
+          <p class="text-sm text-muted mb-3">Trigger: Enter Screening Date/Time and save</p>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="bg-primary/10 text-primary px-2 py-0.5 rounded font-medium">Immediate</span>
+            <span class="bg-gray-100 text-muted px-2 py-0.5 rounded">No attachments</span>
+          </div>
+        </div>
+        <div class="bg-accent/5 rounded-xl p-5 border border-accent/10">
+          <h3 class="font-bold text-accent mb-2">Email 2: Screening Complete</h3>
+          <p class="text-sm text-muted mb-3">Trigger: Click "Complete Application" button</p>
+          <div class="flex items-center gap-2 text-sm">
+            <span class="bg-accent/10 text-accent px-2 py-0.5 rounded font-medium">Immediate</span>
+            <span class="bg-accent/10 text-accent px-2 py-0.5 rounded">6 PDFs attached</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <hr class="border-gray-200">
+
+    <!-- Troubleshooting -->
+    <section>
+      <h2 class="text-2xl font-bold text-primary mb-4">Troubleshooting</h2>
+      <div class="space-y-4">
+        <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-5">
+          <h3 class="font-semibold mb-2">The client didn't receive the email</h3>
+          <ul class="text-sm text-muted space-y-2">
+            <li><strong>Check the client's Contact record</strong> — make sure there's a valid email address on the Contact linked through the Client (Rider) record.</li>
+            <li><strong>Check their spam/junk folder</strong> — ask the client to look in spam for an email from clients@wecanride.org.</li>
+            <li><strong>For Email 1</strong> — the email only sends the first time a Screening Date/Time is entered. If the field already had a value and was changed, the email won't resend.</li>
+            <li><strong>For Email 2</strong> — make sure you clicked the "Complete Application" button (not just saved the record).</li>
+          </ul>
+        </div>
+
+        <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-5">
+          <h3 class="font-semibold mb-2">I need to resend an email manually</h3>
+          <p class="text-sm text-muted">These automations do not currently support manual resending. If a client needs the email resent, contact your Salesforce administrator for assistance.</p>
+        </div>
+
+        <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-5">
+          <h3 class="font-semibold mb-2">I need to update one of the attached documents</h3>
+          <p class="text-sm text-muted">Upload the updated document as a <strong>new version</strong> of the existing file in Salesforce Files. The email will automatically include the latest version going forward. Do not delete and re-upload as a new file — that would break the link.</p>
+        </div>
+
+        <div class="bg-card rounded-xl shadow-sm border border-gray-100 p-5">
+          <h3 class="font-semibold mb-2">A volunteer received a client email</h3>
+          <p class="text-sm text-muted">This should not happen — the automations only trigger on <strong>New Registration</strong> waivers under the <strong>NewClientPolicies</strong> template. If this occurs, please notify your administrator as the record type may have been set incorrectly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="text-center text-sm text-muted pt-6 pb-4 border-t border-gray-200">
+      <p>We Can Ride — Automated Screening Emails Guide</p>
+      <p class="mt-1">For questions or issues, contact your Salesforce administrator.</p>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<template>
+    <div class="slds-card slds-p-around_medium">
+        <h2 class="slds-text-heading_medium slds-m-bottom_medium">Emergency Contact</h2>
+
+        <!-- Loading -->
+        <template lwc:if={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+        </template>
+
+        <!-- ═══════ OVERVIEW VIEW ═══════ -->
+        <template lwc:if={isOverview}>
+            <template lwc:if={hasEmergencyContact}>
+                <div class="slds-card slds-p-around_small slds-m-bottom_medium">
+                    <h3 class="slds-text-heading_small slds-m-bottom_small">
+                        <lightning-icon icon-name="utility:alert" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                        Current Emergency Contact
+                    </h3>
+                    <div class="slds-grid slds-wrap slds-gutters_small">
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_xx-small">
+                            <p class="slds-text-body_small slds-text-color_weak">Name</p>
+                            <p class="slds-text-body_regular">{emergencyContactName}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_xx-small">
+                            <p class="slds-text-body_small slds-text-color_weak">Phone</p>
+                            <p class="slds-text-body_regular">{emergencyContactPhone}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-bottom_xx-small">
+                            <p class="slds-text-body_small slds-text-color_weak">Email</p>
+                            <p class="slds-text-body_regular">{emergencyContactEmail}</p>
+                        </div>
+                    </div>
+                    <div class="slds-m-top_small">
+                        <lightning-button label="Edit" variant="neutral" onclick={handleEdit} class="slds-m-right_small"></lightning-button>
+                        <lightning-button label="Remove Contact" variant="destructive-text" onclick={handleRemove}></lightning-button>
+                    </div>
+                </div>
+            </template>
+
+            <template lwc:else>
+                <div class="slds-illustration slds-illustration_small slds-p-around_medium slds-text-align_center slds-m-bottom_medium">
+                    <lightning-icon icon-name="utility:alert" size="large" class="slds-m-bottom_small"></lightning-icon>
+                    <p class="slds-text-body_regular slds-text-color_weak">No emergency contact assigned.</p>
+                    <lightning-button label="Add Emergency Contact" variant="brand" onclick={handleAddContact} class="slds-m-top_small"></lightning-button>
+                </div>
+            </template>
+
+            <!-- Overview Action Buttons -->
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+                <lightning-button label="Cancel" variant="neutral" onclick={handleCancel} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Done" variant="brand" onclick={handleDone}></lightning-button>
+            </div>
+        </template>
+
+        <!-- ═══════ EDIT VIEW ═══════ -->
+        <template lwc:if={isEdit}>
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">Edit Emergency Contact</h3>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        label="First Name"
+                        data-field="firstName"
+                        value={firstName}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        label="Last Name"
+                        data-field="lastName"
+                        value={lastName}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        type="tel"
+                        label="Phone"
+                        data-field="phone"
+                        value={phone}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        type="email"
+                        label="Email"
+                        data-field="email"
+                        value={email}
+                        onchange={handleInputChange}
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+                <lightning-button label="Back" variant="neutral" onclick={handleBackToOverview} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Save" variant="brand" onclick={handleSaveEdit} disabled={isSaving}></lightning-button>
+            </div>
+
+            <template lwc:if={isSaving}>
+                <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+            </template>
+        </template>
+
+        <!-- ═══════ SELECT CONTACT VIEW ═══════ -->
+        <template lwc:if={isSelectContact}>
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">Select Emergency Contact</h3>
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+                Choose an existing household contact or create a new one.
+            </p>
+
+            <lightning-radio-group
+                label="Select Contact"
+                options={householdContactOptions}
+                value={selectedContactId}
+                onchange={handleSelectContact}
+                type="radio"
+            ></lightning-radio-group>
+
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+                <lightning-button label="Back" variant="neutral" onclick={handleBackToOverview} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Select" variant="brand" onclick={handleSelectSubmit} disabled={isSaving}></lightning-button>
+            </div>
+        </template>
+
+        <!-- ═══════ ADD NEW VIEW ═══════ -->
+        <template lwc:if={isAddNew}>
+            <h3 class="slds-text-heading_small slds-m-bottom_medium">New Emergency Contact</h3>
+            <p class="slds-text-body_regular slds-m-bottom_medium">
+                Enter information for the new emergency contact.
+            </p>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        label="First Name"
+                        data-field="firstName"
+                        value={firstName}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        label="Last Name"
+                        data-field="lastName"
+                        value={lastName}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        type="tel"
+                        label="Phone"
+                        data-field="phone"
+                        value={phone}
+                        onchange={handleInputChange}
+                        required
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-p-bottom_small">
+                    <lightning-input
+                        type="email"
+                        label="Email"
+                        data-field="email"
+                        value={email}
+                        onchange={handleInputChange}
+                    ></lightning-input>
+                </div>
+            </div>
+
+            <div class="slds-grid slds-grid_align-end slds-m-top_medium">
+                <lightning-button label="Back" variant="neutral" onclick={handleBackToOverview} class="slds-m-right_small"></lightning-button>
+                <lightning-button label="Save" variant="brand" onclick={handleSaveNew} disabled={isSaving}></lightning-button>
+            </div>
+
+            <template lwc:if={isSaving}>
+                <lightning-spinner alternative-text="Saving" size="small"></lightning-spinner>
+            </template>
+        </template>
+    </div>
+</template>

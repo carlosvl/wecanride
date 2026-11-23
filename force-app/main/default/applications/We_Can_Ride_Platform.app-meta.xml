@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
+    <brand>
+        <headerColor>#121212</headerColor>
+        <logo>we_can_ridelogo</logo>
+        <logoVersion>1</logoVersion>
+        <shouldOverrideOrgTheme>true</shouldOverrideOrgTheme>
+    </brand>
+    <formFactors>Small</formFactors>
+    <formFactors>Large</formFactors>
+    <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
+    <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
+    <label>We Can Ride Platform</label>
+    <navType>Standard</navType>
+    <tabs>standard-home</tabs>
+    <tabs>Volunteer_Class_Management</tabs>
+    <tabs>Class_Management</tabs>
+    <tabs>standard-report</tabs>
+    <tabs>standard-Dashboard</tabs>
+    <tabs>standard-Contact</tabs>
+    <tabs>Riders__c</tabs>
+    <tabs>Volunteer_Info__c</tabs>
+    <tabs>Horses__c</tabs>
+    <tabs>Incident_Report__c</tabs>
+    <tabs>Class__c</tabs>
+    <tabs>Condition__c</tabs>
+    <tabs>diagnoses__c</tabs>
+    <uiType>Lightning</uiType>
+</CustomApplication>

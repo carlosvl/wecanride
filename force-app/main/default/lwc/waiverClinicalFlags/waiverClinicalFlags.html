@@ -1,0 +1,89 @@
+<template>
+    <template lwc:if={hasClinicalData}>
+        <!-- Alert Banner (only if flagged or paused) -->
+        <template lwc:if={showAlertBanner}>
+            <div class="slds-notify slds-notify_alert slds-alert_warning alert-banner" role="alert">
+                <span class="slds-assistive-text">warning</span>
+                <lightning-icon icon-name="utility:warning" alternative-text="Warning" variant="warning" size="x-small" class="slds-m-right_x-small"></lightning-icon>
+                <h2 class="slds-text-heading_small">{alertMessage}</h2>
+            </div>
+        </template>
+
+        <!-- Clinical Info Card -->
+        <div class="slds-box slds-box_x-small slds-theme_default clinical-card">
+            <h3 class="slds-text-heading_small slds-m-bottom_small">
+                <lightning-icon icon-name="utility:shield" size="x-small" class="slds-m-right_xx-small"></lightning-icon>
+                Clinical &amp; Safety Information
+            </h3>
+
+            <div class="slds-grid slds-wrap slds-gutters_small">
+                <!-- Screening Status -->
+                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Clinical Screening</label>
+                        <div class="slds-form-element__control">
+                            <span class={screeningBadgeClass}>{screeningStatus}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Type -->
+                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Service Type</label>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">{serviceType}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagnoses Status -->
+                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Diagnoses</label>
+                        <div class="slds-form-element__control">
+                            <span class="slds-form-element__static">{diagnosesInfo}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Intake Paused -->
+                <div class="slds-col slds-size_1-of-2 slds-m-bottom_small">
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label">Intake Paused</label>
+                        <div class="slds-form-element__control">
+                            <template lwc:if={isIntakePaused}>
+                                <span class="slds-badge slds-badge_error">Yes — Paused</span>
+                            </template>
+                            <template lwc:else>
+                                <span class="slds-badge slds-badge_success">No</span>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Flags List -->
+            <template lwc:if={hasSafetyFlags}>
+                <div class="slds-m-top_small">
+                    <label class="slds-form-element__label slds-text-color_error">Safety Flags</label>
+                    <ul class="slds-list_dotted slds-m-top_xx-small">
+                        <template for:each={safetyFlags} for:item="flag">
+                            <li key={flag.key} class="slds-text-color_error">{flag.label}</li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+
+            <!-- Safety Detail -->
+            <template lwc:if={hasSafetyDetail}>
+                <div class="slds-m-top_small">
+                    <label class="slds-form-element__label">Safety Detail</label>
+                    <div class="slds-box slds-box_x-small slds-theme_shade detail-text">
+                        {safetyDetail}
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+</template>

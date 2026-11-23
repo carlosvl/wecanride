@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-grid slds-grid_align-start slds-grid_vertical-align-center slds-wrap year-selector">
+        <span class="slds-text-title_caps slds-m-right_small slds-p-top_xx-small">Year:</span>
+        <template for:each={yearPills} for:item="pill">
+            <button
+                key={pill.year}
+                class={pill.pillClass}
+                data-year={pill.year}
+                data-waiverid={pill.waiverId}
+                onclick={handleYearClick}
+                aria-label={pill.ariaLabel}
+                aria-pressed={pill.isSelected}>
+                <span class="year-label">{pill.year}</span>
+                <span class={pill.badgeClass}>{pill.badgeLabel}</span>
+                <template lwc:if={pill.statusIcon}>
+                    <lightning-icon
+                        icon-name={pill.statusIcon}
+                        size="xx-small"
+                        variant="success"
+                        alternative-text="Submitted"
+                        class="slds-m-left_xx-small">
+                    </lightning-icon>
+                </template>
+            </button>
+        </template>
+    </div>
+</template>

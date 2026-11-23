@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>62.0</apiVersion>
+    <description>Sends a Screening Scheduled email to new clients when Screening_Date_Time__c is first populated on a NewClientPolicies waiver.</description>
+    <environments>Default</environments>
+    <interviewLabel>Screening Scheduled Email {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Screening Scheduled Email</label>
+
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value><stringValue>AUTO_LAYOUT_CANVAS</stringValue></value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+
+    <processType>AutoLaunchedFlow</processType>
+    <runInMode>SystemModeWithSharing</runInMode>
+    <status>Active</status>
+
+    <!-- ===== actionCalls (grouped) ===== -->
+    <actionCalls>
+        <name>Send_Screening_Scheduled_Email</name>
+        <label>Send Screening Scheduled Email</label>
+        <locationX>176</locationX>
+        <locationY>638</locationY>
+        <actionName>SendEmailWithAttachments</actionName>
+        <actionType>apex</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>toAddress</name>
+            <value>
+                <elementReference>ContactEmail</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>ccAddress</name>
+            <value>
+                <stringValue>clients@wecanride.org</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>subject</name>
+            <value>
+                <stringValue>Screening Appointment Confirmation</stringValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>htmlBody</name>
+            <value>
+                <elementReference>EmailBody</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>orgWideEmailAddress</name>
+            <value>
+                <stringValue>clients@wecanride.org</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+
+    <!-- ===== decisions (grouped) ===== -->
+    <decisions>
+        <name>Check_Has_Contact</name>
+        <label>Has Contact?</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <defaultConnector>
+            <targetReference>Get_Contact_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has Contact</defaultConnectorLabel>
+        <rules>
+            <name>No_Contact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ClientContactId</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Contact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Check_Has_Email</name>
+        <label>Has Email?</label>
+        <locationX>176</locationX>
+        <locationY>518</locationY>
+        <defaultConnector>
+            <targetReference>Send_Screening_Scheduled_Email</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has Email</defaultConnectorLabel>
+        <rules>
+            <name>No_Email</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ContactEmail</leftValueReference>
+                <operator>IsNull</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <label>No Email</label>
+        </rules>
+    </decisions>
+
+    <!-- ===== recordLookups (grouped) ===== -->
+    <recordLookups>
+        <name>Get_Client_Record</name>
+        <label>Get Client Record</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <connector>
+            <targetReference>Check_Has_Contact</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>$Record.Client__c</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Riders__c</object>
+        <outputAssignments>
+            <assignToReference>ClientContactId</assignToReference>
+            <field>ClientContact__c</field>
+        </outputAssignments>
+        <storeOutputAutomatically>false</storeOutputAutomatically>
+    </recordLookups>
+    <recordLookups>
+        <name>Get_Contact_Email</name>
+        <label>Get Contact Email</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <connector>
+            <targetReference>Check_Has_Email</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>ClientContactId</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Contact</object>
+        <outputAssignments>
+            <assignToReference>ContactEmail</assignToReference>
+            <field>Email</field>
+        </outputAssignments>
+        <storeOutputAutomatically>false</storeOutputAutomatically>
+    </recordLookups>
+
+    <!-- ===== start ===== -->
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Get_Client_Record</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Screening_Date_Time__c</field>
+            <operator>IsNull</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>RecordTypeId</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>0126T000001lGQBQA2</stringValue>
+            </value>
+        </filters>
+        <object>VolunteerWaiver__c</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+
+    <!-- ===== textTemplates ===== -->
+    <textTemplates>
+        <name>EmailBody</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;html&gt;
+&lt;head&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
+&lt;body style=&quot;height: auto; min-height: auto;&quot;&gt;
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Hello,&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;We are looking forward to welcoming you to the barn! Your screening has been scheduled for &lt;strong&gt;{!$Record.Screening_Date_Time__c}&lt;/strong&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Arrival &amp;amp; Parking&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Our address is &lt;strong&gt;4301 County Rd 24, Maple Plain, MN 55359&lt;/strong&gt;. When you arrive, please feel free to park in the main lot or anywhere along the driveway leading up to the barn. Follow the signs to the We Can Ride office door, come on in, and Michelle will be there to greet you!&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;What to Expect&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;The screening is a casual, 45-minute visit. During this time, we will:&lt;/span&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Tour the barn:&lt;/strong&gt; Please remember to wear &lt;strong&gt;closed-toed shoes&lt;/strong&gt; for safety!&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Meet the horses:&lt;/strong&gt; While there is no riding during the screening, you will have the opportunity to meet some horses!&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Discuss Class Enrollment:&lt;/strong&gt; We will help determine the most impactful class placement and the specific support needed.&lt;/span&gt;&lt;/li&gt;
+&lt;li style=&quot;list-style-type:disc&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;&lt;strong&gt;Screening Fee:&lt;/strong&gt; You will be invoiced for this fee shortly. We kindly ask that it be paid prior to the screening.&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 style=&quot;line-height:1.38; margin-top:19px; margin-bottom:5px&quot;&gt;&lt;span style=&quot;font-size:13pt; font-family:Arial,sans-serif; color:#1f1f1f; font-weight:700&quot;&gt;Next Steps&lt;/span&gt;&lt;/h3&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Following the screening, we will reach out to discuss enrollment!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;If you have any questions in the meantime, please do not hesitate to ask. Otherwise, we will see you soon!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style=&quot;line-height:1.38; margin-top:16px; margin-bottom:16px&quot;&gt;&lt;span style=&quot;font-size:11pt; font-family:Arial,sans-serif; color:#1f1f1f&quot;&gt;Best regards,&lt;br/&gt;We Can Ride&lt;/span&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+
+    <!-- ===== variables (grouped) ===== -->
+    <variables>
+        <name>ClientContactId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ContactEmail</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
