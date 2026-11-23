@@ -4,7 +4,7 @@ type: entity
 category: objects
 sources:
   - force-app/main/default/objects/Contact/
-last_verified: 2026-07-13
+last_verified: 2026-08-26
 status: current
 tags: [object, contact, npsp]
 ---
@@ -26,9 +26,15 @@ Standard Salesforce Contact object, heavily extended for nonprofit and volunteer
 
 ## WCR-specific fields
 
+- `Client__c` — flags client contacts
 - `Volunteer__c` — flags volunteer contacts
+- `Prospect__c` — third role checkbox (used at community user creation; not a license type)
 - `Age__c`, `Employer_Address__c`, `Donation_Capacity__c`
 - Various WCR custom fields used in registration flows
+
+A community user can have more than one of Client / Volunteer / Prospect checked. License estimates that split by role should treat overlap as its own bucket. See [[community-login-license-estimate]].
+
+Deactivated community users do not expose `User.ContactId` in the API; match `User.Email` to `Contact.Email` if you need these flags historically.
 
 ## Role in flows
 

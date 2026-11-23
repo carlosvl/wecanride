@@ -1,0 +1,128 @@
+<!--
+We Can Ride — constituent lists email
+Reuse this template when sending the two-year mailing list and the current-year thank-you call list.
+
+Replace every {{TOKEN}} before sending. Tokens:
+
+  {{AS_OF_DATE}}          Snapshot date, e.g. October 21, 2026
+  {{WINDOW_START}}        Start of the two-year window
+  {{WINDOW_END}}          End of the two-year window
+  {{GIFT_YEAR}}           Calendar year for the thank-you list
+  {{MAILING_COUNT}}       Unique rows on the mailing list
+  {{CLIENT_COUNT}}        Unique clients enrolled in a class
+  {{VOLUNTEER_COUNT}}     Unique volunteers enrolled in a class
+  {{DONOR_PEOPLE}}        Donors who are people
+  {{DONOR_ORGS}}          Donor organizations with no contact
+  {{MISSING_EMAIL}}
+  {{MISSING_PHONE}}
+  {{MISSING_ADDRESS}}
+  {{EMAIL_OPTOUT}}
+  {{STALE_EMAIL}}         Addresses marked .old
+  {{TOP_COUNT}}           Rows on the thank-you list, including ties
+  {{TIE_NOTE}}            Sentence explaining the cutoff, or empty
+  {{ROLE_ROWS}}           HTML <tr> rows: role combination and count
+  {{TOP_DONOR_ROWS}}      HTML <tr> rows: rank, name, total, gifts, reach
+  {{CALL_GAPS}}           HTML paragraphs for people or organizations the caller cannot reach
+  {{PREPARED_FOR}}        Recipient first name
+
+Do not commit the filled message or the CSV attachments. They contain contact details.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We Can Ride constituent lists</title>
+</head>
+<body style="margin:0;padding:0;background-color:#f3efe6;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#f3efe6;margin:0;padding:24px 12px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:600px;max-width:600px;background-color:#ffffff;border-collapse:collapse;">
+          <tr>
+            <td style="background-color:#1f4d3a;padding:28px 36px 24px 36px;">
+              <p style="margin:0;font-family:Georgia, 'Times New Roman', serif;font-size:13px;letter-spacing:0.14em;text-transform:uppercase;color:#e4d3a4;">We Can Ride</p>
+              <h1 style="margin:10px 0 0 0;font-family:Georgia, 'Times New Roman', serif;font-size:28px;line-height:1.25;font-weight:normal;color:#ffffff;">Lists for mail and thank-you calls</h1>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:32px 36px 8px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:16px;line-height:1.55;color:#243028;">
+              <p style="margin:0 0 16px 0;">Hello {{PREPARED_FOR}},</p>
+              <p style="margin:0 0 16px 0;">Two files are attached. Both were pulled from Salesforce on <strong>{{AS_OF_DATE}}</strong>. Each row has the person’s name, Contact Id, email, phone, and mailing address.</p>
+              <p style="margin:0 0 8px 0;"><strong>Mailing list, last two years.</strong> One row per person or organization active from {{WINDOW_START}} through {{WINDOW_END}}: enrolled in a class, enrolled as a volunteer in a class, or a closed-won donation. People in more than one group appear once. Use the Roles column to filter.</p>
+              <p style="margin:0 0 0 0;"><strong>Thank-you calls, {{GIFT_YEAR}}.</strong> Largest closed-won donations in {{GIFT_YEAR}}, with gift total and gift count. {{TIE_NOTE}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:20px 36px 8px 36px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+                <tr>
+                  <td width="33%" style="background-color:#f7f4ee;padding:16px 14px;border-right:8px solid #ffffff;">
+                    <p style="margin:0;font-family:Georgia, 'Times New Roman', serif;font-size:26px;color:#1f4d3a;">{{MAILING_COUNT}}</p>
+                    <p style="margin:4px 0 0 0;font-family:Georgia, 'Times New Roman', serif;font-size:13px;line-height:1.4;color:#5c6570;">Unique rows on the mailing list</p>
+                  </td>
+                  <td width="33%" style="background-color:#f7f4ee;padding:16px 14px;border-right:8px solid #ffffff;">
+                    <p style="margin:0;font-family:Georgia, 'Times New Roman', serif;font-size:26px;color:#1f4d3a;">{{CLIENT_COUNT}}</p>
+                    <p style="margin:4px 0 0 0;font-family:Georgia, 'Times New Roman', serif;font-size:13px;line-height:1.4;color:#5c6570;">Clients enrolled in a class</p>
+                  </td>
+                  <td width="34%" style="background-color:#f7f4ee;padding:16px 14px;">
+                    <p style="margin:0;font-family:Georgia, 'Times New Roman', serif;font-size:26px;color:#1f4d3a;">{{VOLUNTEER_COUNT}}</p>
+                    <p style="margin:4px 0 0 0;font-family:Georgia, 'Times New Roman', serif;font-size:13px;line-height:1.4;color:#5c6570;">Volunteers enrolled in a class</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 36px 8px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:16px;line-height:1.55;color:#243028;">
+              <p style="margin:0 0 8px 0;font-size:18px;color:#1f4d3a;">Who is on the mailing list</p>
+              <p style="margin:0 0 12px 0;">Donors are {{DONOR_PEOPLE}} people, plus {{DONOR_ORGS}} organizations that gave but have no contact on the gift. Waitlisted, requested, and declined class spots are not included. Grants are not included.</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:15px;">
+                <tr>
+                  <td style="padding:8px 0;border-bottom:1px solid #e4ddd0;color:#5c6570;">Roles</td>
+                  <td align="right" style="padding:8px 0;border-bottom:1px solid #e4ddd0;color:#5c6570;">Rows</td>
+                </tr>
+                {{ROLE_ROWS}}
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 36px 8px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:16px;line-height:1.55;color:#243028;">
+              <p style="margin:0 0 8px 0;font-size:18px;color:#1f4d3a;">Before you mail or call</p>
+              <p style="margin:0 0 8px 0;">{{MISSING_EMAIL}} rows have no email. {{MISSING_PHONE}} have no phone. {{MISSING_ADDRESS}} have no mailing address. {{EMAIL_OPTOUT}} contacts have email opt-out checked. {{STALE_EMAIL}} email addresses end in “.old” and were already marked stale.</p>
+              <p style="margin:0;">Phone is the first number on the contact: mobile, then phone, then home. Street, city, state, and ZIP are also in their own columns for a mail merge. Email opt-out, do-not-call, do-not-contact, and deceased are columns so you can filter before reaching out.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 36px 8px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:16px;line-height:1.55;color:#243028;">
+              <p style="margin:0 0 12px 0;font-size:18px;color:#1f4d3a;">Largest {{GIFT_YEAR}} gifts</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;font-size:14px;">
+                <tr>
+                  <td style="padding:8px 6px 8px 0;border-bottom:1px solid #e4ddd0;color:#5c6570;">Rank</td>
+                  <td style="padding:8px 6px;border-bottom:1px solid #e4ddd0;color:#5c6570;">Name</td>
+                  <td align="right" style="padding:8px 6px;border-bottom:1px solid #e4ddd0;color:#5c6570;">Total</td>
+                  <td align="right" style="padding:8px 0 8px 6px;border-bottom:1px solid #e4ddd0;color:#5c6570;">Gifts</td>
+                </tr>
+                {{TOP_DONOR_ROWS}}
+              </table>
+              <p style="margin:14px 0 0 0;">The full ranked list is in the second attachment ({{TOP_COUNT}} rows).</p>
+              {{CALL_GAPS}}
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:28px 36px 32px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:16px;line-height:1.55;color:#243028;">
+              <p style="margin:0 0 16px 0;">Open either file in Excel or Google Sheets. Sort or filter Roles on the mailing list if you want clients, volunteers, and donors separately.</p>
+              <p style="margin:0;">With thanks,<br>We Can Ride</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color:#f7f4ee;padding:16px 36px;font-family:Georgia, 'Times New Roman', serif;font-size:12px;line-height:1.45;color:#5c6570;">
+              Prepared for staff use. Please don’t forward the attachments outside We Can Ride.
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

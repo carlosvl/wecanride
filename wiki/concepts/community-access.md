@@ -5,7 +5,7 @@ category: permissions
 sources:
   - force-app/main/default/profiles/WCR Customer Community Plus Login.profile-meta.xml
   - force-app/main/default/permissionsets/
-last_verified: 2026-07-16
+last_verified: 2026-08-26
 status: current
 tags: [community, permissions, experience-cloud]
 ---
@@ -18,8 +18,10 @@ How Experience Cloud users authenticate and access screen flows.
 
 | Profile | License | Role |
 |---------|---------|------|
-| **WCR Customer Community Plus Login** | Customer Community Plus Login | Current / new community users (~46) |
-| **WCR Community Login** | Partner Community Login | Legacy community users (~500); access template for CCP |
+| **WCR Customer Community Plus Login** | Customer Community Plus Login | Current / new community users (61 active as of 2026-08-26) |
+| **WCR Community Login** | Partner Community Login | Legacy community users (423 active, 697 deactivated); access template for CCP |
+
+License purchase (unique monthly logins, not assigned seats): see [[community-login-license-estimate]]. Peak unique community logins in the last 6 months: 107 (August 2026 MTD) → **160 CCP Login** if volunteers keep using the site. If Volunteer-only users stop logging in, peak falls to 46 → **80 CCP Login** (already owned).
 
 **WCR Customer Community Plus Login** carries `RunFlow`, returning registration flows, and object/FLS/Apex access cloned from the Partner profile (2026-07-16). License types stay different — CCP cannot receive Partner-only grants (`Lead`, `ActionPlanTemplate`, `SendExternalEmailAvailable`, TabSet apps).
 
@@ -86,7 +88,7 @@ See [[flow-permissions]] for the full troubleshooting checklist.
 3. **`isAdditionalPermissionRequiredToRun`** — flow requires explicit `SetupEntityAccess` grant
 4. **`GetCurrentYear.Current_Year__c` not available** — community user missing `WaiverYear__mdt` custom metadata type access on profile or permission set (fixed 2026-07-13)
 5. **Missing `Riders__c` record** — contact exists but has no Client record; `Returning_Emergency` auto-creates one (deployed 2026-07-13)
-6. **`portal users cannot own partner accounts`** — community user creating a Contact (e.g. `Returning_Parent_Guardian` → `CreateFirstGuardian`) fails when the household Account has `IsPartner = true`. Households must not be Partner Accounts. Cleared for Klinker Household 2026-07-16; ~724 other Household Accounts still flagged Partner.
+6. **`portal users cannot own partner accounts`** — community user creating a Contact (e.g. `Returning_Parent_Guardian` → `CreateFirstGuardian`) fails when the household Account has `IsPartner = true`. Households must not be Partner Accounts. Cleared Klinker (2026-07-16), Lawson (2026-07-20), then **all** partner-flagged Household Accounts (remaining count → 0) — but the flag kept recurring (432 households re-flagged by 2026-08-10) because `NewCommunityUser` re-set `IsPartner = true` on every new registration. **Root cause fixed 2026-08-10:** `NewCommunityUser` no longer sets `IsPartner` at all, and now provisions new users on the `PID_Customer_Community_Plus_Login` license / `WCR Customer Community Plus Login` profile instead of Partner Community Login (`Update_Account_NU`, `UpdateAccount`, and the now-unused `Get_Account_Owner_ID` lookup were removed). The `clear-partner-*.apex` scripts remain useful for one-time remediation of already-flagged accounts but are no longer needed on a recurring basis. Scripts: `scripts/apex/clear-partner-lawson-household.apex`, `clear-partner-households-batch5.apex`.
 7. **`sObject type 'diagnoses__c' is not supported`** — `Returning_Diagnosis` / `New_Client_Diagnosis` need CRUD on `diagnoses__c` (+ read on `Condition__c`). Old `WCR Community Login` profile had these; `WCR Customer Community Plus Login` did not until 2026-07-16 (also on `Community_Returning_Flow_Access`).
 8. **`sObject type 'Client_Class__c' is not supported`** — `Returning_Schedule_Selection` needs Read/Create/Edit on `Client_Class__c` and Read on `Class__c`. Same gap on Customer Community Plus Login (fixed 2026-07-16). Also re-ran `assign-community-permissions.apex` for users missing the PS (Lyn Fredrickson, Allyson Bone, Mabel Klinker).
 

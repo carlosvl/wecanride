@@ -5,7 +5,7 @@ category: architecture
 sources:
   - sfdx-project.json
   - force-app/main/default/
-last_verified: 2026-07-13
+last_verified: 2026-08-26
 status: current
 tags: [overview, salesforce, wcr]
 ---
@@ -66,6 +66,7 @@ flowchart TB
 ## Cross-cutting concerns
 
 - [[community-access]] — profiles, permission sets, flow run permissions
+- [[community-login-license-estimate]] — unique community logins last 6 months and CCP Login purchase size
 - [[flow-permissions]] — `isAdditionalPermissionRequiredToRun`, `Flow_User_Access`
 - [[architecture]] — metadata layout and integration packages (NPSP, GW Volunteers, OneMerge)
 
